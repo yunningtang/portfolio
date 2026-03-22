@@ -125,30 +125,67 @@
         <main class="flex-1 md:ml-[340px] px-8 md:px-16 pt-24 md:pt-40 pb-32">
 
             <!-- About -->
-            <section id="about" class="max-w-3xl mb-40 animate-slide-up scroll-mt-40">
-                <h1 class="font-serif italic text-2xl md:text-3xl text-light-text dark:text-dark-text font-light leading-[1.45] tracking-tight mb-12">
+            <section id="about" class="mb-40 animate-slide-up scroll-mt-40">
+                <h1 class="font-serif italic text-2xl md:text-3xl text-light-text dark:text-dark-text font-light leading-[1.45] tracking-tight mb-12 max-w-4xl">
                     I build human-centered technologies that honor learner complexity through critical design practice, multimodal interaction, and reflective inquiry.
                 </h1>
 
-                <div class="font-sans text-lg leading-relaxed text-light-muted dark:text-dark-muted font-light mb-16 max-w-2xl space-y-4">
+                <div class="font-sans text-lg leading-relaxed text-light-muted dark:text-dark-muted font-light mb-16 max-w-4xl space-y-4">
                     <p>I'm Yunning, a product designer and developer bridging the gap between complex AI models and intuitive interfaces.</p>
                     <p>Currently studying <span class="text-light-text dark:text-white font-medium">Human-Computer Interaction</span> @UofT (iSchool).</p>
                 </div>
 
-                <div class="space-y-6 pt-10 border-t border-gray-200 dark:border-dark-border">
+                <div class="space-y-8 pt-10 border-t border-gray-200 dark:border-dark-border">
                     <h3 class="font-serif italic text-xl text-light-muted dark:text-dark-muted">Capabilities</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 font-sans">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-8 font-sans">
                         <div>
-                            <div class="font-medium mb-2 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2">Design</div>
-                            <div class="text-sm text-light-muted dark:text-dark-muted leading-relaxed">Figma<br>Adobe CC<br>Blender</div>
+                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                Language / IDE
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#3776AB]/10 text-[#3776AB] dark:bg-[#3776AB]/20 dark:text-[#6BA5D7] font-medium">Python</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#00599C]/10 text-[#00599C] dark:bg-[#00599C]/20 dark:text-[#5CA1D0] font-medium">C++</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#F7DF1E]/10 text-[#907E00] dark:bg-[#F7DF1E]/20 dark:text-[#F7DF1E] font-medium">JavaScript</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#007ACC]/10 text-[#007ACC] dark:bg-[#007ACC]/20 dark:text-[#4DB0E8] font-medium">VS Code</span>
+                            </div>
                         </div>
                         <div>
-                            <div class="font-medium mb-2 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2">Code</div>
-                            <div class="text-sm text-light-muted dark:text-dark-muted leading-relaxed">React<br>Python<br>Tailwind CSS</div>
+                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                Domain Knowledge
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#E91E63]/10 text-[#C2185B] dark:bg-[#E91E63]/20 dark:text-[#F06292] font-medium">HCI</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#9C27B0]/10 text-[#7B1FA2] dark:bg-[#9C27B0]/20 dark:text-[#CE93D8] font-medium">Machine Learning</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#009688]/10 text-[#00796B] dark:bg-[#009688]/20 dark:text-[#80CBC4] font-medium">Cognitive Science</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#FF5722]/10 text-[#E64A19] dark:bg-[#FF5722]/20 dark:text-[#FF8A65] font-medium">UX Design</span>
+                            </div>
                         </div>
-                        <div class="col-span-2 md:col-span-1">
-                            <div class="font-medium mb-2 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2">Intelligence & Data</div>
-                            <div class="text-sm text-light-muted dark:text-dark-muted leading-relaxed">PyTorch, OpenCV<br>NumPy, Scikit-Learn</div>
+                        <div>
+                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                AI / ML Frameworks
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#EE4C2C]/10 text-[#EE4C2C] dark:bg-[#EE4C2C]/20 dark:text-[#F4845F] font-medium">PyTorch</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#FF6F00]/10 text-[#E65100] dark:bg-[#FF6F00]/20 dark:text-[#FFB74D] font-medium">TensorFlow</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#F89939]/10 text-[#C87A2F] dark:bg-[#F89939]/20 dark:text-[#F89939] font-medium">scikit-learn</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#5C3EE8]/10 text-[#5C3EE8] dark:bg-[#5C3EE8]/20 dark:text-[#9E8CFC] font-medium">OpenCV</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                                Design & Tools
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#0ACF83]/10 text-[#0ACF83] dark:bg-[#0ACF83]/20 dark:text-[#4AE89E] font-medium">Figma</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#00C4CC]/10 text-[#00838F] dark:bg-[#00C4CC]/20 dark:text-[#4DD0E1] font-medium">Canva</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#F05032]/10 text-[#F05032] dark:bg-[#F05032]/20 dark:text-[#F4845F] font-medium">Git</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#2088FF]/10 text-[#2088FF] dark:bg-[#2088FF]/20 dark:text-[#64B5F6] font-medium">GitHub</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#2496ED]/10 text-[#2496ED] dark:bg-[#2496ED]/20 dark:text-[#64B5F6] font-medium">Docker</span>
+                            </div>
                         </div>
                     </div>
                 </div>
