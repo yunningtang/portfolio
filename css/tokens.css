@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+:root {
+  --color-light-bg: #fcfcfc;
+  --color-light-card: #f4f4f5;
+  --color-light-text: #0A131C;
+  --color-light-muted: #607586;
+  --color-light-border: #e5e5e5;
+
+  --color-dark-bg: #1a1a1a;
+  --color-dark-card: #222222;
+  --color-dark-border: #333333;
+  --color-dark-text: #f4f4f0;
+  --color-dark-muted: #a3a3a3;
+
+  --color-section-num: #968C83;
+  --color-accent: #57534e;
+}
