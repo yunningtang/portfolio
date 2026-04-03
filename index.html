@@ -49,12 +49,12 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 /* ===== SLIDE-OUT SIDEBAR ===== */
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:272px;z-index:40;padding:28px 24px 24px;display:flex;flex-direction:column;backdrop-filter:blur(48px) saturate(1.2);-webkit-backdrop-filter:blur(48px) saturate(1.2);background:var(--sidebar-bg);border-right:1px solid var(--glass-b);transform:translateX(-100%);transition:transform .4s cubic-bezier(.23,1,.32,1),background .5s}
 .sidebar.open{transform:translateX(0)}
-.sidebar-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+.sidebar-inner{display:flex;flex-direction:column;align-items:flex-start}
 .sidebar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;width:100%}
 .sidebar-top .name{font-family:var(--hd);font-size:1.1rem;font-weight:500;letter-spacing:-.01em;line-height:1.3}
 .sidebar-close{width:32px;height:32px;border:none;background:none;color:var(--text-3);font-size:1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s cubic-bezier(.23,1,.32,1)}
 .sidebar-close:hover{color:var(--text);background:radial-gradient(circle at 40% 40%,rgba(56,216,200,.1),transparent 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transform:scale(1.08)}
-.sidebar .avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(145deg,rgba(24,168,162,.1),rgba(40,120,232,.06));border:1px solid var(--glass-b);overflow:hidden;margin:0 auto 20px}
+.sidebar .avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(145deg,rgba(24,168,162,.1),rgba(40,120,232,.06));border:1px solid var(--glass-b);overflow:hidden;margin:0 0 20px}
 .sidebar .avatar img{width:100%;height:100%;object-fit:cover}
 .about-link{display:block;font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:6px 14px;border-radius:20px;margin-bottom:8px;transition:all .35s cubic-bezier(.23,1,.32,1)}
 .about-link:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),transparent 70%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
@@ -76,8 +76,8 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0;transition:margin-left .4s cubic-bezier(.23,1,.32,1),max-width .4s cubic-bezier(.23,1,.32,1)}
 body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top:32px}
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 0 40px;text-align:center}
-.hero-name{font-family:var(--hd);font-size:.7rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;opacity:.7}
-.hero-name em{font-style:italic;color:var(--teal);font-weight:400;text-transform:none;letter-spacing:.02em}
+.hero-name{font-family:var(--hd);font-style:italic;font-size:clamp(1.15rem,1.6vw,1.5rem);font-weight:400;letter-spacing:-.01em;color:var(--text);margin-bottom:10px}
+.hero-name em{font-style:italic;color:var(--teal);font-weight:400}
 #hero3d{width:140px;height:170px;position:relative}
 #hero3d canvas{width:100%!important;height:100%!important;display:block}
 .hero-text{margin-top:28px;max-width:540px}
