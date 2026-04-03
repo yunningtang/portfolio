@@ -28,15 +28,14 @@ html[data-theme="light"] .ocean{opacity:.3}
 /* ===== TOP NAVBAR ===== */
 .topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 24px;backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);background:transparent;border-bottom:none;transition:opacity .35s,transform .35s}
 body.sb-open .topbar{opacity:0;pointer-events:none;transform:translateY(-100%)}
-.topbar-left{display:flex;align-items:center;gap:14px}
-.hamburger{width:36px;height:36px;border:none;background:none;color:var(--text-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:8px;transition:all .25s}
-.hamburger:hover{color:var(--text);background:rgba(24,168,162,.05)}
+.hamburger{width:36px;height:36px;border:none;background:none;color:var(--text-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;transition:all .3s cubic-bezier(.23,1,.32,1)}
+.hamburger:hover{color:var(--text);background:radial-gradient(circle at 40% 40%,rgba(56,216,200,.1),transparent 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transform:scale(1.05)}
 .hamburger span{display:block;width:18px;height:1.5px;background:currentColor;border-radius:1px;transition:all .3s}
-.topbar .brand{font-family:var(--hd);font-size:1.05rem;font-weight:500;letter-spacing:-.01em;color:var(--text);text-decoration:none}
-.topbar-nav{display:flex;align-items:center;gap:2px;margin-left:8px}
-.topbar-nav a{font-size:.75rem;color:var(--text-3);text-decoration:none;padding:6px 10px;border-radius:7px;transition:all .25s;white-space:nowrap}
-.topbar-nav a:hover{color:var(--text);background:rgba(24,168,162,.05)}
-.topbar-nav a.active{color:var(--text);background:rgba(24,168,162,.07)}
+.topbar-left{display:flex;align-items:center;gap:6px}
+.topbar-nav{display:flex;align-items:center;gap:4px}
+.topbar-nav a{font-size:.75rem;color:var(--text-3);text-decoration:none;padding:6px 14px;border-radius:20px;transition:all .35s cubic-bezier(.23,1,.32,1);white-space:nowrap}
+.topbar-nav a:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),rgba(24,168,162,.03) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.04)}
+.topbar-nav a.active{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.1),rgba(24,168,162,.04) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.04)}
 
 /* Liquid glass theme toggle */
 .theme-glass{width:38px;height:38px;border-radius:50%;border:none;background:radial-gradient(circle at 35% 35%,rgba(56,216,200,.12),rgba(24,168,162,.04) 60%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 2px 16px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.06);color:var(--text-2);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .35s cubic-bezier(.23,1,.32,1);overflow:hidden;position:relative}
@@ -60,10 +59,10 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .about-link:hover{color:var(--text);background:rgba(24,168,162,.05)}
 .about-link.active{color:var(--text)}
 .sidebar nav ul{list-style:none;display:flex;flex-direction:column;gap:1px}
-.sidebar nav a{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:9px;color:var(--text-2);text-decoration:none;font-size:.8125rem;font-weight:400;transition:all .25s}
+.sidebar nav a{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:20px;color:var(--text-2);text-decoration:none;font-size:.8125rem;font-weight:400;transition:all .35s cubic-bezier(.23,1,.32,1)}
 .sidebar nav a .n{font-family:var(--hd);font-style:italic;font-size:.75rem;color:var(--text-4);min-width:22px;transition:color .25s}
-.sidebar nav a:hover{color:var(--text);background:rgba(24,168,162,.05)}
-.sidebar nav a.active{color:var(--text);font-weight:500;background:rgba(24,168,162,.07)}
+.sidebar nav a:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),transparent 70%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.sidebar nav a.active{color:var(--text);font-weight:500;background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.1),rgba(24,168,162,.04) 70%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .sidebar nav a.active .n{color:var(--teal)}
 .sidebar .ext{font-size:.65rem;opacity:.5}
 .sidebar-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--glass-b)}
@@ -76,6 +75,8 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0;transition:margin-left .4s cubic-bezier(.23,1,.32,1),max-width .4s cubic-bezier(.23,1,.32,1)}
 body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top:32px}
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 0 40px;text-align:center}
+.hero-name{font-family:var(--hd);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:400;letter-spacing:-.02em;color:var(--text);margin-bottom:12px;opacity:.85}
+.hero-name em{font-style:italic;color:var(--teal);font-weight:400}
 #hero3d{width:140px;height:170px;position:relative}
 #hero3d canvas{width:100%!important;height:100%!important;display:block}
 .hero-text{margin-top:28px;max-width:540px}
@@ -138,7 +139,6 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
 <header class="topbar">
   <div class="topbar-left">
     <button class="hamburger" id="menuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
-    <a href="#about" class="brand">Riley Tang</a>
     <nav class="topbar-nav">
       <a href="#design">Design Projects</a>
       <a href="#coding">Coding Projects</a>
@@ -177,6 +177,7 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
 <!-- Main Content -->
 <main class="content">
   <section class="hero" id="about">
+    <div class="hero-name">Yunning <em>'Riley'</em> Tang</div>
     <div id="hero3d"></div>
     <div class="hero-text">
       <h1>I build <span class="hl-t">human-centered technologies</span> that honor learner complexity through <span class="hl-g">multimodal interaction</span> and reflective inquiry.</h1>
