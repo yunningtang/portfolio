@@ -37,8 +37,8 @@ body.sb-open .topbar{opacity:0;pointer-events:none;transform:translateY(-100%)}
 .topbar-nav a{font-size:.75rem;color:var(--text-3);text-decoration:none;padding:6px 14px;border-radius:20px;transition:all .35s cubic-bezier(.23,1,.32,1);white-space:nowrap}
 .topbar-nav a:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),rgba(24,168,162,.03) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.04)}
 .topbar-nav a.active{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.1),rgba(24,168,162,.04) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.04)}
-.topbar-back{font-size:.75rem;color:var(--text-3);padding:6px 14px;border-radius:20px;transition:all .35s cubic-bezier(.23,1,.32,1);white-space:nowrap}
-.topbar-back:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),rgba(24,168,162,.03) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.topbar-home{font-family:var(--hd);font-style:italic;font-size:.9rem;color:var(--text-2);padding:6px 14px;border-radius:20px;transition:all .35s cubic-bezier(.23,1,.32,1);white-space:nowrap}
+.topbar-home:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),rgba(24,168,162,.03) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 
 /* Liquid glass theme toggle */
 .theme-glass{width:38px;height:38px;border-radius:50%;border:none;background:radial-gradient(circle at 35% 35%,rgba(56,216,200,.12),rgba(24,168,162,.04) 60%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 2px 16px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.06);color:var(--text-2);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .35s cubic-bezier(.23,1,.32,1);overflow:hidden;position:relative}
@@ -116,13 +116,12 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
   <div class="topbar-left">
     <button class="hamburger" id="menuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="topbar-nav">
-      <a href="index.html#design" class="active">Design Projects</a>
-      <a href="index.html#coding">Coding Projects</a>
-      <a href="index.html#experiments">Experiments / Arts</a>
+      <a href="design.html" class="active">Design Projects</a>
+      <a href="coding.html">Coding Projects</a>
     </nav>
   </div>
   <div style="display:flex;align-items:center;gap:8px">
-    <a href="index.html" class="topbar-back">← Home</a>
+    <a href="index.html" class="topbar-home">Riley Tang</a>
     <button class="theme-glass" id="themeBtn"><span class="im">☾</span><span class="is">☀</span></button>
   </div>
 </header>
