@@ -26,7 +26,7 @@ html[data-theme="light"] .ocean{opacity:.3}
 @keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-60px) scale(1.05)}}
 
 /* ===== TOP NAVBAR ===== */
-.topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 24px;backdrop-filter:blur(48px) saturate(1.2);-webkit-backdrop-filter:blur(48px) saturate(1.2);background:var(--nav-bg);border-bottom:1px solid var(--glass-b);transition:background .5s,opacity .35s,transform .35s}
+.topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 24px;backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);background:transparent;border-bottom:none;transition:opacity .35s,transform .35s}
 body.sb-open .topbar{opacity:0;pointer-events:none;transform:translateY(-100%)}
 .topbar-left{display:flex;align-items:center;gap:14px}
 .hamburger{width:36px;height:36px;border:none;background:none;color:var(--text-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:8px;transition:all .25s}
@@ -79,7 +79,7 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
 #hero3d{width:140px;height:170px;position:relative}
 #hero3d canvas{width:100%!important;height:100%!important;display:block}
 .hero-text{margin-top:28px;max-width:540px}
-.hero-text h1{font-family:var(--hd);font-style:italic;font-size:clamp(1.45rem,2.2vw,2rem);font-weight:400;line-height:1.38;letter-spacing:-.015em;margin-bottom:14px}
+.hero-text h1{font-family:var(--hd);font-style:italic;font-size:clamp(1.15rem,1.6vw,1.5rem);font-weight:400;line-height:1.42;letter-spacing:-.01em;margin-bottom:14px}
 .hero-text h1 .hl-t{color:var(--teal)}.hero-text h1 .hl-g{color:var(--green)}
 .hero-text .bio{font-size:.875rem;font-weight:300;color:var(--text-2);line-height:1.75;margin-bottom:6px}
 .hero-text .detail{font-size:.8125rem;font-weight:300;color:var(--text-3);line-height:1.7}
@@ -141,8 +141,8 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
     <a href="#about" class="brand">Riley Tang</a>
     <nav class="topbar-nav">
       <a href="#design">Design Projects</a>
-      <a href="#coding">Coding & AI</a>
-      <a href="#experiments">Experiments</a>
+      <a href="#coding">Coding Projects</a>
+      <a href="#experiments">Experiments / Arts</a>
     </nav>
   </div>
   <button class="theme-glass" id="themeBtn"><span class="im">☾</span><span class="is">☀</span></button>
@@ -185,8 +185,8 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
     </div>
   </section>
   <section class="sec fi"><div class="cap-title">Tech Stack</div><div class="cap-grid">
-    <div class="cap-col"><div class="ci">&lt;/&gt;</div><h4>Language / IDE</h4><div class="tags"><span class="t">Python</span><span class="t">C++</span><span class="t">JavaScript</span><span class="t">VS Code</span></div></div>
-    <div class="cap-col"><div class="ci">◫</div><h4>Domain Knowledge</h4><div class="tags"><span class="t">HCI</span><span class="t">Machine Learning</span><span class="t">Cognitive Science</span><span class="t">UX Design</span></div></div>
+    <div class="cap-col"><div class="ci">&lt;/&gt;</div><h4>Language / IDE</h4><div class="tags"><span class="t">Python</span><span class="t">C++</span><span class="t">JavaScript</span><span class="t">TypeScript</span><span class="t">VS Code</span></div></div>
+    <div class="cap-col"><div class="ci">◫</div><h4>Frontend</h4><div class="tags"><span class="t">React</span><span class="t">Next.js</span><span class="t">HTML/CSS</span><span class="t">Tailwind</span><span class="t">Three.js</span></div></div>
     <div class="cap-col"><div class="ci">⊞</div><h4>AI / ML Frameworks</h4><div class="tags"><span class="t">PyTorch</span><span class="t">TensorFlow</span><span class="t">scikit-learn</span><span class="t">OpenCV</span></div></div>
     <div class="cap-col"><div class="ci">◎</div><h4>Design &amp; Tools</h4><div class="tags"><span class="t">Figma</span><span class="t">Canva</span><span class="t">Git</span><span class="t">GitHub</span><span class="t">Docker</span></div></div>
   </div></section>
@@ -195,7 +195,7 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
     <div class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'><div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div><div class="bd"><div class="card-tags"><span>Product Design</span><span>Responsive</span></div><h3>Dental Ease</h3><p>A responsive booking platform for dental clinics.</p></div></div>
     <div class="pc" data-delay="160" data-colors='["#081520","#0d1f2e","#0a2530"]'><div class="th"><canvas></canvas><div class="icon" style="font-size:.95rem;font-family:var(--bd);font-style:normal;color:var(--text-3)">+</div></div><div class="bd"><h3>More Projects</h3><p>Coming soon.</p></div></div>
   </div></section>
-  <section class="sec fi" id="coding"><div class="sh"><div class="left"><span class="sn">02.</span><h2>Coding &amp; AI</h2></div><div class="right"><a href="coding.html" class="va">View all ↗</a></div></div><div class="pg">
+  <section class="sec fi" id="coding"><div class="sh"><div class="left"><span class="sn">02.</span><h2>Coding Projects</h2></div><div class="right"><a href="coding.html" class="va">View all ↗</a></div></div><div class="pg">
     <div class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]'><div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div><div class="bd"><div class="card-tags"><span>Python</span><span>ML</span></div><h3>ML Project</h3><p>Machine learning experiments and interactive interfaces.</p></div></div>
     <div class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'><div class="th"><canvas></canvas><div class="icon">⚡</div></div><div class="bd"><div class="card-tags"><span>OpenCV</span><span>React</span></div><h3>CV Project</h3><p>Computer vision and OpenCV explorations.</p></div></div>
   </div></section>
