@@ -1,329 +1,335 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yunning (Riley) Tang</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
-                    },
-                    colors: {
-                        dark: { bg: '#1a1a1a', card: '#222222', border: '#333333', text: '#f4f4f0', muted: '#a3a3a3' },
-                        light: { text: '#0A131C', muted: '#607586', bg: '#fcfcfc', card: '#f4f4f5' },
-                        accent: '#57534e',
-                        'section-num': '#968C83',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                    },
-                },
-            },
-        };
-    </script>
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yunning 'Riley' Tang — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html[data-theme="dark"]{--bg:#050b10;--text:#d8e6ed;--text-2:#8faab8;--text-3:#506a78;--text-4:#2e4450;--glass:rgba(10,28,40,0.5);--glass-b:rgba(56,216,200,0.07);--glass-bh:rgba(56,216,200,0.16);--card-bg:rgba(10,28,40,0.45);--sidebar-bg:rgba(5,11,16,0.65);--tag-bg:rgba(5,11,16,0.4)}
+html[data-theme="light"]{--bg:#f0f4f7;--text:#1a2a35;--text-2:#4a6070;--text-3:#7a8e9a;--text-4:#a0b0b8;--glass:rgba(255,255,255,0.55);--glass-b:rgba(20,80,80,0.1);--glass-bh:rgba(20,80,80,0.2);--card-bg:rgba(255,255,255,0.5);--sidebar-bg:rgba(240,244,247,0.75);--tag-bg:rgba(255,255,255,0.6)}
+:root{--sidebar-w:264px;--teal:#18a8a2;--green:#18e0a0;--cyan:#38d8c8;--blue:#2878e8;--hd:'Playfair Display',Georgia,serif;--bd:'Plus Jakarta Sans',-apple-system,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--bd);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none;transition:background .5s,color .5s}
+#rippleCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+#liquidCanvas{position:fixed;inset:0;z-index:9999;pointer-events:none}
+.ocean{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;transition:opacity .5s}
+html[data-theme="light"] .ocean{opacity:.3}
+.ocean .b{position:absolute;border-radius:50%;filter:blur(140px)}
+.b1{width:500px;height:500px;background:radial-gradient(circle,rgba(8,56,92,.7),transparent 70%);top:-8%;left:-5%;animation:d1 28s ease-in-out infinite}
+.b2{width:420px;height:420px;background:radial-gradient(circle,rgba(24,168,162,.45),transparent 70%);top:40%;right:-8%;animation:d2 33s ease-in-out infinite}
+.b3{width:550px;height:550px;background:radial-gradient(circle,rgba(6,72,56,.55),transparent 70%);bottom:-14%;left:24%;animation:d3 37s ease-in-out infinite}
+@keyframes d1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,80px) scale(1.06)}66%{transform:translate(20px,120px) scale(.95)}}
+@keyframes d2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,30px) scale(1.05)}66%{transform:translate(-80px,-40px) scale(1.08)}}
+@keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-60px) scale(1.05)}}
+.layout{position:relative;z-index:1;display:flex;min-height:100vh}
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;padding:28px 24px 24px;display:flex;flex-direction:column;backdrop-filter:blur(48px) saturate(1.2);-webkit-backdrop-filter:blur(48px) saturate(1.2);background:var(--sidebar-bg);border-right:1px solid var(--glass-b);z-index:10;transition:background .5s}
+.sidebar-top{display:flex;align-items:flex-start;margin-bottom:20px}
+.sidebar-top .name{font-family:var(--hd);font-size:1.2rem;font-weight:500;letter-spacing:-.01em;line-height:1.3}
+.about-link{display:block;font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:6px 12px;border-radius:8px;margin-bottom:8px;transition:all .25s}
+.about-link:hover{color:var(--text);background:rgba(24,168,162,.05)}
+.about-link.active{color:var(--text)}
+.sidebar-foot{padding-top:16px;border-top:1px solid var(--glass-b)}
+.theme-toggle{width:30px;height:30px;min-width:30px;border-radius:50%;border:1px solid var(--glass-b);background:rgba(24,168,162,.04);color:var(--text-3);cursor:none;display:flex;align-items:center;justify-content:center;font-size:.78rem;transition:all .3s;overflow:hidden;position:relative}
+.theme-toggle:hover{color:var(--cyan);border-color:var(--glass-bh)}
+.theme-toggle .im,.theme-toggle .is{position:absolute;transition:all .3s}
+html[data-theme="dark"] .is{opacity:0;transform:rotate(90deg) scale(.5)}html[data-theme="dark"] .im{opacity:1;transform:rotate(0) scale(1)}
+html[data-theme="light"] .is{opacity:1;transform:rotate(0) scale(1)}html[data-theme="light"] .im{opacity:0;transform:rotate(-90deg) scale(.5)}
+.sidebar .avatar{width:90px;height:108px;border-radius:11px;background:linear-gradient(145deg,rgba(24,168,162,.1),rgba(40,120,232,.06));border:1px solid var(--glass-b);overflow:hidden;flex-shrink:0}
+.sidebar .avatar .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-4);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.sidebar-center{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.sidebar nav ul{list-style:none;display:flex;flex-direction:column;gap:1px}
+.sidebar nav a{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:9px;color:var(--text-2);text-decoration:none;font-size:.8125rem;font-weight:400;transition:all .25s}
+.sidebar nav a .n{font-family:var(--hd);font-style:italic;font-size:.75rem;color:var(--text-4);min-width:22px;transition:color .25s}
+.sidebar nav a:hover{color:var(--text);background:rgba(24,168,162,.05)}
+.sidebar nav a.active{color:var(--text);font-weight:500;background:rgba(24,168,162,.07)}
+.sidebar nav a.active .n{color:var(--teal)}
+.sidebar .ext{font-size:.65rem;opacity:.5}
+.socials{display:flex;gap:5px;flex-wrap:nowrap}
+.socials a{width:30px;height:30px;min-width:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(24,168,162,.04);border:1px solid var(--glass-b);color:var(--text-3);text-decoration:none;transition:all .3s;flex-shrink:0}
+.socials a:hover{color:var(--cyan);background:rgba(24,168,162,.1);border-color:var(--glass-bh);transform:translateY(-2px)}
+.socials a svg{width:13px;height:13px}
+.content{margin-left:var(--sidebar-w);flex:1;padding:0 48px;max-width:calc(100% - var(--sidebar-w))}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 0 40px;text-align:center}
+#hero3d{width:140px;height:170px;position:relative}
+#hero3d canvas{width:100%!important;height:100%!important;display:block}
+.hero-text{margin-top:28px;max-width:540px}
+.hero-text h1{font-family:var(--hd);font-style:italic;font-size:clamp(1.45rem,2.2vw,2rem);font-weight:400;line-height:1.38;letter-spacing:-.015em;margin-bottom:14px}
+.hero-text h1 .hl-t{color:var(--teal)}.hero-text h1 .hl-g{color:var(--green)}
+.hero-text .bio{font-size:.875rem;font-weight:300;color:var(--text-2);line-height:1.75;margin-bottom:6px}
+.hero-text .detail{font-size:.8125rem;font-weight:300;color:var(--text-3);line-height:1.7}
+.hero-text .detail strong{color:var(--text-2);font-weight:500}
+.sec{padding:40px 0}
+.sh{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--glass-b);margin-bottom:24px}
+.sh .left{display:flex;align-items:baseline;gap:12px}
+.sh .sn{font-family:var(--hd);font-style:italic;font-size:.9375rem;color:var(--teal)}
+.sh h2{font-family:var(--hd);font-style:italic;font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:400}
+.sh .right{display:flex;align-items:baseline;gap:16px}
+.sh .va{font-size:.72rem;color:var(--text-3);text-decoration:none;transition:color .3s;white-space:nowrap}
+.sh .va:hover{color:var(--teal)}
+.pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
+.pc .bd .card-tags span{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:2px 8px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.1)}
+.cap-title{font-family:var(--hd);font-style:italic;font-size:1.0625rem;font-weight:400;color:var(--text-2);margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--glass-b)}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cap-col{backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);border-radius:13px;padding:20px 18px;transition:all .4s cubic-bezier(.23,1,.32,1);overflow:hidden}
+.cap-col:hover{border-color:var(--glass-bh);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.cap-col .ci{font-size:.85rem;margin-bottom:6px;color:var(--text-3)}
+.cap-col h4{font-size:.6875rem;font-weight:600;letter-spacing:.05em;margin-bottom:12px;text-transform:uppercase}
+.cap-col .tags{display:flex;flex-wrap:wrap;gap:5px}
+.cap-col .t{font-size:.6875rem;padding:3px 10px;border-radius:6px;border:1px solid var(--glass-b);color:var(--text-2);background:var(--tag-bg);transition:all .25s;cursor:default;line-height:1.5}
+.cap-col:nth-child(1) .t:hover{color:var(--blue);border-color:rgba(40,120,232,.25)}
+.cap-col:nth-child(2) .t:hover{color:var(--teal);border-color:rgba(24,168,162,.25)}
+.cap-col:nth-child(3) .t:hover{color:var(--green);border-color:rgba(24,224,160,.25)}
+.cap-col:nth-child(4) .t:hover{color:var(--cyan);border-color:rgba(56,216,200,.25)}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pc{border-radius:14px;overflow:hidden;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);cursor:none;transition:all .45s cubic-bezier(.23,1,.32,1);opacity:0;transform:translateY(20px)}
+.pc.vis{opacity:1;transform:translateY(0)}
+.pc:hover{border-color:var(--glass-bh);transform:translateY(-5px)!important;box-shadow:0 18px 52px rgba(0,0,0,.24),inset 0 1px 0 rgba(56,216,200,.04)}
+.pc .th{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pc .th canvas{position:absolute;inset:0;width:100%;height:100%}
+.pc .th .icon{position:relative;z-index:1;width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:var(--hd);font-style:italic;font-size:1.15rem;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.1);backdrop-filter:blur(12px);color:var(--cyan);box-shadow:0 5px 18px rgba(0,0,0,.2);transition:all .4s}
+.pc:hover .th .icon{transform:scale(1.08)}
+.pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
+.pc .bd{padding:16px 18px 20px}
+.pc .bd h3{font-family:var(--hd);font-style:italic;font-size:.9375rem;font-weight:500;margin-bottom:5px;line-height:1.35}
+.pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
+.eg{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:176px 176px;gap:12px}
+.ec{border-radius:12px;overflow:hidden;position:relative;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:var(--glass);border:1px solid var(--glass-b);cursor:none;transition:all .4s}
+.ec:hover{border-color:var(--glass-bh);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.ec:nth-child(1){grid-row:1/3}.ec .ef{position:absolute;inset:0;opacity:.55;transition:opacity .5s}.ec:hover .ef{opacity:.8}
+.ec .el{position:absolute;bottom:12px;right:12px;font-size:.68rem;color:rgba(216,230,237,.35);font-family:var(--hd);font-style:italic}
+.fi{opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s}.fi.vis{opacity:1;transform:translateY(0)}
+@media(max-width:1100px){.cap-grid{grid-template-columns:repeat(2,1fr)}.pg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){body{cursor:auto}#liquidCanvas,#rippleCanvas{display:none!important}.sidebar{position:relative;width:100%;height:auto;border-right:none;border-bottom:1px solid var(--glass-b);padding:16px 20px;flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px}.sidebar .avatar{display:none}.sidebar-center{flex:none;flex-direction:row;align-items:center;gap:12px}.sidebar nav ul{flex-direction:row;gap:0;flex-wrap:wrap}.sidebar nav a{padding:6px 10px;font-size:.75rem}.sidebar nav a .n{display:none}.content{margin-left:0;max-width:100%;padding:0 20px}.layout{flex-direction:column}.hero{padding:40px 0 24px}#hero3d{width:120px;height:140px}.eg{grid-template-columns:1fr 1fr;grid-template-rows:auto}.ec:nth-child(1){grid-row:auto}}
+@media(max-width:600px){.pg{grid-template-columns:1fr}.cap-grid{grid-template-columns:1fr}.eg{grid-template-columns:1fr}#hero3d{width:100px;height:120px}.hero-text h1{font-size:1.15rem}.content{padding:0 14px}}
+</style>
 </head>
-<body class="antialiased bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-500 selection:bg-gray-300 dark:selection:bg-gray-700">
-
-    <div class="cursor-dot hidden md:block"></div>
-    <div class="cursor-outline hidden md:block"></div>
-
-    <!-- Mobile top nav -->
-    <nav class="md:hidden fixed top-0 left-0 right-0 bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-xl z-50 border-b border-gray-200 dark:border-dark-border h-16 flex items-center justify-between px-6">
-        <a href="index.html" class="font-serif text-lg font-light tracking-tight">Yunning 'Riley' Tang</a>
-        <button id="mobile-menu-btn" class="text-light-muted dark:text-dark-muted font-sans text-sm hover-trigger">Menu</button>
-    </nav>
-
-    <!-- Mobile menu overlay -->
-    <div id="mobile-menu" class="mobile-menu md:hidden fixed inset-0 z-[60] bg-light-bg dark:bg-dark-bg flex flex-col p-8 pt-6">
-        <div class="flex items-center justify-between mb-12">
-            <span class="font-serif text-lg font-light tracking-tight">Yunning 'Riley' Tang</span>
-            <button id="mobile-menu-close" class="text-light-muted dark:text-dark-muted font-sans text-sm">Close</button>
-        </div>
-        <nav class="space-y-6 font-sans text-lg">
-            <a href="#about" class="block text-light-text dark:text-dark-text">About</a>
-            <a href="#design" class="block text-light-muted dark:text-dark-muted"><span class="font-serif italic text-section-num mr-2">01.</span>Design Projects</a>
-            <a href="#coding" class="block text-light-muted dark:text-dark-muted"><span class="font-serif italic text-section-num mr-2">02.</span>Coding Projects</a>
-            <a href="#experiments" class="block text-light-muted dark:text-dark-muted"><span class="font-serif italic text-section-num mr-2">03.</span>Experiments / Arts</a>
-            <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="block text-light-muted dark:text-dark-muted"><span class="font-serif italic text-section-num mr-2">04.</span>Resume / CV ↗</a>
-        </nav>
-        <div class="mt-auto pt-8 border-t border-gray-200 dark:border-dark-border">
-            <button class="theme-toggle text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors text-sm font-sans">
-                <span data-theme-icon="light" class="hidden">Switch to Light</span>
-                <span data-theme-icon="dark" class="hidden">Switch to Dark</span>
-            </button>
-        </div>
+<body>
+<canvas id="rippleCanvas"></canvas>
+<canvas id="liquidCanvas"></canvas>
+<div class="ocean"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
+<div class="layout">
+<aside class="sidebar">
+  <div class="sidebar-top"><div class="name">Yunning 'Riley' Tang</div></div>
+  <div class="avatar"><div class="ph">Photo</div></div>
+  <div class="sidebar-center">
+    <a href="#about" class="about-link active">About</a>
+    <nav><ul>
+      <li><a href="#design"><span class="n">01.</span> Design Projects</a></li>
+      <li><a href="#coding"><span class="n">02.</span> Coding Projects</a></li>
+      <li><a href="#experiments"><span class="n">03.</span> Experiments / Arts</a></li>
+      <li><a href="#"><span class="n">04.</span> Resume / CV <span class="ext">↗</span></a></li>
+    </ul></nav>
+    <div class="socials">
+      <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+      <a href="#" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
+      <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="#" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></a>
+      <a href="#" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+      <a href="#" title="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.9 5.3a16.6 16.6 0 0 0-4.1-1.3 12.1 12.1 0 0 0-.5 1.1 15.4 15.4 0 0 0-4.6 0 12 12 0 0 0-.5-1.1 16.5 16.5 0 0 0-4.1 1.3A17.2 17.2 0 0 0 2 17.2a16.7 16.7 0 0 0 5.1 2.6 12.2 12.2 0 0 0 1.1-1.7 10.8 10.8 0 0 1-1.7-.8l.4-.3a11.9 11.9 0 0 0 10.2 0l.4.3a10.8 10.8 0 0 1-1.7.8 12 12 0 0 0 1 1.7 16.7 16.7 0 0 0 5.2-2.6A17.2 17.2 0 0 0 18.9 5.3zM8.7 14.8a1.9 1.9 0 0 1-1.8-2 1.9 1.9 0 0 1 1.8-2 1.9 1.9 0 0 1 1.8 2 1.9 1.9 0 0 1-1.8 2zm6.6 0a1.9 1.9 0 0 1-1.8-2 1.9 1.9 0 0 1 1.8-2 1.9 1.9 0 0 1 1.8 2 1.9 1.9 0 0 1-1.8 2z"/></svg></a>
     </div>
-
-    <div class="flex flex-col md:flex-row min-h-screen">
-
-        <!-- Sidebar -->
-        <aside class="hidden md:flex fixed w-[340px] h-screen flex-col border-r border-gray-200 dark:border-dark-border p-8 bg-light-bg dark:bg-dark-bg z-40 overflow-y-auto no-scrollbar transition-colors duration-500">
-            <div class="mb-12">
-                <a href="index.html" class="block font-serif text-2xl md:text-3xl font-light tracking-tight mb-8 hover-trigger text-center leading-snug">Yunning 'Riley' Tang</a>
-
-                <a href="#about" class="block w-24 aspect-square rounded-sm overflow-hidden bg-gray-200 dark:bg-white/5 mb-8 mx-auto border border-gray-200 dark:border-white/10 hover-trigger group">
-                    <img src="https://avatars.githubusercontent.com/u/101422129?v=4" alt="Profile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[20%]">
-                </a>
-
-                <nav class="space-y-5 font-sans">
-                    <a href="#about" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger">
-                        About
-                    </a>
-                    <a href="#design" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-50 font-serif italic text-sm mr-2 text-section-num transition-all duration-300">01.</span>
-                        Design Projects
-                    </a>
-                    <a href="#coding" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-50 font-serif italic text-sm mr-2 text-section-num transition-all duration-300">02.</span>
-                        Coding Projects
-                    </a>
-                    <a href="#experiments" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-50 font-serif italic text-sm mr-2 text-section-num transition-all duration-300">03.</span>
-                        Experiments / Arts
-                    </a>
-                    <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="block text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="opacity-50 font-serif italic text-sm mr-2 text-section-num transition-all duration-300">04.</span>
-                        Resume / CV ↗
-                    </a>
-                </nav>
-            </div>
-
-            <div class="mt-auto space-y-6">
-                <div class="flex gap-4 text-light-muted dark:text-dark-muted flex-wrap">
-                    <a href="https://github.com/yunningtang" class="hover:text-light-text dark:hover:text-white transition-colors hover-trigger" aria-label="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg></a>
-                    <a href="#" class="hover:text-light-text dark:hover:text-white transition-colors hover-trigger" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg></a>
-                    <a href="mailto:your@email.com" class="hover:text-light-text dark:hover:text-white transition-colors hover-trigger" aria-label="Email"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
-                    <a href="#" class="hover:text-light-text dark:hover:text-white transition-colors hover-trigger" aria-label="Instagram"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" clip-rule="evenodd"/></svg></a>
-                    <a href="#" class="hover:text-light-text dark:hover:text-white transition-colors hover-trigger" aria-label="ResearchGate"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 448 512"><path d="M0 32v448h448V32H0zm262.2 334.4c-6.6 3-33.2 6-50-14.2-9.2-10.6-25.3-33.3-42.2-63.6-8.9 0-14.7 0-24.4.5v-21.3c34.7-1.6 65.2-5.8 65.2-47.3 0-28-16.3-40.4-43.7-40.4h-61.6V362H77.3V113.1h98.1c46.7 0 79.3 21 79.3 67.6 0 31-19.8 54.7-49.2 61.3 15.2 27.9 31.5 53.3 44 66.5 11.5 12.1 26.4 14 34.7 14v44.9zM152 204.5h30.8c23 0 40.4-8 40.4-32.6 0-24-14.6-31.2-39.4-31.2H152v63.8z"/></svg></a>
-                    <a href="#" class="hover:text-light-text dark:hover:text-white transition-colors hover-trigger" aria-label="Discord"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></a>
-                </div>
-
-                <div class="flex items-center justify-between border-t border-gray-200 dark:border-dark-border pt-6">
-                    <span class="font-sans text-[10px] text-light-muted dark:text-dark-muted uppercase tracking-widest">Portfolio 2024-2025</span>
-                    <button class="theme-toggle hover-trigger text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors">
-                        <svg data-theme-icon="light" class="hidden w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                        <svg data-theme-icon="dark" class="hidden w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    </button>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main content -->
-        <main class="flex-1 md:ml-[340px] px-8 md:px-16 pt-24 md:pt-40 pb-32">
-
-            <!-- About -->
-            <section id="about" class="mb-24 animate-slide-up scroll-mt-24">
-                <h1 class="font-serif italic text-2xl md:text-3xl text-light-text dark:text-dark-text font-light leading-[1.45] tracking-tight mb-12 max-w-4xl">
-                    I build human-centered technologies that honor learner complexity through critical design practice, multimodal interaction, and reflective inquiry.
-                </h1>
-
-                <div class="font-sans text-lg leading-relaxed text-light-muted dark:text-dark-muted font-light mb-16 max-w-4xl space-y-4">
-                    <p>I'm Yunning, a product designer and developer bridging the gap between complex AI models and intuitive interfaces.</p>
-                    <p>Currently studying <span class="text-light-text dark:text-white font-medium">Human-Computer Interaction</span> @UofT .</p>
-                </div>
-
-                <div class="space-y-8 pt-10 border-t border-gray-200 dark:border-dark-border">
-                    <h3 class="font-serif italic text-xl text-light-muted dark:text-dark-muted">Capabilities</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-8 font-sans">
-                        <div>
-                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
-                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                                Language / IDE
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#3776AB]/10 text-[#3776AB] dark:bg-[#3776AB]/20 dark:text-[#6BA5D7] font-medium">Python</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#00599C]/10 text-[#00599C] dark:bg-[#00599C]/20 dark:text-[#5CA1D0] font-medium">C++</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#F7DF1E]/10 text-[#907E00] dark:bg-[#F7DF1E]/20 dark:text-[#F7DF1E] font-medium">JavaScript</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#007ACC]/10 text-[#007ACC] dark:bg-[#007ACC]/20 dark:text-[#4DB0E8] font-medium">VS Code</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
-                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                                Domain Knowledge
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#E91E63]/10 text-[#C2185B] dark:bg-[#E91E63]/20 dark:text-[#F06292] font-medium">HCI</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#9C27B0]/10 text-[#7B1FA2] dark:bg-[#9C27B0]/20 dark:text-[#CE93D8] font-medium">Machine Learning</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#009688]/10 text-[#00796B] dark:bg-[#009688]/20 dark:text-[#80CBC4] font-medium">Cognitive Science</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#FF5722]/10 text-[#E64A19] dark:bg-[#FF5722]/20 dark:text-[#FF8A65] font-medium">UX Design</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
-                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                AI / ML Frameworks
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#EE4C2C]/10 text-[#EE4C2C] dark:bg-[#EE4C2C]/20 dark:text-[#F4845F] font-medium">PyTorch</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#FF6F00]/10 text-[#E65100] dark:bg-[#FF6F00]/20 dark:text-[#FFB74D] font-medium">TensorFlow</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#F89939]/10 text-[#C87A2F] dark:bg-[#F89939]/20 dark:text-[#F89939] font-medium">scikit-learn</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#5C3EE8]/10 text-[#5C3EE8] dark:bg-[#5C3EE8]/20 dark:text-[#9E8CFC] font-medium">OpenCV</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="font-medium mb-3 text-sm text-light-text dark:text-dark-text border-b border-gray-200 dark:border-dark-border pb-2 flex items-center gap-2">
-                                <svg class="w-4 h-4 text-section-num" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
-                                Design & Tools
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#0ACF83]/10 text-[#0ACF83] dark:bg-[#0ACF83]/20 dark:text-[#4AE89E] font-medium">Figma</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#00C4CC]/10 text-[#00838F] dark:bg-[#00C4CC]/20 dark:text-[#4DD0E1] font-medium">Canva</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#F05032]/10 text-[#F05032] dark:bg-[#F05032]/20 dark:text-[#F4845F] font-medium">Git</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#2088FF]/10 text-[#2088FF] dark:bg-[#2088FF]/20 dark:text-[#64B5F6] font-medium">GitHub</span>
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-[#2496ED]/10 text-[#2496ED] dark:bg-[#2496ED]/20 dark:text-[#64B5F6] font-medium">Docker</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 01. Design Projects -->
-            <section id="design" class="scroll-mt-24 mb-24">
-                <div class="mb-10 flex items-baseline justify-between border-b border-gray-200 dark:border-dark-border pb-4">
-                    <h2 class="font-serif text-2xl font-bold tracking-tight text-light-text dark:text-dark-text">
-                        <span class="italic text-section-num mr-3 font-normal">01.</span>Design Projects
-                    </h2>
-                    <span class="font-sans text-xs text-light-muted dark:text-dark-muted hidden md:inline-block tracking-widest uppercase">UX / UI / Research</span>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <a href="projects/canvas-redesign.html" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-gray-200/50 dark:border-dark-border rounded-md overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-xl dark:group-hover:shadow-none group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#111]">
-                                <div class="w-16 h-16 bg-red-500/90 rounded-xl mx-auto flex items-center justify-center text-white font-serif font-bold text-xl">C</div>
-                            </div>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold mb-1 group-hover:text-light-muted dark:group-hover:text-gray-400 transition-colors">Canvas Redesign</h3>
-                        <p class="font-sans text-sm text-light-muted dark:text-dark-muted">Improving student learning experience through data-driven research.</p>
-                    </a>
-
-                    <a href="#" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-gray-200/50 dark:border-dark-border rounded-md overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-xl dark:group-hover:shadow-none group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#111]">
-                                <span class="font-sans font-medium text-gray-500 text-sm border border-gray-300 dark:border-gray-700 px-4 py-2 rounded-sm bg-white dark:bg-black">Dental.ease()</span>
-                            </div>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold mb-1 group-hover:text-light-muted dark:group-hover:text-gray-400 transition-colors">Dental Ease</h3>
-                        <p class="font-sans text-sm text-light-muted dark:text-dark-muted">A responsive booking platform for dental clinics.</p>
-                    </a>
-
-                    <a href="#" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-gray-200/50 dark:border-dark-border rounded-md overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-xl dark:group-hover:shadow-none group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#111]">
-                                <span class="font-serif italic text-gray-400 dark:text-gray-600">+</span>
-                            </div>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold mb-1 group-hover:text-light-muted dark:group-hover:text-gray-400 transition-colors">More Projects</h3>
-                        <p class="font-sans text-sm text-light-muted dark:text-dark-muted">Coming soon.</p>
-                    </a>
-                </div>
-
-                <div class="mt-8 text-right">
-                    <a href="design.html" class="font-sans text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger">
-                        View all design projects <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- 02. Coding Projects -->
-            <section id="coding" class="scroll-mt-24 mb-24">
-                <div class="mb-10 flex items-baseline justify-between border-b border-gray-200 dark:border-dark-border pb-4">
-                    <h2 class="font-serif text-2xl font-bold tracking-tight text-light-text dark:text-dark-text">
-                        <span class="italic text-section-num mr-3 font-normal">02.</span>Coding & AI
-                    </h2>
-                    <span class="font-sans text-xs text-light-muted dark:text-dark-muted hidden md:inline-block tracking-widest uppercase">Python / React / ML</span>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <a href="projects/fridge-genie.html" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-gray-200/50 dark:border-dark-border rounded-md overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-xl dark:group-hover:shadow-none group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#111]">
-                                <div class="w-32 h-20 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-sm shadow-sm flex items-center justify-center">
-                                    <span class="font-sans text-sm font-medium text-gray-500">Fridge.ai</span>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold mb-1 group-hover:text-light-muted dark:group-hover:text-gray-400 transition-colors">FridgeGenie</h3>
-                        <p class="font-sans text-sm text-light-muted dark:text-dark-muted">Computer vision powered food inventory assistant.</p>
-                        <div class="flex gap-2 mt-3 font-sans">
-                            <span class="text-[11px] border border-gray-300 dark:border-dark-border px-2 py-0.5 rounded-sm text-light-muted dark:text-dark-muted">Python</span>
-                            <span class="text-[11px] border border-gray-300 dark:border-dark-border px-2 py-0.5 rounded-sm text-light-muted dark:text-dark-muted">OpenCV</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-gray-200/50 dark:border-dark-border rounded-md overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-xl dark:group-hover:shadow-none group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#111]">
-                                <span class="text-3xl grayscale">⚡️</span>
-                            </div>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold mb-1 group-hover:text-light-muted dark:group-hover:text-gray-400 transition-colors">Portfolio Architecture</h3>
-                        <p class="font-sans text-sm text-light-muted dark:text-dark-muted">The editorial design system you are looking at.</p>
-                    </a>
-
-                    <a href="#" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-gray-200/50 dark:border-dark-border rounded-md overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-xl dark:group-hover:shadow-none group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#111]">
-                                <span class="font-serif italic text-gray-400 dark:text-gray-600">+</span>
-                            </div>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold mb-1 group-hover:text-light-muted dark:group-hover:text-gray-400 transition-colors">More Projects</h3>
-                        <p class="font-sans text-sm text-light-muted dark:text-dark-muted">Coming soon.</p>
-                    </a>
-                </div>
-
-                <div class="mt-8 text-right">
-                    <a href="coding.html" class="font-sans text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger">
-                        View all coding projects <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- 03. Experiments / Arts -->
-            <section id="experiments" class="scroll-mt-32">
-                <div class="mb-10 flex items-baseline justify-between border-b border-gray-200 dark:border-dark-border pb-4">
-                    <h2 class="font-serif text-2xl font-bold tracking-tight text-light-text dark:text-dark-text">
-                        <span class="italic text-section-num mr-3 font-normal">03.</span>Experiments / Arts
-                    </h2>
-                    <span class="font-sans text-xs text-light-muted dark:text-dark-muted hidden md:inline-block tracking-widest uppercase">Photo / Visuals</span>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-                    <div class="col-span-2 row-span-2 rounded-sm overflow-hidden bg-light-card dark:bg-dark-card relative group hover-trigger">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale-[30%]" alt="Art">
-                    </div>
-                    <div class="rounded-sm overflow-hidden bg-light-card dark:bg-dark-card relative group hover-trigger">
-                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale-[30%]" alt="Photo">
-                    </div>
-                    <div class="rounded-sm bg-light-card dark:bg-dark-card border border-gray-200/50 dark:border-dark-border flex items-center justify-center hover-trigger group">
-                        <span class="font-serif italic text-gray-400 dark:text-gray-600">More...</span>
-                    </div>
-                </div>
-
-                <div class="mt-8 text-right">
-                    <a href="#" class="font-sans text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-white transition-colors hover-trigger">
-                        View all experiments <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-            </section>
-
-        </main>
+  </div>
+  <div class="sidebar-foot"><button class="theme-toggle" id="themeBtn"><span class="im">☾</span><span class="is">☀</span></button></div>
+</aside>
+<main class="content">
+  <section class="hero" id="about">
+    <div id="hero3d"></div>
+    <div class="hero-text">
+      <h1>I build <span class="hl-t">human-centered technologies</span> that honor learner complexity through <span class="hl-g">multimodal interaction</span> and reflective inquiry.</h1>
+      <p class="bio">Product designer & developer bridging complex AI models and intuitive interfaces.</p>
+      <p class="detail">Currently studying <strong>Human-Computer Interaction</strong> @UofT.</p>
     </div>
+  </section>
+  <section class="sec fi"><div class="cap-title">Tech Stack</div><div class="cap-grid">
+    <div class="cap-col"><div class="ci">&lt;/&gt;</div><h4>Language / IDE</h4><div class="tags"><span class="t">Python</span><span class="t">C++</span><span class="t">JavaScript</span><span class="t">VS Code</span></div></div>
+    <div class="cap-col"><div class="ci">◫</div><h4>Domain Knowledge</h4><div class="tags"><span class="t">HCI</span><span class="t">Machine Learning</span><span class="t">Cognitive Science</span><span class="t">UX Design</span></div></div>
+    <div class="cap-col"><div class="ci">⊞</div><h4>AI / ML Frameworks</h4><div class="tags"><span class="t">PyTorch</span><span class="t">TensorFlow</span><span class="t">scikit-learn</span><span class="t">OpenCV</span></div></div>
+    <div class="cap-col"><div class="ci">◎</div><h4>Design &amp; Tools</h4><div class="tags"><span class="t">Figma</span><span class="t">Canva</span><span class="t">Git</span><span class="t">GitHub</span><span class="t">Docker</span></div></div>
+  </div></section>
+  <section class="sec fi" id="design"><div class="sh"><div class="left"><span class="sn">01.</span><h2>Design Projects</h2></div><div class="right"><a href="design.html" class="va">View all ↗</a></div></div><div class="pg">
+    <div class="pc" data-delay="0" data-colors='["#041a2e","#0a3d5c","#0d4f5a"]'><div class="th"><canvas></canvas><div class="icon">C</div></div><div class="bd"><div class="card-tags"><span>UX Research</span><span>UI Design</span></div><h3>Canvas Redesign</h3><p>Improving student learning experience through data-driven research.</p></div></div>
+    <div class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'><div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div><div class="bd"><div class="card-tags"><span>Product Design</span><span>Responsive</span></div><h3>Dental Ease</h3><p>A responsive booking platform for dental clinics.</p></div></div>
+    <div class="pc" data-delay="160" data-colors='["#081520","#0d1f2e","#0a2530"]'><div class="th"><canvas></canvas><div class="icon" style="font-size:.95rem;font-family:var(--bd);font-style:normal;color:var(--text-3)">+</div></div><div class="bd"><h3>More Projects</h3><p>Coming soon.</p></div></div>
+  </div></section>
+  <section class="sec fi" id="coding"><div class="sh"><div class="left"><span class="sn">02.</span><h2>Coding &amp; AI</h2></div><div class="right"><a href="coding.html" class="va">View all ↗</a></div></div><div class="pg">
+    <div class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]'><div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div><div class="bd"><div class="card-tags"><span>Python</span><span>ML</span></div><h3>ML Project</h3><p>Machine learning experiments and interactive interfaces.</p></div></div>
+    <div class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'><div class="th"><canvas></canvas><div class="icon">⚡</div></div><div class="bd"><div class="card-tags"><span>OpenCV</span><span>React</span></div><h3>CV Project</h3><p>Computer vision and OpenCV explorations.</p></div></div>
+  </div></section>
+  <section class="sec fi" id="experiments"><div class="sh"><div class="left"><span class="sn">03.</span><h2>Experiments / Arts</h2></div><div class="right"><a href="#" class="va">View all ↗</a></div></div><div class="eg">
+    <div class="ec"><div class="ef" style="background:linear-gradient(160deg,#0a3d5c,#18a8a2 40%,#0d4f5a 70%,#06252e)"></div><div class="el">01</div></div>
+    <div class="ec"><div class="ef" style="background:linear-gradient(135deg,#18e0a0,#38d8c8 30%,#2878e8 65%,#0a3d5c)"></div><div class="el">02</div></div>
+    <div class="ec"><div class="ef" style="background:var(--glass)"></div><div class="el" style="color:var(--text-3)">More...</div></div>
+  </div></section>
+  <div style="height:60px"></div>
+</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const html=document.documentElement;
+document.getElementById('themeBtn').addEventListener('click',()=>{const n=html.dataset.theme==='dark'?'light':'dark';html.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}});
+try{const s=localStorage.getItem('theme');if(s)html.dataset.theme=s}catch(e){}
 
-    <script src="js/site.js"></script>
+// ===== WATER RIPPLE =====
+!function(){const rc=document.getElementById('rippleCanvas'),rx=rc.getContext('2d');let W,H,b1,b2,img;
+function init(){W=Math.floor(innerWidth/3);H=Math.floor(innerHeight/3);rc.width=innerWidth;rc.height=innerHeight;b1=new Int16Array(W*H);b2=new Int16Array(W*H);img=rx.createImageData(W,H)}
+init();addEventListener('resize',init);
+function drop(cx,cy,r,s){cx=Math.floor(cx/3);cy=Math.floor(cy/3);for(let y=cy-r;y<cy+r;y++)for(let x=cx-r;x<cx+r;x++)if(x>=0&&x<W&&y>=0&&y<H&&(x-cx)*(x-cx)+(y-cy)*(y-cy)<r*r)b1[y*W+x]+=s}
+let lt=0;document.addEventListener('mousemove',e=>{const n=Date.now();if(n-lt>50){drop(e.clientX,e.clientY,4,140);lt=n}},true);
+addEventListener('click',e=>drop(e.clientX,e.clientY,8,512));
+setInterval(()=>drop(Math.random()*W*3,Math.random()*H*3,3+Math.random()*4,80+Math.random()*120),1800);
+function step(){requestAnimationFrame(step);const dk=html.dataset.theme==='dark';const bR=dk?5:240,bG=dk?11:244,bB=dk?16:247;
+for(let i=W+1;i<W*(H-1)-1;i++){b2[i]=((b1[i-1]+b1[i+1]+b1[i-W]+b1[i+W])>>1)-b2[i];b2[i]-=b2[i]>>5}
+const d=img.data;for(let i=0;i<W*H;i++){const v=b2[i],sh=Math.max(-40,Math.min(40,v>>2));d[i*4]=Math.min(255,Math.max(0,bR+sh+(dk&&v>10?v>>3:0)));d[i*4+1]=Math.min(255,Math.max(0,bG+sh+(dk&&v>10?v>>2:0)));d[i*4+2]=Math.min(255,Math.max(0,bB+sh+(dk&&v>10?v>>2:0)));d[i*4+3]=dk?30:18}
+rx.putImageData(img,0,0);rx.save();rx.globalCompositeOperation='copy';rx.drawImage(rc,0,0,W,H,0,0,rc.width,rc.height);rx.restore();
+const t=b1;b1=b2;b2=t}step()}();
+
+// ===== 3D SACRED GEOMETRY: Metatron Shell + Tree of Life Core =====
+!function(){const c=document.getElementById('hero3d'),W=c.clientWidth,H=c.clientHeight;
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(36,W/H,.1,100);
+cam.position.set(0,0,4.5);cam.lookAt(0,0,0);
+const ren=new THREE.WebGLRenderer({alpha:true,antialias:true});ren.setSize(W,H);ren.setPixelRatio(Math.min(devicePixelRatio,2));c.appendChild(ren.domElement);
+
+const outerGroup=new THREE.Group();
+const innerGroup=new THREE.Group();
+const root=new THREE.Group();
+root.add(outerGroup);root.add(innerGroup);scene.add(root);
+
+const icoE=new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.35,0));
+const icoM=new THREE.LineBasicMaterial({color:0x18a8a2,transparent:true,opacity:.1});
+outerGroup.add(new THREE.LineSegments(icoE,icoM));
+
+const octE=new THREE.EdgesGeometry(new THREE.OctahedronGeometry(1.0,0));
+const octM=new THREE.LineBasicMaterial({color:0x38d8c8,transparent:true,opacity:.13});
+const octW=new THREE.LineSegments(octE,octM);
+outerGroup.add(octW);
+
+const tetE=new THREE.EdgesGeometry(new THREE.TetrahedronGeometry(0.65,0));
+const tetM=new THREE.LineBasicMaterial({color:0x18e0a0,transparent:true,opacity:.16});
+const tetW=new THREE.LineSegments(tetE,tetM);
+outerGroup.add(tetW);
+
+const shell=new THREE.Mesh(
+  new THREE.SphereGeometry(1.5,32,32),
+  new THREE.MeshBasicMaterial({color:0x18a8a2,transparent:true,opacity:.012,side:THREE.BackSide})
+);
+outerGroup.add(shell);
+
+const sc=.52;
+const S=[
+  {x:0*sc,  y:1.6*sc, z:0},
+  {x:-.65*sc,y:1.0*sc,z:0},
+  {x:.65*sc, y:1.0*sc,z:0},
+  {x:-.65*sc,y:.28*sc,z:0},
+  {x:.65*sc, y:.28*sc,z:0},
+  {x:0*sc,   y:0,     z:0},
+  {x:-.65*sc,y:-.48*sc,z:0},
+  {x:.65*sc, y:-.48*sc,z:0},
+  {x:0*sc,   y:-.9*sc,z:0},
+  {x:0*sc,   y:-1.5*sc,z:0},
+];
+const paths=[[0,1],[0,2],[0,5],[1,2],[1,3],[1,5],[2,4],[2,5],[3,4],[3,5],[3,6],[4,5],[4,7],[5,6],[5,7],[5,8],[6,7],[6,8],[7,8],[8,9],[3,9],[4,9]];
+
+const cols=[0xd0f0f0,0x8ab8d0,0x1a3048,0x3088d8,0xc06868,0xd0c870,0x38c888,0xd09848,0x7868b8,0x48a8a0];
+
+const sph=[];
+S.forEach((s,i)=>{
+  const core=new THREE.Mesh(
+    new THREE.SphereGeometry(.028,20,20),
+    new THREE.MeshBasicMaterial({color:cols[i],transparent:true,opacity:.9})
+  );
+  core.position.set(s.x,s.y,s.z);
+  innerGroup.add(core);sph.push(core);
+  const gl=new THREE.Mesh(
+    new THREE.SphereGeometry(.065,12,12),
+    new THREE.MeshBasicMaterial({color:cols[i],transparent:true,opacity:.08})
+  );
+  gl.position.set(s.x,s.y,s.z);innerGroup.add(gl);
+});
+
+paths.forEach(([a,b])=>{
+  const col=a<b?cols[a]:cols[b];
+  const lm=new THREE.LineBasicMaterial({color:col,transparent:true,opacity:.1});
+  const geo=new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(S[a].x,S[a].y,S[a].z),
+    new THREE.Vector3(S[b].x,S[b].y,S[b].z)
+  ]);
+  innerGroup.add(new THREE.Line(geo,lm));
+});
+
+const pillarM=new THREE.LineBasicMaterial({color:0x18a8a2,transparent:true,opacity:.04});
+[-.65*sc,0,.65*sc].forEach(x=>{
+  const geo=new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(x,-1.6*sc,0),new THREE.Vector3(x,1.7*sc,0)
+  ]);
+  innerGroup.add(new THREE.Line(geo,pillarM));
+});
+
+root.rotation.y=.3;
+let tx=0,ty=0;
+c.addEventListener('mousemove',e=>{const b=c.getBoundingClientRect();ty=(e.clientX-b.left-b.width/2)/b.width*.6;tx=(e.clientY-b.top-b.height/2)/b.height*.4});
+c.addEventListener('mouseleave',()=>{tx=0;ty=0});
+
+let t=0;
+function anim(){requestAnimationFrame(anim);t+=.008;
+  root.rotation.y+=.004;
+  root.rotation.x+=(tx*.2-root.rotation.x)*.02;
+  octW.rotation.y-=.002;
+  octW.rotation.x+=.001;
+  tetW.rotation.y+=.003;
+  tetW.rotation.z+=.0015;
+  sph.forEach((s,i)=>{
+    const p=1+Math.sin(t*2+i*.6)*.12;
+    s.scale.set(p,p,p);
+  });
+  const dk=html.dataset.theme==='dark';
+  icoM.opacity=dk?.1:.05;
+  octM.opacity=dk?.13:.06;
+  tetM.opacity=dk?.16:.08;
+  shell.material.opacity=dk?.012:.006;
+  ren.render(scene,cam);
+}anim();
+
+addEventListener('resize',()=>{const w=c.clientWidth,h=c.clientHeight;cam.aspect=w/h;cam.updateProjectionMatrix();ren.setSize(w,h)});
+}();
+
+// ===== LIQUID CURSOR =====
+!function(){const lc=document.getElementById('liquidCanvas'),lx=lc.getContext('2d');
+function rs(){lc.width=innerWidth*2;lc.height=innerHeight*2;lx.scale(2,2)}rs();addEventListener('resize',rs);
+let mx=-300,my=-300;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},true);
+const N=16,ch=[];for(let i=0;i<N;i++)ch.push({x:-300,y:-300,vx:0,vy:0});
+function cm(p0,p1,p2,p3,t){const t2=t*t,t3=t2*t;return{x:.5*(2*p1.x+(-p0.x+p2.x)*t+(2*p0.x-5*p1.x+4*p2.x-p3.x)*t2+(-p0.x+3*p1.x-3*p2.x+p3.x)*t3),y:.5*(2*p1.y+(-p0.y+p2.y)*t+(2*p0.y-5*p1.y+4*p2.y-p3.y)*t2+(-p0.y+3*p1.y-3*p2.y+p3.y)*t3)}}
+function anim(){const w=innerWidth;lx.clearRect(0,0,w,innerHeight);
+for(let i=0;i<N;i++){const c=ch[i],tg=i===0?{x:mx,y:my}:ch[i-1],s=i===0?.2:.13-i*.004,d=i===0?.74:.7;c.vx+=(tg.x-c.x)*s;c.vy+=(tg.y-c.y)*s;c.vx*=d;c.vy*=d;c.x+=c.vx;c.y+=c.vy}
+function wA(i){return Math.max(12-i*.65,1.5)}
+const L=[],R=[];for(let i=0;i<N-1;i++){const p=ch[i],pn=ch[i+1],dx=pn.x-p.x,dy=pn.y-p.y,ln=Math.sqrt(dx*dx+dy*dy)||1,nx=-dy/ln,ny=dx/ln,wd=wA(i);L.push({x:p.x+nx*wd,y:p.y+ny*wd});R.push({x:p.x-nx*wd,y:p.y-ny*wd})}
+const tail=ch[N-1];L.push({x:tail.x,y:tail.y});R.push({x:tail.x,y:tail.y});
+if(L.length<3)return requestAnimationFrame(anim);
+lx.save();lx.beginPath();lx.moveTo(L[0].x,L[0].y);
+for(let i=0;i<L.length-1;i++){const p0=L[Math.max(i-1,0)],p1=L[i],p2=L[Math.min(i+1,L.length-1)],p3=L[Math.min(i+2,L.length-1)];for(let t=0;t<=1;t+=.25){const pt=cm(p0,p1,p2,p3,t);lx.lineTo(pt.x,pt.y)}}
+for(let i=R.length-1;i>=0;i--){const p0=R[Math.min(i+1,R.length-1)],p1=R[i],p2=R[Math.max(i-1,0)],p3=R[Math.max(i-2,0)];for(let t=0;t<=1;t+=.25){const pt=cm(p0,p1,p2,p3,t);lx.lineTo(pt.x,pt.y)}}
+lx.closePath();const dk=html.dataset.theme==='dark';
+const grd=lx.createLinearGradient(ch[0].x,ch[0].y,tail.x,tail.y);
+grd.addColorStop(0,dk?'rgba(56,216,200,.2)':'rgba(20,120,120,.22)');grd.addColorStop(.4,dk?'rgba(24,168,162,.1)':'rgba(16,100,100,.1)');grd.addColorStop(1,'transparent');
+lx.fillStyle=grd;lx.fill();
+const hd=ch[0],hg=lx.createRadialGradient(hd.x,hd.y,0,hd.x,hd.y,16);
+hg.addColorStop(0,dk?'rgba(56,216,200,.22)':'rgba(20,140,140,.26)');hg.addColorStop(1,'transparent');
+lx.fillStyle=hg;lx.beginPath();lx.arc(hd.x,hd.y,16,0,Math.PI*2);lx.fill();
+lx.beginPath();lx.arc(hd.x-2.5,hd.y-2.5,3,0,Math.PI*2);lx.fillStyle=dk?'rgba(255,255,255,.1)':'rgba(255,255,255,.16)';lx.fill();
+lx.restore();requestAnimationFrame(anim)}anim()}();
+
+// ===== CARD BG =====
+document.querySelectorAll('.pc').forEach(card=>{const cv=card.querySelector('.th canvas');if(!cv)return;const c=cv.getContext('2d'),cols=JSON.parse(card.dataset.colors||'["#0a1a2e","#0d3040","#0a4035"]');
+let w,h;function rs(){const r=cv.parentElement.getBoundingClientRect();cv.width=r.width;cv.height=r.height;w=r.width;h=r.height}rs();addEventListener('resize',rs);
+let t=Math.random()*1000;function dr(){t+=.005;c.clearRect(0,0,w,h);for(let i=0;i<3;i++){const ox=Math.sin(t+i*2.1)*w*.25,oy=Math.cos(t*1.3+i*1.7)*h*.2;const g=c.createRadialGradient(w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,0,w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,Math.max(w,h)*.7);g.addColorStop(0,cols[i%cols.length]);g.addColorStop(1,'transparent');c.globalAlpha=.55;c.fillStyle=g;c.fillRect(0,0,w,h)}const hx=w*.5+Math.sin(t*1.5)*w*.3,hy=h*.5+Math.cos(t*1.1)*h*.3;const hg=c.createRadialGradient(hx,hy,0,hx,hy,w*.35);hg.addColorStop(0,'rgba(24,168,162,.12)');hg.addColorStop(1,'transparent');c.globalAlpha=1;c.fillStyle=hg;c.fillRect(0,0,w,h);requestAnimationFrame(dr)}dr()});
+
+// ===== SCROLL + NAV =====
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),+(e.target.dataset.delay||0));obs.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.fi,.pc').forEach(el=>obs.observe(el));
+const secs=[...document.querySelectorAll('[id]')].filter(s=>s.closest('.content')),navs=document.querySelectorAll('.sidebar nav a');
+addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-200)c=s.id});navs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))});
+document.querySelectorAll('.cap-col').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.background=`radial-gradient(400px circle at ${e.clientX-r.left}px ${e.clientY-r.top}px,rgba(24,168,162,.06),transparent 45%)`});el.addEventListener('mouseleave',()=>{el.style.background=''})});
+</script>
 </body>
 </html>
