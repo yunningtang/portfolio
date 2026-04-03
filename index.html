@@ -49,14 +49,15 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 /* ===== SLIDE-OUT SIDEBAR ===== */
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:272px;z-index:40;padding:28px 24px 24px;display:flex;flex-direction:column;backdrop-filter:blur(48px) saturate(1.2);-webkit-backdrop-filter:blur(48px) saturate(1.2);background:var(--sidebar-bg);border-right:1px solid var(--glass-b);transform:translateX(-100%);transition:transform .4s cubic-bezier(.23,1,.32,1),background .5s}
 .sidebar.open{transform:translateX(0)}
-.sidebar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.sidebar-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+.sidebar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;width:100%}
 .sidebar-top .name{font-family:var(--hd);font-size:1.1rem;font-weight:500;letter-spacing:-.01em;line-height:1.3}
-.sidebar-close{width:32px;height:32px;border:none;background:none;color:var(--text-3);font-size:1.1rem;border-radius:8px;display:flex;align-items:center;justify-content:center;transition:all .25s}
-.sidebar-close:hover{color:var(--text);background:rgba(24,168,162,.05)}
-.sidebar .avatar{width:80px;height:96px;border-radius:11px;background:linear-gradient(145deg,rgba(24,168,162,.1),rgba(40,120,232,.06));border:1px solid var(--glass-b);overflow:hidden;margin-bottom:20px}
-.sidebar .avatar .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-4);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
-.about-link{display:block;font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:6px 12px;border-radius:8px;margin-bottom:8px;transition:all .25s}
-.about-link:hover{color:var(--text);background:rgba(24,168,162,.05)}
+.sidebar-close{width:32px;height:32px;border:none;background:none;color:var(--text-3);font-size:1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s cubic-bezier(.23,1,.32,1)}
+.sidebar-close:hover{color:var(--text);background:radial-gradient(circle at 40% 40%,rgba(56,216,200,.1),transparent 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transform:scale(1.08)}
+.sidebar .avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(145deg,rgba(24,168,162,.1),rgba(40,120,232,.06));border:1px solid var(--glass-b);overflow:hidden;margin:0 auto 20px}
+.sidebar .avatar img{width:100%;height:100%;object-fit:cover}
+.about-link{display:block;font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:6px 14px;border-radius:20px;margin-bottom:8px;transition:all .35s cubic-bezier(.23,1,.32,1)}
+.about-link:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),transparent 70%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .about-link.active{color:var(--text)}
 .sidebar nav ul{list-style:none;display:flex;flex-direction:column;gap:1px}
 .sidebar nav a{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:20px;color:var(--text-2);text-decoration:none;font-size:.8125rem;font-weight:400;transition:all .35s cubic-bezier(.23,1,.32,1)}
@@ -75,8 +76,8 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0;transition:margin-left .4s cubic-bezier(.23,1,.32,1),max-width .4s cubic-bezier(.23,1,.32,1)}
 body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top:32px}
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 0 40px;text-align:center}
-.hero-name{font-family:var(--hd);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:400;letter-spacing:-.02em;color:var(--text);margin-bottom:12px;opacity:.85}
-.hero-name em{font-style:italic;color:var(--teal);font-weight:400}
+.hero-name{font-family:var(--hd);font-size:.7rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;opacity:.7}
+.hero-name em{font-style:italic;color:var(--teal);font-weight:400;text-transform:none;letter-spacing:.02em}
 #hero3d{width:140px;height:170px;position:relative}
 #hero3d canvas{width:100%!important;height:100%!important;display:block}
 .hero-text{margin-top:28px;max-width:540px}
@@ -154,7 +155,8 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
     <div class="name">Yunning 'Riley' Tang</div>
     <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">✕</button>
   </div>
-  <div class="avatar"><div class="ph">Photo</div></div>
+  <div class="sidebar-inner">
+  <div class="avatar"><img src="https://avatars.githubusercontent.com/u/101422129?v=4" alt="Riley Tang"></div>
   <a href="#about" class="about-link active">About</a>
   <nav><ul>
     <li><a href="#design"><span class="n">01.</span> Design Projects</a></li>
@@ -162,6 +164,7 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
     <li><a href="#experiments"><span class="n">03.</span> Experiments / Arts</a></li>
     <li><a href="#"><span class="n">04.</span> Resume / CV <span class="ext">↗</span></a></li>
   </ul></nav>
+  </div>
   <div class="sidebar-foot">
     <div class="socials">
       <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
