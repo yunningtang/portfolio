@@ -1,1059 +1,300 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<!-- 
-    🌟 HTML 开始标签
-    lang="en" → 页面语言设置为英文
-    class="scroll-smooth" → 点击锚链接时平滑滚动（比如点导航栏跳转到对应部分）
--->
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <!-- 字符编码设置为 UTF-8，支持中文等多种语言 -->
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 响应式设计必备：让网页在手机上正常显示，不会缩放 -->
-    
-    <title>Yunning (Riley) Tang</title>
-    <!-- 浏览器标签页显示的标题 -->
-    
-    <!-- ==================== Tailwind CSS 配置 ==================== -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 
-        引入 Tailwind CSS 框架（通过 CDN）
-        这是一个实用工具类的 CSS 框架，让你用 class 就能写样式
-        比如 text-xl = 大字体，bg-white = 白色背景
-    -->
-    
-    <script>
-        // Tailwind 自定义配置
-        tailwind.config = {
-            darkMode: 'class',
-            /* 
-                🌙 深色模式配置
-                'class' 表示通过添加 .dark 类来切换深色模式
-                当 <html> 标签有 class="dark" 时，所有 dark: 开头的样式生效
-            */
-            
-            theme: {
-                extend: {
-                    // 扩展默认主题配置
-                    
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        /*
-                            🔤 字体设置
-                            sans 表示无衬线字体（现代、简洁）
-                            优先使用 Inter 字体，找不到就用系统默认无衬线字体
-                            
-                            💡 如何修改字体？
-                            1. 换成其他 Google Font：把 'Inter' 改成 'Roboto'、'Poppins' 等
-                            2. 记得在下面的 Google Fonts 链接里也要改
-                        */
-                    },
-                    
-                    colors: {
-                        /* 
-                            🎨 自定义颜色系统
-                            定义了两套颜色方案：深色模式 (dark) 和浅色模式 (light)
-                            
-                            💡 颜色代码解释：
-                            '#050505' = 几乎全黑（深色背景）
-                            '#ffffff' = 纯白色（浅色背景）
-                            '#ededed' = 浅灰白色（深色模式的文字）
-                            '#111111' = 深灰黑色（浅色模式的文字）
-                            
-                            💡 如何修改颜色？
-                            1. 在线工具生成颜色：https://coolors.co
-                            2. 把颜色代码（比如 #050505）替换成你想要的
-                            3. 记住：bg = 背景色，text = 文字色，border = 边框色
-                        */
-                        dark: {
-                            bg: '#050505',      // 深色模式背景（几乎全黑）
-                            card: '#0a0a0a',    // 深色模式卡片背景（稍微浅一点）
-                            border: '#1f1f1f',  // 深色模式边框（灰黑色）
-                            text: '#ededed',    // 深色模式文字（浅灰白）
-                            muted: '#888888'    // 深色模式次要文字（灰色，用于不重要的内容）
-                        },
-                        light: {
-                            text: '#111111',    // 浅色模式文字（深灰黑）
-                            muted: '#666666',   // 浅色模式次要文字（中灰色）
-                            bg: '#ffffff',      // 浅色模式背景（纯白）
-                            card: '#f9fafb'     // 浅色模式卡片背景（淡灰白）
-                        }
-                    },
-                    
-                    animation: {
-                        /* 
-                            🎬 自定义动画
-                            定义两个动画效果：淡入和向上滑动
-                        */
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        // 淡入动画：持续 0.8 秒，缓出效果，保持最终状态
-                        
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                        // 向上滑动动画：持续 0.8 秒，从下往上移动同时淡入
-                    },
-                    
-                    keyframes: {
-                        /* 
-                            🎞️ 动画关键帧定义
-                            定义动画的具体步骤
-                        */
-                        fadeIn: { 
-                            '0%': { opacity: '0' },      // 开始：完全透明
-                            '100%': { opacity: '1' }     // 结束：完全显示
-                        },
-                        slideUp: { 
-                            '0%': { 
-                                opacity: '0',                    // 开始：透明
-                                transform: 'translateY(20px)'    // 开始：向下偏移 20 像素
-                            }, 
-                            '100%': { 
-                                opacity: '1',                    // 结束：完全显示
-                                transform: 'translateY(0)'       // 结束：回到原位
-                            } 
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- ==================== Google Fonts ==================== -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 
-        📥 引入 Inter 字体
-        wght=300;400;500;600;700 表示字重（粗细）
-        300 = Light（细体）
-        400 = Regular（常规）
-        500 = Medium（中等）
-        600 = SemiBold（半粗）
-        700 = Bold（粗体）
-        
-        💡 如何换字体？
-        1. 去 https://fonts.google.com 选字体
-        2. 复制新的 <link> 标签替换这行
-        3. 记得在上面 tailwind.config 的 fontFamily 里也改
-    -->
-    
-    <style>
-        /* ==================== 自定义 CSS 样式 ==================== */
-        
-        body { 
-            font-feature-settings: "cv11", "ss01"; 
-        }
-        /* 
-            🔤 字体特性设置
-            cv11 和 ss01 是 Inter 字体的样式变体
-            让字母更现代、更圆润
-            （如果换了其他字体，可以删掉这行）
-        */
-        
-        /* ==================== 自定义光标效果 ==================== */
-        @media (hover: hover) and (pointer: fine) { 
-            body { cursor: none; } 
-        }
-        /* 
-            🖱️ 隐藏默认鼠标光标
-            只在桌面设备上生效（手机不会隐藏）
-            hover: hover = 支持鼠标悬停
-            pointer: fine = 精确指针设备（鼠标）
-        */
-        
-        .cursor-dot { 
-            width: 8px;                         /* 光标点的宽度：8 像素 */
-            height: 8px;                        /* 光标点的高度：8 像素 */
-            background-color: #0088ff;          /* 光标点颜色：蓝色 */
-            position: fixed;                    /* 固定定位（跟随鼠标） */
-            top: 0; 
-            left: 0; 
-            z-index: 9999;                      /* 层级最高（显示在最上层） */
-            border-radius: 50%;                 /* 圆形（50% = 完美圆形） */
-            pointer-events: none;               /* 不阻挡鼠标事件 */
-            transform: translate(-50%, -50%);   /* 居中对齐 */
-        }
-        /* 
-            🔵 自定义光标 - 小点
-            这是跟随鼠标的蓝色小圆点
-            
-            💡 如何修改光标颜色？
-            改 background-color: #2563eb; 这行
-            比如改成红色：#ef4444
-        */
-        
-        .cursor-outline { 
-            width: 40px;                        /* 光标圆环宽度：40 像素 */
-            height: 40px;                       /* 光标圆环高度：40 像素 */
-            border: 1px solid rgba(37, 99, 235, 0.4);  /* 边框：1 像素蓝色半透明 */
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            z-index: 9999; 
-            border-radius: 50%;                 /* 圆形 */
-            pointer-events: none; 
-            transform: translate(-50%, -50%); 
-            transition: width 0.2s, height 0.2s, background-color 0.2s;  /* 平滑过渡动画 */
-        }
-        /* 
-            ⭕ 自定义光标 - 外圈
-            跟随鼠标的蓝色圆环，比小点慢一点（产生延迟效果）
-        */
-        
-        body.hovering .cursor-outline { 
-            width: 60px;                        /* 悬停时变大到 60 像素 */
-            height: 60px; 
-            background-color: rgba(37, 99, 235, 0.05);  /* 悬停时填充淡蓝色背景 */
-            border-color: transparent;          /* 悬停时边框变透明 */
-        }
-        /* 
-            🔄 光标悬停效果
-            当鼠标悬停在可点击元素上时，圆环变大并填充颜色
-        */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yunning 'Riley' Tang — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html[data-theme="dark"]{--bg:#050b10;--text:#d8e6ed;--text-2:#8faab8;--text-3:#506a78;--text-4:#2e4450;--glass:rgba(10,28,40,0.5);--glass-b:rgba(56,216,200,0.07);--glass-bh:rgba(56,216,200,0.16);--card-bg:rgba(10,28,40,0.45);--sidebar-bg:rgba(5,11,16,0.82);--tag-bg:rgba(5,11,16,0.4);--nav-bg:rgba(5,11,16,0.6)}
+html[data-theme="light"]{--bg:#f0f4f7;--text:#1a2a35;--text-2:#4a6070;--text-3:#7a8e9a;--text-4:#a0b0b8;--glass:rgba(255,255,255,0.55);--glass-b:rgba(20,80,80,0.1);--glass-bh:rgba(20,80,80,0.2);--card-bg:rgba(255,255,255,0.5);--sidebar-bg:rgba(240,244,247,0.88);--tag-bg:rgba(255,255,255,0.6);--nav-bg:rgba(240,244,247,0.65)}
+:root{--teal:#18a8a2;--green:#18e0a0;--cyan:#38d8c8;--blue:#2878e8;--hd:'Playfair Display',Georgia,serif;--bd:'Plus Jakarta Sans',-apple-system,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--bd);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .5s,color .5s;scrollbar-width:thin;scrollbar-color:rgba(128,128,128,.2) transparent}
+body::-webkit-scrollbar{width:6px}body::-webkit-scrollbar-track{background:transparent}body::-webkit-scrollbar-thumb{background:rgba(128,128,128,.2);border-radius:3px}
+a,button{cursor:pointer}
+#rippleCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+.ocean{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;transition:opacity .5s}
+html[data-theme="light"] .ocean{opacity:.3}
+.ocean .b{position:absolute;border-radius:50%;filter:blur(140px)}
+.b1{width:500px;height:500px;background:radial-gradient(circle,rgba(8,56,92,.7),transparent 70%);top:-8%;left:-5%;animation:d1 28s ease-in-out infinite}
+.b2{width:420px;height:420px;background:radial-gradient(circle,rgba(24,168,162,.45),transparent 70%);top:40%;right:-8%;animation:d2 33s ease-in-out infinite}
+.b3{width:550px;height:550px;background:radial-gradient(circle,rgba(6,72,56,.55),transparent 70%);bottom:-14%;left:24%;animation:d3 37s ease-in-out infinite}
+@keyframes d1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,80px) scale(1.06)}66%{transform:translate(20px,120px) scale(.95)}}
+@keyframes d2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,30px) scale(1.05)}66%{transform:translate(-80px,-40px) scale(1.08)}}
+@keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-60px) scale(1.05)}}
 
-        /* ==================== 导航栏激活状态 ==================== */
-        .nav-link.active { 
-            color: #111;       /* 激活时文字颜色：深灰黑 */
-            font-weight: 600;  /* 激活时文字粗细：SemiBold */
-        }
-        .dark .nav-link.active { 
-            color: #fff;       /* 深色模式下激活时文字颜色：白色 */
-        }
-        .nav-link.active .nav-num { 
-            color: #2563eb;    /* 激活时数字颜色：蓝色 */
-            opacity: 1;        /* 激活时数字不透明度：完全显示 */
-        }
-        /* 
-            🔗 导航链接激活样式
-            当滚动到某个部分时，对应的导航链接会高亮显示
-            数字（01. 02.）会变成蓝色
-            
-            💡 如何修改高亮颜色？
-            改 color: #2563eb; 这行
-        */
-        
-        /* ==================== 隐藏滚动条 ==================== */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { 
-            -ms-overflow-style: none;   /* IE 和 Edge */
-            scrollbar-width: none;      /* Firefox */
-        }
-        /* 
-            🚫 隐藏侧边栏滚动条
-            让侧边栏可以滚动但不显示滚动条，更美观
-        */
-    </style>
-    
+/* ===== TOP NAVBAR ===== */
+.topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 24px;backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);background:transparent;border-bottom:none;transition:opacity .35s,transform .35s}
+body.sb-open .topbar{opacity:0;pointer-events:none;transform:translateY(-100%)}
+.hamburger{width:36px;height:36px;border:none;background:none;color:var(--text-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;transition:all .3s cubic-bezier(.23,1,.32,1)}
+.hamburger:hover{color:var(--text);background:radial-gradient(circle at 40% 40%,rgba(56,216,200,.1),transparent 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transform:scale(1.05)}
+.hamburger span{display:block;width:18px;height:1.5px;background:currentColor;border-radius:1px;transition:all .3s}
+.topbar-left{display:flex;align-items:center;gap:6px}
+.topbar-nav{display:flex;align-items:center;gap:4px}
+.topbar-nav a{font-size:.75rem;color:var(--text-3);text-decoration:none;padding:6px 14px;border-radius:20px;transition:all .35s cubic-bezier(.23,1,.32,1);white-space:nowrap}
+.topbar-nav a:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),rgba(24,168,162,.03) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.04)}
+.topbar-nav a.active{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.1),rgba(24,168,162,.04) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.04)}
+.topbar-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);line-height:0}
+.topbar-logo svg{height:30px;width:auto;opacity:.55;transition:opacity .3s}
+.topbar-logo:hover svg{opacity:1}
+
+/* Liquid glass theme toggle */
+.theme-glass{width:38px;height:38px;border-radius:50%;border:none;background:radial-gradient(circle at 35% 35%,rgba(56,216,200,.12),rgba(24,168,162,.04) 60%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 2px 16px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.06);color:var(--text-2);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .35s cubic-bezier(.23,1,.32,1);overflow:hidden;position:relative}
+.theme-glass:hover{transform:scale(1.1);box-shadow:0 4px 24px rgba(56,216,200,.18),inset 0 1px 0 rgba(255,255,255,.1);color:var(--cyan)}
+.theme-glass .im,.theme-glass .is{position:absolute;transition:all .4s cubic-bezier(.23,1,.32,1)}
+html[data-theme="dark"] .theme-glass .is{opacity:0;transform:rotate(90deg) scale(.4)}
+html[data-theme="dark"] .theme-glass .im{opacity:1;transform:rotate(0) scale(1)}
+html[data-theme="light"] .theme-glass .is{opacity:1;transform:rotate(0) scale(1)}
+html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) scale(.4)}
+
+/* ===== SLIDE-OUT SIDEBAR ===== */
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:272px;z-index:40;padding:28px 24px 24px;display:flex;flex-direction:column;backdrop-filter:blur(48px) saturate(1.2);-webkit-backdrop-filter:blur(48px) saturate(1.2);background:var(--sidebar-bg);border-right:1px solid rgba(128,128,128,.1);transform:translateX(-100%);transition:transform .4s cubic-bezier(.23,1,.32,1),background .5s}
+.sidebar.open{transform:translateX(0)}
+.sidebar-inner{display:flex;flex-direction:column;align-items:flex-start}
+.sidebar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;width:100%}
+.sidebar-top .name{font-family:var(--hd);font-size:1.1rem;font-weight:500;letter-spacing:-.01em;line-height:1.3}
+.sidebar-close{width:32px;height:32px;border:none;background:none;color:var(--text-3);font-size:1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s cubic-bezier(.23,1,.32,1)}
+.sidebar-close:hover{color:var(--text);background:radial-gradient(circle at 40% 40%,rgba(56,216,200,.1),transparent 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transform:scale(1.08)}
+.sidebar .avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(145deg,rgba(24,168,162,.1),rgba(40,120,232,.06));border:1px solid var(--glass-b);overflow:hidden;margin:0 auto 20px}
+.sidebar .avatar img{width:100%;height:100%;object-fit:cover}
+.about-link{display:block;font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:6px 14px;border-radius:20px;margin-bottom:8px;transition:all .35s cubic-bezier(.23,1,.32,1)}
+.about-link:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),transparent 70%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.about-link.active{color:var(--text)}
+.sidebar nav ul{list-style:none;display:flex;flex-direction:column;gap:1px}
+.sidebar nav a{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:20px;color:var(--text-2);text-decoration:none;font-size:.8125rem;font-weight:400;transition:all .35s cubic-bezier(.23,1,.32,1)}
+.sidebar nav a .n{font-family:var(--hd);font-style:italic;font-size:.75rem;color:var(--text-4);min-width:22px;transition:color .25s}
+.sidebar nav a:hover{color:var(--text);background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.08),transparent 70%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.sidebar nav a.active{color:var(--text);font-weight:500;background:radial-gradient(circle at 50% 50%,rgba(56,216,200,.1),rgba(24,168,162,.04) 70%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.sidebar nav a.active .n{color:var(--teal)}
+.sidebar .ext{font-size:.65rem;opacity:.5}
+.sidebar-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--glass-b)}
+.sidebar-foot .socials{display:flex;gap:5px;flex-wrap:nowrap}
+.sidebar-foot .socials a{width:30px;height:30px;min-width:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(24,168,162,.04);border:1px solid var(--glass-b);color:var(--text-3);text-decoration:none;transition:all .3s}
+.sidebar-foot .socials a:hover{color:var(--cyan);background:rgba(24,168,162,.1);border-color:var(--glass-bh);transform:translateY(-2px)}
+.sidebar-foot .socials a svg{width:13px;height:13px}
+
+/* ===== CONTENT (centered single column, shifts with sidebar) ===== */
+.content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0;transition:margin-left .4s cubic-bezier(.23,1,.32,1),max-width .4s cubic-bezier(.23,1,.32,1)}
+body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top:32px}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 0 40px;text-align:center}
+.hero-name{font-family:var(--hd);font-style:italic;font-size:clamp(1.35rem,2vw,1.75rem);font-weight:400;letter-spacing:-.01em;color:var(--text);margin-bottom:10px}
+.hero-name em{font-style:italic;color:var(--teal);font-weight:400}
+#hero3d{width:140px;height:170px;position:relative}
+#hero3d canvas{width:100%!important;height:100%!important;display:block}
+.hero-text{margin-top:28px;max-width:540px}
+.hero-text h1{font-family:var(--hd);font-style:italic;font-size:clamp(1.15rem,1.6vw,1.5rem);font-weight:400;line-height:1.42;letter-spacing:-.01em;margin-bottom:14px}
+.hero-text h1 .hl-t{color:var(--teal)}.hero-text h1 .hl-g{color:var(--green)}
+.hero-text .bio{font-size:.875rem;font-weight:300;color:var(--text-2);line-height:1.75;margin-bottom:6px}
+.hero-text .detail{font-size:.8125rem;font-weight:300;color:var(--text-3);line-height:1.7}
+.hero-text .detail strong{color:var(--text-2);font-weight:500}
+.sec{padding:40px 0}
+.sh{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--glass-b);margin-bottom:24px}
+.sh .left{display:flex;align-items:baseline;gap:12px}
+.sh .sn{font-family:var(--hd);font-style:italic;font-size:.9375rem;color:var(--teal)}
+.sh h2{font-family:var(--hd);font-style:italic;font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:400}
+.sh .right{display:flex;align-items:baseline;gap:16px}
+.sh .va{font-size:.72rem;color:var(--text-3);text-decoration:none;transition:color .3s;white-space:nowrap}
+.sh .va:hover{color:var(--teal)}
+.pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
+.pc .bd .card-tags span{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:2px 8px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.1)}
+.cap-title{font-family:var(--hd);font-style:italic;font-size:1.0625rem;font-weight:400;color:var(--text-2);margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--glass-b)}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cap-col{backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);border-radius:13px;padding:20px 18px;transition:all .4s cubic-bezier(.23,1,.32,1);overflow:hidden}
+.cap-col:hover{border-color:var(--glass-bh);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.cap-col .ci{font-size:.85rem;margin-bottom:6px;color:var(--text-3)}
+.cap-col h4{font-size:.6875rem;font-weight:600;letter-spacing:.05em;margin-bottom:12px;text-transform:uppercase}
+.cap-col .tags{display:flex;flex-wrap:wrap;gap:5px}
+.cap-col .t{font-size:.6875rem;padding:3px 10px;border-radius:6px;border:1px solid var(--glass-b);color:var(--text-2);background:var(--tag-bg);transition:all .25s;line-height:1.5}
+.cap-col:nth-child(1) .t:hover{color:var(--blue);border-color:rgba(40,120,232,.25)}
+.cap-col:nth-child(2) .t:hover{color:var(--teal);border-color:rgba(24,168,162,.25)}
+.cap-col:nth-child(3) .t:hover{color:var(--green);border-color:rgba(24,224,160,.25)}
+.cap-col:nth-child(4) .t:hover{color:var(--cyan);border-color:rgba(56,216,200,.25)}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pc{border-radius:14px;overflow:hidden;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);transition:all .45s cubic-bezier(.23,1,.32,1);opacity:0;transform:translateY(20px)}
+.pc.vis{opacity:1;transform:translateY(0)}
+.pc:hover{border-color:var(--glass-bh);transform:translateY(-5px)!important;box-shadow:0 18px 52px rgba(0,0,0,.24),inset 0 1px 0 rgba(56,216,200,.04)}
+.pc .th{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pc .th canvas{position:absolute;inset:0;width:100%;height:100%}
+.pc .th .icon{position:relative;z-index:1;width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:var(--hd);font-style:italic;font-size:1.15rem;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.1);backdrop-filter:blur(12px);color:var(--cyan);box-shadow:0 5px 18px rgba(0,0,0,.2);transition:all .4s}
+.pc:hover .th .icon{transform:scale(1.08)}
+.pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
+.pc .bd{padding:16px 18px 20px}
+.pc .bd h3{font-family:var(--hd);font-style:italic;font-size:.9375rem;font-weight:500;margin-bottom:5px;line-height:1.35}
+.pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
+.eg{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:176px 176px;gap:12px}
+.ec{border-radius:12px;overflow:hidden;position:relative;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:var(--glass);border:1px solid var(--glass-b);transition:all .4s}
+.ec:hover{border-color:var(--glass-bh);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.ec:nth-child(1){grid-row:1/3}.ec .ef{position:absolute;inset:0;opacity:.55;transition:opacity .5s}.ec:hover .ef{opacity:.8}
+.ec .el{position:absolute;bottom:12px;right:12px;font-size:.68rem;color:rgba(216,230,237,.35);font-family:var(--hd);font-style:italic}
+.fi{opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s}.fi.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:1100px){.cap-grid{grid-template-columns:repeat(2,1fr)}.pg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.topbar-nav{display:none}body.sb-open .content{margin-left:0;max-width:100%}.pg{grid-template-columns:1fr}.cap-grid{grid-template-columns:1fr}.eg{grid-template-columns:1fr 1fr;grid-template-rows:auto}.ec:nth-child(1){grid-row:auto}.content{padding:72px 16px 0}#hero3d{width:110px;height:130px}.hero-text h1{font-size:1.15rem}}
+@media(max-width:480px){.eg{grid-template-columns:1fr}#hero3d{width:100px;height:120px}}
+</style>
 </head>
+<body>
+<canvas id="rippleCanvas"></canvas>
+<div class="ocean"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
 
-<body class="antialiased bg-white text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-500">
-<!-- 
-    🎨 Body 标签的 class 解释：
-    
-    antialiased = 字体抗锯齿（让字体边缘更平滑）
-    bg-white = 背景色白色（浅色模式）
-    text-light-text = 文字颜色（浅色模式用 #111111）
-    dark:bg-dark-bg = 深色模式背景（用 #050505）
-    dark:text-dark-text = 深色模式文字（用 #ededed）
-    transition-colors = 颜色变化时有平滑过渡动画
-    duration-500 = 过渡动画持续 500 毫秒（0.5 秒）
-    
-    💡 颜色切换原理：
-    - 默认显示浅色模式的样式
-    - 当 <html> 有 class="dark" 时，所有 dark: 开头的样式生效
--->
-
-    <!-- ==================== 自定义光标（桌面端显示） ==================== -->
-    <div class="cursor-dot hidden md:block"></div>
-    <div class="cursor-outline hidden md:block"></div>
-    <!-- 
-        🖱️ 自定义光标元素
-        hidden = 默认隐藏
-        md:block = 中等屏幕以上（桌面）显示
-        
-        Tailwind 响应式断点：
-        sm = 640px 以上（大手机）
-        md = 768px 以上（平板）
-        lg = 1024px 以上（小笔记本）
-        xl = 1280px 以上（桌面）
-    -->
-
-    <!-- ==================== 手机端顶部导航栏 ==================== -->
-    <nav class="md:hidden fixed top-0 left-0 right-0 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-xl z-50 border-b border-gray-100 dark:border-dark-border h-16 flex items-center justify-between px-6">
-    <!-- 
-        📱 手机端导航栏样式解释：
-        
-        md:hidden = 中等屏幕以上隐藏（只在手机上显示）
-        fixed = 固定定位（滚动时不动）
-        top-0 left-0 right-0 = 贴在顶部占满宽度
-        bg-white/80 = 白色背景，80% 不透明度（半透明效果）
-        dark:bg-dark-bg/80 = 深色模式下的半透明背景
-        backdrop-blur-xl = 背景模糊效果（毛玻璃）
-        z-50 = 层级 50（显示在其他内容上方）
-        border-b = 底部边框
-        border-gray-100 = 边框颜色浅灰
-        h-16 = 高度 64 像素（16 × 4 = 64px）
-        flex = Flexbox 布局
-        items-center = 垂直居中
-        justify-between = 左右两端对齐
-        px-6 = 左右内边距 24 像素（6 × 4 = 24px）
-        
-        💡 Tailwind 尺寸单位：
-        数字 × 4 = 像素
-        比如 h-16 = 16 × 4 = 64 像素
-             px-6 = 6 × 4 = 24 像素
-    -->
-        <a href="#" class="text-base font-semibold tracking-tight">Yunning</a>
-
-        <a href="#" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-55 hover:opacity-100 transition-opacity leading-none" aria-label="Home"><svg viewBox="0 0 28 34" fill="none" style="height:28px;width:auto"><g stroke="rgba(56,216,200,.18)" stroke-width="0.5"><polygon points="14,0.5 26,8 24,26 4,26 2,8"/><polygon points="14,1 24,6 26,20 14,33.5 2,20 4,6"/><polygon points="8,2 26,14 20,33 8,33 2,14"/></g><g stroke="rgba(56,216,200,.22)" stroke-width="0.4"><line x1="14" y1="3" x2="20" y2="7"/><line x1="14" y1="3" x2="8" y2="7"/><line x1="20" y1="7" x2="8" y2="7"/><line x1="20" y1="7" x2="20" y2="13"/><line x1="8" y1="7" x2="8" y2="13"/><line x1="20" y1="7" x2="14" y2="17"/><line x1="8" y1="7" x2="14" y2="17"/><line x1="20" y1="13" x2="8" y2="13"/><line x1="20" y1="13" x2="14" y2="17"/><line x1="8" y1="13" x2="14" y2="17"/><line x1="20" y1="13" x2="20" y2="23"/><line x1="8" y1="13" x2="8" y2="23"/><line x1="14" y1="17" x2="20" y2="23"/><line x1="14" y1="17" x2="8" y2="23"/><line x1="14" y1="17" x2="14" y2="27"/><line x1="20" y1="23" x2="8" y2="23"/><line x1="20" y1="23" x2="14" y2="27"/><line x1="8" y1="23" x2="14" y2="27"/><line x1="14" y1="27" x2="14" y2="32"/></g><circle cx="14" cy="3" r="1.3" fill="#e0e0e0"/><circle cx="20" cy="7" r="1.1" fill="#6688cc"/><circle cx="8" cy="7" r="1.1" fill="#cc3344"/><circle cx="20" cy="13" r="1.1" fill="#3388ee"/><circle cx="8" cy="13" r="1.1" fill="#dd3333"/><circle cx="14" cy="17" r="1.3" fill="#ddaa22"/><circle cx="20" cy="23" r="1.1" fill="#33bb66"/><circle cx="8" cy="23" r="1.1" fill="#ee7722"/><circle cx="14" cy="27" r="1.1" fill="#8844cc"/><circle cx="14" cy="32" r="1.3" fill="#779933"/></svg></a>
-
-        <button id="mobile-menu-btn" class="text-light-muted dark:text-dark-muted">Menu</button>
-        <!-- 
-            菜单按钮
-            text-light-muted = 次要文字颜色（灰色）
-        -->
+<!-- Top Navbar -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="menuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="topbar-nav">
+      <a href="#design">Design Projects</a>
+      <a href="#coding">Coding Projects</a>
+      <a href="#experiments">Experiments / Arts</a>
     </nav>
+  </div>
+  <a href="#" class="topbar-logo" aria-label="Home"><svg viewBox="0 0 28 34" fill="none"><g stroke="rgba(56,216,200,.18)" stroke-width="0.5"><polygon points="14,0.5 26,8 24,26 4,26 2,8"/><polygon points="14,1 24,6 26,20 14,33.5 2,20 4,6"/><polygon points="8,2 26,14 20,33 8,33 2,14"/></g><g stroke="rgba(56,216,200,.22)" stroke-width="0.4"><line x1="14" y1="3" x2="20" y2="7"/><line x1="14" y1="3" x2="8" y2="7"/><line x1="20" y1="7" x2="8" y2="7"/><line x1="20" y1="7" x2="20" y2="13"/><line x1="8" y1="7" x2="8" y2="13"/><line x1="20" y1="7" x2="14" y2="17"/><line x1="8" y1="7" x2="14" y2="17"/><line x1="20" y1="13" x2="8" y2="13"/><line x1="20" y1="13" x2="14" y2="17"/><line x1="8" y1="13" x2="14" y2="17"/><line x1="20" y1="13" x2="20" y2="23"/><line x1="8" y1="13" x2="8" y2="23"/><line x1="14" y1="17" x2="20" y2="23"/><line x1="14" y1="17" x2="8" y2="23"/><line x1="14" y1="17" x2="14" y2="27"/><line x1="20" y1="23" x2="8" y2="23"/><line x1="20" y1="23" x2="14" y2="27"/><line x1="8" y1="23" x2="14" y2="27"/><line x1="14" y1="27" x2="14" y2="32"/></g><circle cx="14" cy="3" r="1.3" fill="#e0e0e0"/><circle cx="20" cy="7" r="1.1" fill="#6688cc"/><circle cx="8" cy="7" r="1.1" fill="#cc3344"/><circle cx="20" cy="13" r="1.1" fill="#3388ee"/><circle cx="8" cy="13" r="1.1" fill="#dd3333"/><circle cx="14" cy="17" r="1.3" fill="#ddaa22"/><circle cx="20" cy="23" r="1.1" fill="#33bb66"/><circle cx="8" cy="23" r="1.1" fill="#ee7722"/><circle cx="14" cy="27" r="1.1" fill="#8844cc"/><circle cx="14" cy="32" r="1.3" fill="#779933"/></svg></a>
+  <button class="theme-glass" id="themeBtn"><span class="im">☾</span><span class="is">☀</span></button>
+</header>
 
-    <div class="flex flex-col md:flex-row min-h-screen">
-    <!-- 
-        🏗️ 主布局容器
-        flex = Flexbox 布局
-        flex-col = 手机上垂直排列（上下）
-        md:flex-row = 桌面上水平排列（左右）
-        min-h-screen = 最小高度为整个屏幕高度
-    -->
-        
-        <!-- ==================== 左侧固定侧边栏（桌面端） ==================== -->
-        <aside class="hidden md:flex fixed w-72 h-screen flex-col border-r border-gray-100 dark:border-dark-border p-8 bg-white dark:bg-dark-bg z-40 overflow-y-auto no-scrollbar">
-        <!-- 
-            📌 侧边栏样式解释：
-            
-            hidden = 默认隐藏（手机端）
-            md:flex = 桌面端显示为 flex 布局
-            fixed = 固定定位（滚动时不动）
-            w-72 = 宽度 288 像素（72 × 4 = 288px）
-            h-screen = 高度占满整个屏幕
-            flex-col = 内容垂直排列
-            border-r = 右边框
-            border-gray-100 = 边框颜色浅灰
-            p-8 = 内边距 32 像素（所有方向）
-            bg-white = 背景白色
-            z-40 = 层级 40
-            overflow-y-auto = 内容过多时显示滚动条
-            no-scrollbar = 但不显示滚动条（自定义样式）
-            
-            💡 如何调整侧边栏宽度？
-            把 w-72 改成其他值：
-            w-64 = 256px（更窄）
-            w-80 = 320px（更宽）
-        -->
-            
-            <!-- 1. 顶部区域：名字 + 照片 + 导航 -->
-            <div class="mb-12">
-            <!-- mb-12 = 底部外边距 48 像素 -->
-                
-                <!-- 名字/Logo -->
-                <a href="#" class="block text-2xl font-bold tracking-tight mb-6 hover-trigger w-fit">Yunning</a>
-                <!-- 
-                    block = 块级元素（占满一行）
-                    text-2xl = 字体大小 24px
-                    font-bold = 字重 700（粗体）
-                    tracking-tight = 字母间距紧凑
-                    mb-6 = 底部外边距 24 像素
-                    hover-trigger = 触发光标悬停效果（自定义类）
-                    w-fit = 宽度适应内容
-                    
-                    💡 如何调整名字大小？
-                    text-sm = 14px（小）
-                    text-base = 16px（基础）
-                    text-lg = 18px（大）
-                    text-xl = 20px（超大）
-                    text-2xl = 24px（2倍大）
-                    text-3xl = 30px（3倍大）
-                -->
-                
-                <!-- 📸 头像照片 -->
-                <a href="#about" class="block w-full aspect-square rounded-xl overflow-hidden bg-gray-100 dark:bg-white/5 mb-8 border border-gray-100 dark:border-white/5 hover-trigger group">
-                <!-- 
-                    w-full = 宽度 100%（占满父容器）
-                    aspect-square = 宽高比 1:1（正方形）
-                    rounded-xl = 圆角 12 像素
-                    overflow-hidden = 超出部分隐藏（让图片圆角生效）
-                    bg-gray-100 = 背景浅灰（图片加载前显示）
-                    mb-8 = 底部外边距 32 像素
-                    border = 边框
-                    border-gray-100 = 边框颜色浅灰
-                    group = 分组（子元素可以响应父元素悬停）
-                    
-                    💡 如何调整头像大小？
-                    方法1：改变侧边栏宽度（w-72）
-                    方法2：改变 w-full 为具体宽度（比如 w-48 = 192px）
-                    方法3：改变 aspect-square 为其他比例（aspect-[4/3] = 4:3）
-                -->
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400" alt="Profile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <!-- 
-                        object-cover = 图片覆盖容器（保持比例，裁剪多余部分）
-                        group-hover:scale-105 = 悬停时放大 105%
-                        transition-transform = 变换动画
-                        duration-700 = 动画持续 700 毫秒
-                        
-                        💡 如何替换头像？
-                        把 src="..." 里的链接换成你的图片路径
-                        比如 src="assets/images/my-avatar.jpg"
-                    -->
-                </a>
-                
-                <!-- 导航列表 -->
-                <nav class="space-y-4">
-                <!-- space-y-4 = 每个子元素之间垂直间距 16 像素 -->
-                    
-                    <!-- About 链接（无序号） -->
-                    <a href="#about" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors hover-trigger">
-                    <!-- 
-                        text-sm = 字体 14px
-                        text-light-muted = 次要文字颜色（灰色）
-                        hover:text-black = 悬停时变黑色
-                        transition-colors = 颜色变化有过渡动画
-                        
-                        💡 如何修改导航文字颜色？
-                        改 text-light-muted 为其他颜色：
-                        text-gray-500 = 中灰色
-                        text-blue-500 = 蓝色
-                        text-red-500 = 红色
-                    -->
-                        About
-                    </a>
-
-                    <!-- 01. Design Projects -->
-                    <a href="#design" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-40 font-mono text-xs mr-2 transition-all duration-300">01.</span>
-                        <!-- 
-                            序号样式：
-                            opacity-40 = 不透明度 40%（半透明）
-                            font-mono = 等宽字体（数字看起来整齐）
-                            text-xs = 字体 12px（比正文小）
-                            mr-2 = 右边距 8 像素
-                            transition-all = 所有属性变化都有动画
-                            duration-300 = 动画持续 300 毫秒
-                        -->
-                        Design Projects 
-                    </a>
-
-                    <!-- 02. Coding Projects -->
-                    <a href="#coding" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-40 font-mono text-xs mr-2 transition-all duration-300">02.</span>
-                        Coding Projects
-                    </a> 
-
-                    <!-- 03. Experiments -->
-                    <a href="#experiments" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-40 font-mono text-xs mr-2 transition-all duration-300">03.</span>
-                        Experiments
-                    </a>
-
-                    <!-- 04. Writing -->
-                    <a href="writing.html" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-40 font-mono text-xs mr-2 transition-all duration-300">04.</span>
-                        Writing
-                    </a>
-
-                    <!-- 05. Resume / CV -->
-                    <a href="#resume" class="nav-link block text-sm text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors hover-trigger group">
-                        <span class="nav-num opacity-40 font-mono text-xs mr-2 transition-all duration-300">05.</span>
-                        Resume / CV
-                    </a>
-                </nav>
-            </div>
-
-            <!-- 2. 底部区域：社交链接 + 主题切换 -->
-            <div class="mt-auto space-y-6">
-            <!-- 
-                mt-auto = 顶部外边距自动（把这个区域推到底部）
-                space-y-6 = 子元素之间垂直间距 24 像素
-            -->
-                
-                <!-- 社交媒体图标 -->
-                <div class="flex gap-4 text-light-muted dark:text-dark-muted">
-                <!-- 
-                    flex = Flexbox 布局（水平排列）
-                    gap-4 = 子元素之间间距 16 像素
-                -->
-                    <a href="#" class="hover:text-black dark:hover:text-white transition-colors hover-trigger" aria-label="LinkedIn">
-                    <!-- aria-label = 无障碍标签（让屏幕阅读器知道这是 LinkedIn 链接） -->
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <!-- w-5 h-5 = 宽高 20 像素 -->
-                        <!-- currentColor = 继承当前文字颜色 -->
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                    
-                    <a href="#" class="hover:text-black dark:hover:text-white transition-colors hover-trigger" aria-label="GitHub">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                    
-                    <a href="tangyunning27@gmail.com" class="hover:text-black dark:hover:text-white transition-colors hover-trigger" aria-label="Email">
-                    <!-- 
-                        💡 如何修改邮箱？
-                        把 mailto:your@email.com 改成你的真实邮箱
-                        比如 mailto:riley@example.com
-                    -->
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- 底部：版权 + 主题切换按钮 -->
-                <div class="flex items-center justify-between border-t border-gray-100 dark:border-dark-border pt-6">
-                <!-- 
-                    border-t = 顶部边框
-                    pt-6 = 顶部内边距 24 像素
-                -->
-                    <span class="text-[10px] text-light-muted dark:text-dark-muted uppercase tracking-wider">© 2025</span>
-                    <!-- 
-                        text-[10px] = 字体 10 像素（自定义大小）
-                        uppercase = 大写字母
-                        tracking-wider = 字母间距加宽
-                    -->
-                    
-                    <button id="theme-toggle" class="hover-trigger text-light-muted dark:text-dark-muted hover:text-black dark:hover:text-white transition-colors">
-                    <!-- 主题切换按钮 -->
-                        <svg id="theme-toggle-light-icon" class="hidden w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <!-- 太阳图标（浅色模式时显示） -->
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                        <svg id="theme-toggle-dark-icon" class="hidden w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <!-- 月亮图标（深色模式时显示） -->
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </aside>
-
-        <!-- ==================== 右侧主内容区域 ==================== -->
-        <main class="flex-1 md:ml-72 px-6 pt-24 md:pt-32 pb-32 max-w-5xl">
-        <!-- 
-            flex-1 = 占据剩余空间（撑满右侧）
-            md:ml-72 = 桌面端左边距 288 像素（给侧边栏留空间）
-            px-6 = 左右内边距 24 像素
-            pt-24 = 顶部内边距 96 像素（手机端）
-            md:pt-32 = 桌面端顶部内边距 128 像素
-            pb-32 = 底部内边距 128 像素
-            max-w-5xl = 最大宽度 1024 像素（防止内容太宽）
-            
-            💡 如何调整内容宽度？
-            max-w-2xl = 672px（窄）
-            max-w-3xl = 768px（中等）
-            max-w-4xl = 896px（宽）
-            max-w-5xl = 1024px（超宽）
-            max-w-full = 无限制
-        -->
-            
-            <!-- ==================== Hero + About 部分 ==================== -->
-            <section id="about" class="max-w-3xl mb-40 animate-slide-up scroll-mt-40">
-            <!-- 
-                max-w-3xl = 这个section最大宽度 768 像素
-                mb-40 = 底部外边距 160 像素（和下一部分拉开距离）
-                animate-slide-up = 应用向上滑动动画
-                scroll-mt-40 = 滚动时顶部偏移 160 像素（避免被导航栏遮挡）
-            -->
-                <h1 class="text-5xl md:text-7xl font-bold mb-10 tracking-tighter leading-[1.05]">
-                <!-- 
-                    🔤 主标题样式：
-                    text-5xl = 手机端字体 48px
-                    md:text-7xl = 桌面端字体 72px
-                    font-bold = 字重 700（粗体）
-                    mb-10 = 底部外边距 40 像素
-                    tracking-tighter = 字母间距更紧凑
-                    leading-[1.05] = 行高 1.05 倍（自定义值）
-                    
-                    💡 如何调整标题大小？
-                    text-3xl = 30px（小）
-                    text-4xl = 36px（中）
-                    text-5xl = 48px（大）
-                    text-6xl = 60px（超大）
-                    text-7xl = 72px（巨大）
-                -->
-                    Designing for <br>
-                    <span class="text-light-muted dark:text-dark-muted">Human Experience.</span>
-                    <!-- 第二行用灰色（次要颜色） -->
-                </h1>
-                
-                <p class="text-xl leading-relaxed text-light-muted dark:text-dark-muted font-light mb-10 max-w-2xl">
-                <!-- 
-                    📝 段落样式：
-                    text-xl = 字体 20px
-                    leading-relaxed = 行高 1.625 倍（行距舒适）
-                    font-light = 字重 300（细体）
-                    max-w-2xl = 最大宽度 672 像素
-                    
-                    💡 如何调整段落大小？
-                    text-base = 16px（基础）
-                    text-lg = 18px（大）
-                    text-xl = 20px（超大）
-                -->
-                    I'm Yunning, a product designer and developer. I bridge the gap between 
-                    <span class="text-black dark:text-white font-medium">complex AI models</span> and 
-                    <span class="text-black dark:text-white font-medium">intuitive interfaces</span>.
-                    <!-- 
-                        重点文字用深色（text-black）和中等字重（font-medium = 500）
-                    -->
-                </p>
-                
-                <div class="flex items-center gap-3 text-sm text-light-muted dark:text-dark-muted font-mono bg-light-card dark:bg-dark-card w-fit px-4 py-2 rounded-full border border-gray-100 dark:border-dark-border">
-                <!-- 
-                    🏷️ 标签样式：
-                    flex items-center = 水平排列并垂直居中
-                    gap-3 = 子元素间距 12 像素
-                    text-sm = 字体 14px
-                    font-mono = 等宽字体
-                    bg-light-card = 卡片背景色
-                    w-fit = 宽度适应内容
-                    px-4 = 左右内边距 16 像素
-                    py-2 = 上下内边距 8 像素
-                    rounded-full = 完全圆角（药丸形状）
-                    border = 边框
-                -->
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <!-- 
-                        🟢 状态指示点：
-                        w-2 h-2 = 宽高 8 像素
-                        rounded-full = 圆形
-                        bg-green-500 = 绿色背景
-                        animate-pulse = 脉冲动画（闪烁效果）
-                    -->
-                    Studying @UofT (iSchool)
-                </div>
-            </section>
-
-            <!-- ==================== 01. Design Projects 部分 ==================== -->
-            <section id="design" class="scroll-mt-32 mb-40">
-            <!-- scroll-mt-32 = 滚动时顶部偏移 128 像素 -->
-                
-                <!-- 部分标题 -->
-                <div class="mb-10 flex items-end justify-between border-b border-gray-100 dark:border-dark-border pb-4">
-                <!-- 
-                    flex items-end justify-between = 左右对齐，底部对齐
-                    border-b = 底部边框
-                    pb-4 = 底部内边距 16 像素
-                -->
-                    <h2 class="text-xl font-semibold tracking-tight">
-                        <span class="text-light-muted dark:text-dark-muted mr-2 opacity-50">01.</span>
-                        <!-- 序号半透明 -->
-                        Design Projects
-                    </h2>
-                    <span class="text-xs text-light-muted dark:text-dark-muted hidden md:inline-block">UX / UI / RESEARCH</span>
-                    <!-- 
-                        hidden md:inline-block = 手机端隐藏，桌面端显示
-                    -->
-                </div>
-                
-                <!-- 项目卡片网格 -->
-                <div class="grid md:grid-cols-2 gap-8">
-                <!-- 
-                    🎴 卡片布局：
-                    grid = 网格布局
-                    md:grid-cols-2 = 桌面端 2 列
-                    gap-8 = 卡片之间间距 32 像素
-                    
-                    💡 如何改变列数？
-                    grid-cols-1 = 1 列（手机默认）
-                    md:grid-cols-2 = 桌面 2 列
-                    md:grid-cols-3 = 桌面 3 列
-                -->
-                    
-                    <!-- Project 1: Canvas Redesign -->
-                    <a href="projects/canvas-redesign.html" class="group block hover-trigger">
-                    <!-- group = 分组（子元素可以响应父元素悬停） -->
-                        
-                        <!-- 项目封面 -->
-                        <div class="bg-light-card dark:bg-dark-card border border-transparent dark:border-dark-border rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-2xl dark:group-hover:shadow-blue-900/10 group-hover:-translate-y-1">
-                        <!-- 
-                            🖼️ 封面容器样式：
-                            rounded-2xl = 圆角 16 像素
-                            aspect-[4/3] = 宽高比 4:3
-                            mb-4 = 底部外边距 16 像素
-                            relative = 相对定位（子元素可以绝对定位）
-                            transition-all = 所有属性变化都有动画
-                            duration-500 = 动画持续 500 毫秒
-                            group-hover:shadow-2xl = 悬停时显示大阴影
-                            group-hover:-translate-y-1 = 悬停时向上移动 4 像素
-                            
-                            💡 如何修改卡片比例？
-                            aspect-square = 1:1（正方形）
-                            aspect-[4/3] = 4:3（横向）
-                            aspect-[16/9] = 16:9（宽屏）
-                        -->
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-[#0a0a0a]">
-                            <!-- 
-                                absolute inset-0 = 绝对定位，占满整个父容器
-                                flex items-center justify-center = 内容水平垂直居中
-                            -->
-                                <div class="text-center">
-                                    <div class="w-16 h-16 bg-red-500 rounded-2xl mx-auto mb-4 shadow-lg flex items-center justify-center text-white font-bold text-xl">C</div>
-                                    <!-- 
-                                        💡 项目图标：
-                                        w-16 h-16 = 宽高 64 像素
-                                        bg-red-500 = 红色背景
-                                        rounded-2xl = 圆角 16 像素
-                                        mx-auto = 水平居中
-                                        shadow-lg = 大阴影
-                                        text-xl = 字体 20px
-                                    -->
-                                    <span class="text-sm font-medium text-gray-400">Canvas LMS</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 项目标题 -->
-                        <h3 class="text-lg font-semibold mb-1 group-hover:text-blue-600 transition-colors">Canvas Redesign</h3>
-                        <!-- 
-                            text-lg = 字体 18px
-                            font-semibold = 字重 600
-                            group-hover:text-blue-600 = 悬停时变蓝色
-                        -->
-                        
-                        <!-- 项目描述 -->
-                        <p class="text-sm text-light-muted dark:text-dark-muted">Improving student learning experience through data-driven research.</p>
-                        <!-- text-sm = 字体 14px -->
-                    </a>
-
-                    <!-- Project 2: Dental Ease -->
-                    <a href="#" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-transparent dark:border-dark-border rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-2xl dark:group-hover:shadow-blue-900/10 group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-[#0a0a0a]">
-                                <span class="font-mono text-blue-400 text-sm border border-blue-500/30 px-3 py-1 rounded bg-blue-500/10">Dental.ease()</span>
-                                <!-- 
-                                    💡 代码样式标签：
-                                    font-mono = 等宽字体
-                                    text-blue-400 = 蓝色文字
-                                    border-blue-500/30 = 蓝色边框，30% 不透明度
-                                    bg-blue-500/10 = 蓝色背景，10% 不透明度
-                                -->
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-1 group-hover:text-blue-600 transition-colors">Dental Ease</h3>
-                        <p class="text-sm text-light-muted dark:text-dark-muted">A responsive booking platform for dental clinics.</p>
-                    </a>
-                </div>
-            </section>
-
-            <!-- ==================== 02. Coding Projects 部分 ==================== -->
-            <section id="coding" class="scroll-mt-32 mb-40">
-                <div class="mb-10 flex items-end justify-between border-b border-gray-100 dark:border-dark-border pb-4">
-                    <h2 class="text-xl font-semibold tracking-tight">
-                        <span class="text-light-muted dark:text-dark-muted mr-2 opacity-50">02.</span>
-                        Coding & AI
-                    </h2>
-                    <span class="text-xs text-light-muted dark:text-dark-muted hidden md:inline-block">PYTHON / REACT / ML</span>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    
-                    <!-- Code Project 1: FridgeGenie -->
-                    <a href="projects/fridge-genie.html" class="group block hover-trigger">
-                       <div class="bg-light-card dark:bg-dark-card border border-transparent dark:border-dark-border rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-2xl dark:group-hover:shadow-orange-900/10 group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-[#0a0a0a]">
-                               <div class="w-32 h-20 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm flex items-center justify-center">
-                               <!-- 
-                                   w-32 = 宽度 128 像素
-                                   h-20 = 高度 80 像素
-                               -->
-                                   <span class="text-sm font-mono">Fridge.ai</span>
-                               </div>
-                           </div>
-                       </div>
-                       <h3 class="text-lg font-semibold mb-1 group-hover:text-orange-500 transition-colors">FridgeGenie</h3>
-                       <!-- group-hover:text-orange-500 = 悬停时变橙色 -->
-                       
-                       <p class="text-sm text-light-muted dark:text-dark-muted">Computer vision powered food inventory assistant.</p>
-                       
-                       <!-- 技术标签 -->
-                       <div class="flex gap-2 mt-3">
-                       <!-- gap-2 = 标签间距 8 像素 -->
-                           <span class="text-[10px] font-mono border border-gray-200 dark:border-dark-border px-1.5 py-0.5 rounded text-gray-400">Python</span>
-                           <!-- 
-                               💡 技术标签样式：
-                               text-[10px] = 字体 10px
-                               px-1.5 = 左右内边距 6 像素
-                               py-0.5 = 上下内边距 2 像素
-                               rounded = 小圆角
-                           -->
-                           <span class="text-[10px] font-mono border border-gray-200 dark:border-dark-border px-1.5 py-0.5 rounded text-gray-400">OpenCV</span>
-                       </div>
-                    </a>
-                    
-                    <!-- Code Project 2: Portfolio -->
-                    <a href="#" class="group block hover-trigger">
-                        <div class="bg-light-card dark:bg-dark-card border border-transparent dark:border-dark-border rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative transition-all duration-500 group-hover:shadow-2xl dark:group-hover:shadow-green-900/10 group-hover:-translate-y-1">
-                            <div class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-[#0a0a0a]">
-                                <span class="text-2xl">⚡️</span>
-                                <!-- 
-                                    text-2xl = emoji 大小 24px
-                                    💡 可以替换成任何 emoji
-                                -->
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-1 group-hover:text-green-500 transition-colors">Portfolio V1</h3>
-                        <p class="text-sm text-light-muted dark:text-dark-muted">The website you are looking at right now.</p>
-                    </a>
-                </div>
-            </section>
-
-            <!-- ==================== 03. Experiments 部分 ==================== -->
-            <section id="experiments" class="scroll-mt-32 mb-40">
-                <div class="mb-10 flex items-end justify-between border-b border-gray-100 dark:border-dark-border pb-4">
-                    <h2 class="text-xl font-semibold tracking-tight">
-                        <span class="text-light-muted dark:text-dark-muted mr-2 opacity-50">03.</span>
-                        Experiments
-                    </h2>
-                    <span class="text-xs text-light-muted dark:text-dark-muted hidden md:inline-block">PHOTO / VISUALS</span>
-                </div>
-                
-                <!-- 不规则网格布局 -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-                <!-- 
-                    🎨 不规则网格：
-                    grid-cols-2 = 手机端 2 列
-                    md:grid-cols-4 = 桌面端 4 列
-                    gap-4 = 间距 16 像素
-                    auto-rows-[200px] = 每行高度 200 像素
-                -->
-                    
-                    <!-- 大图（占 2×2） -->
-                    <div class="col-span-2 row-span-2 rounded-2xl overflow-hidden bg-light-card dark:bg-dark-card relative group hover-trigger">
-                    <!-- 
-                        col-span-2 = 占 2 列
-                        row-span-2 = 占 2 行
-                    -->
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Art">
-                        <!-- 
-                            opacity-90 = 默认 90% 不透明度
-                            group-hover:opacity-100 = 悬停时完全显示
-                            group-hover:scale-105 = 悬停时放大 105%
-                            duration-700 = 动画持续 700 毫秒
-                        -->
-                    </div>
-                    
-                    <!-- 小图 -->
-                    <div class="rounded-2xl overflow-hidden bg-light-card dark:bg-dark-card relative group hover-trigger">
-                    <!-- 占 1×1（默认） -->
-                         <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Photo">
-                    </div>
-                    
-                    <!-- Emoji 卡片 -->
-                     <div class="rounded-2xl bg-light-card dark:bg-dark-card border border-gray-100 dark:border-dark-border flex items-center justify-center hover-trigger group">
-                        <span class="text-2xl group-hover:scale-110 transition-transform">🎨</span>
-                        <!-- 悬停时放大 110% -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== 04. Resume / CV 部分 ==================== -->
-            <section id="resume" class="scroll-mt-32">
-                <div class="mb-10 flex items-end justify-between border-b border-gray-100 dark:border-dark-border pb-4">
-                    <h2 class="text-xl font-semibold tracking-tight">
-                        <span class="text-light-muted dark:text-dark-muted mr-2 opacity-50">04.</span>
-                        Resume / CV
-                    </h2>
-                    <a href="#" class="text-xs font-medium text-blue-600 hover:underline hover-trigger">Download PDF ↓</a>
-                    <!-- 
-                        💡 如何添加真实的 PDF 下载？
-                        把 href="#" 改成 href="assets/files/resume.pdf"
-                        并添加 download 属性：
-                        <a href="assets/files/resume.pdf" download="Yunning_Tang_Resume.pdf">
-                    -->
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-12">
-                <!-- 
-                    2 列布局（桌面端）
-                    gap-12 = 列间距 48 像素
-                -->
-                    
-                    <!-- 左列：Experience -->
-                    <div class="space-y-8">
-                    <!-- space-y-8 = 子元素之间垂直间距 32 像素 -->
-                       <h3 class="text-sm font-bold uppercase tracking-wider text-light-muted dark:text-dark-muted">Experience</h3>
-                       <!-- 
-                           uppercase = 大写
-                           tracking-wider = 字母间距加宽
-                       -->
-                       
-                       <!-- 经历条目 1 -->
-                       <div class="relative pl-8 border-l border-gray-200 dark:border-dark-border">
-                       <!-- 
-                           📍 时间线样式：
-                           relative = 相对定位
-                           pl-8 = 左内边距 32 像素（给左边框留空间）
-                           border-l = 左边框（竖线）
-                       -->
-                           <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-700"></div>
-                           <!-- 
-                               🔵 时间线圆点：
-                               absolute = 绝对定位
-                               -left-[5px] = 左偏移 -5px（让圆点在线上）
-                               top-2 = 顶部偏移 8 像素
-                               w-2.5 h-2.5 = 宽高 10 像素
-                               rounded-full = 圆形
-                           -->
-                           <h4 class="text-lg font-semibold">Product Designer</h4>
-                           <p class="text-sm text-light-muted dark:text-dark-muted mb-2">Tech Company Inc. · 2024 — Present</p>
-                           <p class="text-light-muted dark:text-dark-muted text-sm leading-relaxed">
-                               Leading the design system overhaul and improving accessibility.
-                           </p>
-                       </div>
-                       
-                       <!-- 经历条目 2 -->
-                       <div class="relative pl-8 border-l border-gray-200 dark:border-dark-border">
-                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-700"></div>
-                           <h4 class="text-lg font-semibold">UX Research Intern</h4>
-                           <p class="text-sm text-light-muted dark:text-dark-muted mb-2">University Lab · 2023 — 2024</p>
-                       </div>
-                   </div>
-
-                   <!-- 右列：Core Skills -->
-                   <div class="space-y-8">
-                       <h3 class="text-sm font-bold uppercase tracking-wider text-light-muted dark:text-dark-muted">Core Skills</h3>
-                       
-                       <!-- 技能卡片网格 -->
-                       <div class="grid grid-cols-2 gap-4">
-                       <!-- grid-cols-2 = 2 列 -->
-                           
-                           <!-- 技能卡片 1 -->
-                           <div class="p-4 rounded-xl bg-light-card dark:bg-dark-card border border-gray-100 dark:border-dark-border">
-                           <!-- 
-                               p-4 = 内边距 16 像素（所有方向）
-                               rounded-xl = 圆角 12 像素
-                           -->
-                               <div class="font-medium mb-1">Design</div>
-                               <!-- font-medium = 字重 500 -->
-                               <div class="text-xs text-light-muted dark:text-dark-muted">Figma, Adobe CC, Blender</div>
-                           </div>
-                           
-                           <!-- 技能卡片 2 -->
-                           <div class="p-4 rounded-xl bg-light-card dark:bg-dark-card border border-gray-100 dark:border-dark-border">
-                               <div class="font-medium mb-1">Code</div>
-                               <div class="text-xs text-light-muted dark:text-dark-muted">React, Python, Tailwind</div>
-                           </div>
-                           
-                           <!-- 技能卡片 3（占 2 列） -->
-                           <div class="col-span-2 p-4 rounded-xl bg-light-card dark:bg-dark-card border border-gray-100 dark:border-dark-border">
-                           <!-- col-span-2 = 占 2 列 -->
-                               <div class="font-medium mb-1">AI / Data</div>
-                               <div class="text-xs text-light-muted dark:text-dark-muted">PyTorch, OpenCV, NumPy</div>
-                           </div>
-                       </div>
-                   </div>
-                </div>
-            </section>
-
-        </main>
+<!-- Slide-out Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <div class="name">Yunning 'Riley' Tang</div>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="sidebar-inner">
+  <div class="avatar"><img src="https://avatars.githubusercontent.com/u/101422129?v=4" alt="Riley Tang"></div>
+  <a href="#about" class="about-link active">About</a>
+  <nav><ul>
+    <li><a href="#design"><span class="n">01.</span> Design Projects</a></li>
+    <li><a href="#coding"><span class="n">02.</span> Coding Projects</a></li>
+    <li><a href="#experiments"><span class="n">03.</span> Experiments / Arts</a></li>
+    <li><a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer"><span class="n">04.</span> Resume / CV <span class="ext">↗</span></a></li>
+  </ul></nav>
+  </div>
+  <div class="sidebar-foot">
+    <div class="socials">
+      <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+      <a href="#" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
+      <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="#" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></a>
+      <a href="#" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+      <a href="#" title="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.9 5.3a16.6 16.6 0 0 0-4.1-1.3 12.1 12.1 0 0 0-.5 1.1 15.4 15.4 0 0 0-4.6 0 12 12 0 0 0-.5-1.1 16.5 16.5 0 0 0-4.1 1.3A17.2 17.2 0 0 0 2 17.2a16.7 16.7 0 0 0 5.1 2.6 12.2 12.2 0 0 0 1.1-1.7 10.8 10.8 0 0 1-1.7-.8l.4-.3a11.9 11.9 0 0 0 10.2 0l.4.3a10.8 10.8 0 0 1-1.7.8 12 12 0 0 0 1 1.7 16.7 16.7 0 0 0 5.2-2.6A17.2 17.2 0 0 0 18.9 5.3zM8.7 14.8a1.9 1.9 0 0 1-1.8-2 1.9 1.9 0 0 1 1.8-2 1.9 1.9 0 0 1 1.8 2 1.9 1.9 0 0 1-1.8 2zm6.6 0a1.9 1.9 0 0 1-1.8-2 1.9 1.9 0 0 1 1.8-2 1.9 1.9 0 0 1 1.8 2 1.9 1.9 0 0 1-1.8 2z"/></svg></a>
     </div>
+  </div>
+</aside>
 
-    <!-- ==================== JavaScript 代码 ==================== -->
-    <script>
-        /* ========== 1. 深色/浅色模式切换逻辑 ========== */
-        const themeBtn = document.getElementById('theme-toggle');
-        const darkIcon = document.getElementById('theme-toggle-dark-icon');
-        const lightIcon = document.getElementById('theme-toggle-light-icon');
-        
-        // 初始化主题（根据本地存储或系统偏好）
-        function initTheme() {
-            // 如果本地存储有 'dark'，或者没有存储但系统偏好是深色模式
-            if (localStorage.getItem('color-theme') === 'dark' || 
-                (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');  // 添加 dark 类
-                lightIcon.classList.remove('hidden');  // 显示太阳图标（表示可以切换到浅色）
-            } else {
-                document.documentElement.classList.remove('dark');  // 移除 dark 类
-                darkIcon.classList.remove('hidden');  // 显示月亮图标（表示可以切换到深色）
-            }
-        }
-        initTheme();  // 页面加载时执行
+<!-- Main Content -->
+<main class="content">
+  <section class="hero" id="about">
+    <div class="hero-name">Yunning <em>'Riley'</em> Tang</div>
+    <div id="hero3d"></div>
+    <div class="hero-text">
+      <h1>I build <span class="hl-t">human-centered technologies</span> that honor learner complexity through <span class="hl-g">multimodal interaction</span> and reflective inquiry.</h1>
+      <p class="bio">Product designer & developer bridging complex AI models and intuitive interfaces.</p>
+      <p class="detail">Currently studying <strong>Human-Computer Interaction</strong> @UofT.</p>
+    </div>
+  </section>
+  <section class="sec fi"><div class="cap-title">Tech Stack</div><div class="cap-grid">
+    <div class="cap-col"><div class="ci">&lt;/&gt;</div><h4>Language / IDE</h4><div class="tags"><span class="t">Python</span><span class="t">C++</span><span class="t">JavaScript</span><span class="t">TypeScript</span><span class="t">VS Code</span></div></div>
+    <div class="cap-col"><div class="ci">◫</div><h4>Frontend</h4><div class="tags"><span class="t">React</span><span class="t">Next.js</span><span class="t">HTML/CSS</span><span class="t">Tailwind</span><span class="t">Three.js</span></div></div>
+    <div class="cap-col"><div class="ci">⊞</div><h4>AI / ML Frameworks</h4><div class="tags"><span class="t">PyTorch</span><span class="t">TensorFlow</span><span class="t">scikit-learn</span><span class="t">OpenCV</span></div></div>
+    <div class="cap-col"><div class="ci">◎</div><h4>Design &amp; Tools</h4><div class="tags"><span class="t">Figma</span><span class="t">Canva</span><span class="t">Git</span><span class="t">GitHub</span><span class="t">Docker</span></div></div>
+  </div></section>
+  <section class="sec fi" id="design"><div class="sh"><div class="left"><span class="sn">01.</span><h2>Design Projects</h2></div><div class="right"><a href="design.html" class="va">View all ↗</a></div></div><div class="pg">
+    <a href="projects/canvas-redesign.html" class="pc" data-delay="0" data-colors='["#041a2e","#0a3d5c","#0d4f5a"]' style="text-decoration:none;color:inherit;display:block"><div class="th"><canvas></canvas><div class="icon">C</div></div><div class="bd"><div class="card-tags"><span>UX Research</span><span>UI Design</span></div><h3>Canvas Redesign</h3><p>Improving student learning experience through data-driven research.</p></div></a>
+    <div class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'><div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div><div class="bd"><div class="card-tags"><span>Product Design</span><span>Responsive</span></div><h3>Dental Ease</h3><p>A responsive booking platform for dental clinics.</p></div></div>
+    <div class="pc" data-delay="160" data-colors='["#081520","#0d1f2e","#0a2530"]' style="pointer-events:none;opacity:.7"><div class="th"><canvas></canvas><div class="icon" style="font-size:.95rem;font-family:var(--bd);font-style:normal;color:var(--text-3)">+</div></div><div class="bd"><h3>More Projects</h3><p>Coming soon.</p></div></div>
+  </div></section>
+  <section class="sec fi" id="coding"><div class="sh"><div class="left"><span class="sn">02.</span><h2>Coding Projects</h2></div><div class="right"><a href="coding.html" class="va">View all ↗</a></div></div><div class="pg">
+    <a href="projects/fridge-genie.html" class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]' style="text-decoration:none;color:inherit;display:block"><div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div><div class="bd"><div class="card-tags"><span>Python</span><span>OpenCV</span></div><h3>FridgeGenie</h3><p>Computer vision powered food inventory assistant.</p></div></a>
+    <div class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'><div class="th"><canvas></canvas><div class="icon">⚡</div></div><div class="bd"><div class="card-tags"><span>HTML/CSS</span><span>JavaScript</span></div><h3>Portfolio Architecture</h3><p>The editorial design system you are looking at.</p></div></div>
+  </div></section>
+  <section class="sec fi" id="experiments"><div class="sh"><div class="left"><span class="sn">03.</span><h2>Experiments / Arts</h2></div><div class="right"><a href="#" class="va">View all ↗</a></div></div><div class="eg">
+    <div class="ec"><div class="ef" style="background:linear-gradient(160deg,#0a3d5c,#18a8a2 40%,#0d4f5a 70%,#06252e)"></div><div class="el">01</div></div>
+    <div class="ec"><div class="ef" style="background:linear-gradient(135deg,#18e0a0,#38d8c8 30%,#2878e8 65%,#0a3d5c)"></div><div class="el">02</div></div>
+    <div class="ec"><div class="ef" style="background:var(--glass)"></div><div class="el" style="color:var(--text-3)">More...</div></div>
+  </div></section>
+  <div style="height:60px"></div>
+</main>
 
-        // 点击主题切换按钮
-        themeBtn.addEventListener('click', () => {
-            // 切换图标显示
-            darkIcon.classList.toggle('hidden');
-            lightIcon.classList.toggle('hidden');
-            
-            // 切换主题
-            if (document.documentElement.classList.contains('dark')) {
-                // 当前是深色，切换到浅色
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');  // 保存到本地存储
-            } else {
-                // 当前是浅色，切换到深色
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');  // 保存到本地存储
-            }
-        });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const html=document.documentElement;
 
-        /* ========== 2. 自定义光标跟随效果 ========== */
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        
-        // 只在桌面设备上启用自定义光标
-        if (window.matchMedia("(pointer: fine)").matches) {
-            // 监听鼠标移动
-            window.addEventListener('mousemove', (e) => {
-                // 小圆点立即跟随鼠标
-                cursorDot.style.left = `${e.clientX}px`;
-                cursorDot.style.top = `${e.clientY}px`;
-                
-                // 大圆环延迟跟随（产生拖尾效果）
-                cursorOutline.animate(
-                    { left: `${e.clientX}px`, top: `${e.clientY}px` }, 
-                    { duration: 500, fill: "forwards" }  // 500 毫秒动画
-                );
-            });
-            
-            // 给所有可悬停元素添加效果
-            document.querySelectorAll('.hover-trigger').forEach(el => {
-                // 鼠标进入时：body 添加 'hovering' 类
-                el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-                // 鼠标离开时：body 移除 'hovering' 类
-                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-            });
-        }
-        
-        /* ========== 3. ScrollSpy 导航高亮逻辑 ========== */
-        const sections = document.querySelectorAll('section');  // 获取所有 section
-        const navLinks = document.querySelectorAll('.nav-link');  // 获取所有导航链接
+// ===== THEME TOGGLE =====
+document.getElementById('themeBtn').addEventListener('click',()=>{const n=html.dataset.theme==='dark'?'light':'dark';html.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}});
+try{const s=localStorage.getItem('theme');if(s)html.dataset.theme=s}catch(e){}
 
-        // 监听页面滚动
-        window.addEventListener('scroll', () => {
-            let current = '';  // 当前激活的 section ID
-            
-            // 遍历所有 section，找出当前在视野中的
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;  // section 距离页面顶部的距离
-                
-                // 如果滚动距离 >= (section 顶部 - 300px)，说明 section 进入视野
-                if (scrollY >= (sectionTop - 300)) {
-                    current = section.getAttribute('id');  // 记录这个 section 的 ID
-                }
-            });
+// ===== SIDEBAR TOGGLE =====
+const sidebar=document.getElementById('sidebar');
+function toggleSidebar(){const open=sidebar.classList.toggle('open');document.body.classList.toggle('sb-open',open)}
+function closeSidebar(){sidebar.classList.remove('open');document.body.classList.remove('sb-open')}
+document.getElementById('menuBtn').addEventListener('click',toggleSidebar);
+document.getElementById('sidebarClose').addEventListener('click',closeSidebar);
+sidebar.querySelectorAll('nav a, .about-link').forEach(a=>a.addEventListener('click',closeSidebar));
 
-            // 遍历所有导航链接，更新激活状态
-            navLinks.forEach(link => {
-                link.classList.remove('active');  // 先移除所有链接的 active 类
-                
-                // 如果链接的 href 包含当前 section ID，添加 active 类
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
+// ===== TOPBAR NAV ACTIVE STATE =====
+const topNavs=document.querySelectorAll('.topbar-nav a');
 
-        /* ========== 4. 手机端菜单按钮（占位） ========== */
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            alert('Mobile menu would open here in a full implementation.');
-            // 💡 这里可以展开一个真实的手机端菜单
-        });
-    </script>
+// ===== SUBTLE WATER RIPPLE (1/4 res, softer) =====
+!function(){const rc=document.getElementById('rippleCanvas'),rx=rc.getContext('2d');let W,H,b1,b2,img;
+function init(){W=Math.floor(innerWidth/4);H=Math.floor(innerHeight/4);rc.width=innerWidth;rc.height=innerHeight;b1=new Int16Array(W*H);b2=new Int16Array(W*H);img=rx.createImageData(W,H)}
+init();addEventListener('resize',init);
+function drop(cx,cy,r,s){cx=Math.floor(cx/4);cy=Math.floor(cy/4);for(let y=cy-r;y<cy+r;y++)for(let x=cx-r;x<cx+r;x++)if(x>=0&&x<W&&y>=0&&y<H&&(x-cx)*(x-cx)+(y-cy)*(y-cy)<r*r)b1[y*W+x]+=s}
+let lt=0;document.addEventListener('mousemove',e=>{const n=Date.now();if(n-lt>60){drop(e.clientX,e.clientY,3,100);lt=n}},true);
+addEventListener('click',e=>drop(e.clientX,e.clientY,6,400));
+setInterval(()=>drop(Math.random()*W*4,Math.random()*H*4,2+Math.random()*3,60+Math.random()*80),2500);
+function step(){requestAnimationFrame(step);const dk=html.dataset.theme==='dark';const bR=dk?5:240,bG=dk?11:244,bB=dk?16:247;
+for(let i=W+1;i<W*(H-1)-1;i++){b2[i]=((b1[i-1]+b1[i+1]+b1[i-W]+b1[i+W])>>1)-b2[i];b2[i]-=b2[i]>>5}
+const d=img.data;for(let i=0;i<W*H;i++){const v=b2[i],sh=Math.max(-30,Math.min(30,v>>3));d[i*4]=Math.min(255,Math.max(0,bR+sh+(dk&&v>12?v>>4:0)));d[i*4+1]=Math.min(255,Math.max(0,bG+sh+(dk&&v>12?v>>3:0)));d[i*4+2]=Math.min(255,Math.max(0,bB+sh+(dk&&v>12?v>>3:0)+(dk&&v>20?4:0)));d[i*4+3]=dk?22:14}
+rx.putImageData(img,0,0);rx.save();rx.globalCompositeOperation='copy';rx.drawImage(rc,0,0,W,H,0,0,rc.width,rc.height);rx.restore();
+const t=b1;b1=b2;b2=t}step()}();
+
+// ===== 3D SACRED GEOMETRY =====
+!function(){const c=document.getElementById('hero3d'),W=c.clientWidth,H=c.clientHeight;
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(36,W/H,.1,100);
+cam.position.set(0,0,4.5);cam.lookAt(0,0,0);
+const ren=new THREE.WebGLRenderer({alpha:true,antialias:true});ren.setSize(W,H);ren.setPixelRatio(Math.min(devicePixelRatio,2));c.appendChild(ren.domElement);
+const outerGroup=new THREE.Group(),innerGroup=new THREE.Group(),root=new THREE.Group();
+root.add(outerGroup);root.add(innerGroup);scene.add(root);
+const icoE=new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.35,0));
+const icoM=new THREE.LineBasicMaterial({color:0x18a8a2,transparent:true,opacity:.1});
+outerGroup.add(new THREE.LineSegments(icoE,icoM));
+const octE=new THREE.EdgesGeometry(new THREE.OctahedronGeometry(1.0,0));
+const octM=new THREE.LineBasicMaterial({color:0x38d8c8,transparent:true,opacity:.13});
+const octW=new THREE.LineSegments(octE,octM);outerGroup.add(octW);
+const tetE=new THREE.EdgesGeometry(new THREE.TetrahedronGeometry(0.65,0));
+const tetM=new THREE.LineBasicMaterial({color:0x18e0a0,transparent:true,opacity:.16});
+const tetW=new THREE.LineSegments(tetE,tetM);outerGroup.add(tetW);
+const shell=new THREE.Mesh(new THREE.SphereGeometry(1.5,32,32),new THREE.MeshBasicMaterial({color:0x18a8a2,transparent:true,opacity:.012,side:THREE.BackSide}));
+outerGroup.add(shell);
+const sc=.52;
+const S=[{x:0,y:1.6*sc,z:0},{x:-.65*sc,y:1.0*sc,z:0},{x:.65*sc,y:1.0*sc,z:0},{x:-.65*sc,y:.28*sc,z:0},{x:.65*sc,y:.28*sc,z:0},{x:0,y:0,z:0},{x:-.65*sc,y:-.48*sc,z:0},{x:.65*sc,y:-.48*sc,z:0},{x:0,y:-.9*sc,z:0},{x:0,y:-1.5*sc,z:0}];
+const paths=[[0,1],[0,2],[0,5],[1,2],[1,3],[1,5],[2,4],[2,5],[3,4],[3,5],[3,6],[4,5],[4,7],[5,6],[5,7],[5,8],[6,7],[6,8],[7,8],[8,9],[3,9],[4,9]];
+const cols=[0xd0f0f0,0x8ab8d0,0x1a3048,0x3088d8,0xc06868,0xd0c870,0x38c888,0xd09848,0x7868b8,0x48a8a0];
+const sph=[];
+S.forEach((s,i)=>{const core=new THREE.Mesh(new THREE.SphereGeometry(.028,20,20),new THREE.MeshBasicMaterial({color:cols[i],transparent:true,opacity:.9}));core.position.set(s.x,s.y,s.z);innerGroup.add(core);sph.push(core);const gl=new THREE.Mesh(new THREE.SphereGeometry(.065,12,12),new THREE.MeshBasicMaterial({color:cols[i],transparent:true,opacity:.08}));gl.position.set(s.x,s.y,s.z);innerGroup.add(gl)});
+paths.forEach(([a,b])=>{const col=a<b?cols[a]:cols[b];const lm=new THREE.LineBasicMaterial({color:col,transparent:true,opacity:.1});const geo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(S[a].x,S[a].y,S[a].z),new THREE.Vector3(S[b].x,S[b].y,S[b].z)]);innerGroup.add(new THREE.Line(geo,lm))});
+const pillarM=new THREE.LineBasicMaterial({color:0x18a8a2,transparent:true,opacity:.04});
+[-.65*sc,0,.65*sc].forEach(x=>{const geo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,-1.6*sc,0),new THREE.Vector3(x,1.7*sc,0)]);innerGroup.add(new THREE.Line(geo,pillarM))});
+root.rotation.y=.3;let tx=0,ty=0;
+c.addEventListener('mousemove',e=>{const b=c.getBoundingClientRect();ty=(e.clientX-b.left-b.width/2)/b.width*.6;tx=(e.clientY-b.top-b.height/2)/b.height*.4});
+c.addEventListener('mouseleave',()=>{tx=0;ty=0});
+let t=0;
+function anim(){requestAnimationFrame(anim);t+=.008;root.rotation.y+=.004;root.rotation.x+=(tx*.2-root.rotation.x)*.02;octW.rotation.y-=.002;octW.rotation.x+=.001;tetW.rotation.y+=.003;tetW.rotation.z+=.0015;sph.forEach((s,i)=>{const p=1+Math.sin(t*2+i*.6)*.12;s.scale.set(p,p,p)});const dk=html.dataset.theme==='dark';icoM.opacity=dk?.1:.05;octM.opacity=dk?.13:.06;tetM.opacity=dk?.16:.08;shell.material.opacity=dk?.012:.006;ren.render(scene,cam)}anim();
+addEventListener('resize',()=>{const w=c.clientWidth,h=c.clientHeight;cam.aspect=w/h;cam.updateProjectionMatrix();ren.setSize(w,h)});
+}();
+
+// ===== CARD BG =====
+document.querySelectorAll('.pc').forEach(card=>{const cv=card.querySelector('.th canvas');if(!cv)return;const c=cv.getContext('2d'),cols=JSON.parse(card.dataset.colors||'["#0a1a2e","#0d3040","#0a4035"]');
+let w,h;function rs(){const r=cv.parentElement.getBoundingClientRect();cv.width=r.width;cv.height=r.height;w=r.width;h=r.height}rs();addEventListener('resize',rs);
+let t=Math.random()*1000;function dr(){t+=.005;c.clearRect(0,0,w,h);for(let i=0;i<3;i++){const ox=Math.sin(t+i*2.1)*w*.25,oy=Math.cos(t*1.3+i*1.7)*h*.2;const g=c.createRadialGradient(w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,0,w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,Math.max(w,h)*.7);g.addColorStop(0,cols[i%cols.length]);g.addColorStop(1,'transparent');c.globalAlpha=.55;c.fillStyle=g;c.fillRect(0,0,w,h)}const hx=w*.5+Math.sin(t*1.5)*w*.3,hy=h*.5+Math.cos(t*1.1)*h*.3;const hg=c.createRadialGradient(hx,hy,0,hx,hy,w*.35);hg.addColorStop(0,'rgba(24,168,162,.12)');hg.addColorStop(1,'transparent');c.globalAlpha=1;c.fillStyle=hg;c.fillRect(0,0,w,h);requestAnimationFrame(dr)}dr()});
+
+// ===== SCROLL + NAV =====
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),+(e.target.dataset.delay||0));obs.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.fi,.pc').forEach(el=>obs.observe(el));
+const secs=[...document.querySelectorAll('[id]')].filter(s=>s.closest('.content')),navs=document.querySelectorAll('.sidebar nav a');
+addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-200)c=s.id});navs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c));topNavs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))});
+document.querySelectorAll('.cap-col').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.background=`radial-gradient(400px circle at ${e.clientX-r.left}px ${e.clientY-r.top}px,rgba(24,168,162,.06),transparent 45%)`});el.addEventListener('mouseleave',()=>{el.style.background=''})});
+</script>
 </body>
 </html>
