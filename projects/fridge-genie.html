@@ -50,7 +50,7 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 
 /* ===== SLIDE-OUT SIDEBAR ===== */
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:272px;z-index:40;padding:28px 24px 24px;display:flex;flex-direction:column;backdrop-filter:blur(48px) saturate(1.2);-webkit-backdrop-filter:blur(48px) saturate(1.2);background:var(--sidebar-bg);border-right:1px solid rgba(128,128,128,.1);transform:translateX(-100%);transition:transform .4s cubic-bezier(.23,1,.32,1),background .5s}
-.sidebar.open{transform:translateX(0)}
+.sidebar.open,body.sb-open .sidebar{transform:translateX(0)}
 .sidebar-inner{display:flex;flex-direction:column;align-items:flex-start}
 .sidebar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;width:100%}
 .sidebar-top .name{font-family:var(--hd);font-size:1.1rem;font-weight:500;letter-spacing:-.01em;line-height:1.3}
@@ -122,6 +122,7 @@ article ul li span.key{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
+<script>try{if(localStorage.getItem('sb-open'))document.body.classList.add('sb-open')}catch(e){}</script>
 <canvas id="rippleCanvas"></canvas>
 <div class="ocean"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
 
@@ -240,7 +241,7 @@ function toggleSidebar(){sidebar.classList.contains('open')?closeSidebar():openS
 document.getElementById('menuBtn').addEventListener('click',toggleSidebar);
 document.getElementById('sidebarClose').addEventListener('click',closeSidebar);
 sidebar.querySelectorAll('nav a, .about-link').forEach(a=>a.addEventListener('click',()=>{if(!a.getAttribute('href').includes('.html')&&!a.getAttribute('href').includes('.pdf'))closeSidebar()}));
-try{if(localStorage.getItem('sb-open')){const ns=document.createElement('style');ns.textContent='.sidebar,.content,.topbar{transition:none!important}';document.head.appendChild(ns);openSidebar();requestAnimationFrame(()=>ns.remove())}}catch(e){}
+try{if(localStorage.getItem('sb-open'))sidebar.classList.add('open')}catch(e){}
 
 // Ripple
 !function(){const rc=document.getElementById('rippleCanvas'),rx=rc.getContext('2d');let W,H,b1,b2,img;
