@@ -226,11 +226,13 @@ try{const s=localStorage.getItem('theme');if(s)html.dataset.theme=s}catch(e){}
 
 // ===== SIDEBAR TOGGLE =====
 const sidebar=document.getElementById('sidebar');
-function toggleSidebar(){const open=sidebar.classList.toggle('open');document.body.classList.toggle('sb-open',open)}
-function closeSidebar(){sidebar.classList.remove('open');document.body.classList.remove('sb-open')}
+function openSidebar(){sidebar.classList.add('open');document.body.classList.add('sb-open');try{localStorage.setItem('sb-open','1')}catch(e){}}
+function closeSidebar(){sidebar.classList.remove('open');document.body.classList.remove('sb-open');try{localStorage.setItem('sb-open','')}catch(e){}}
+function toggleSidebar(){sidebar.classList.contains('open')?closeSidebar():openSidebar()}
 document.getElementById('menuBtn').addEventListener('click',toggleSidebar);
 document.getElementById('sidebarClose').addEventListener('click',closeSidebar);
-sidebar.querySelectorAll('nav a, .about-link').forEach(a=>a.addEventListener('click',closeSidebar));
+sidebar.querySelectorAll('nav a, .about-link').forEach(a=>a.addEventListener('click',()=>{if(!a.getAttribute('href').includes('.html'))closeSidebar()}));
+try{if(localStorage.getItem('sb-open'))openSidebar()}catch(e){}
 
 // ===== TOPBAR NAV ACTIVE STATE =====
 const topNavs=document.querySelectorAll('.topbar-nav a');

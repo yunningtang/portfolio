@@ -234,11 +234,13 @@ try{const s=localStorage.getItem('theme');if(s)html.dataset.theme=s}catch(e){}
 
 // Sidebar
 const sidebar=document.getElementById('sidebar');
-function toggleSidebar(){const open=sidebar.classList.toggle('open');document.body.classList.toggle('sb-open',open)}
-function closeSidebar(){sidebar.classList.remove('open');document.body.classList.remove('sb-open')}
+function openSidebar(){sidebar.classList.add('open');document.body.classList.add('sb-open');try{localStorage.setItem('sb-open','1')}catch(e){}}
+function closeSidebar(){sidebar.classList.remove('open');document.body.classList.remove('sb-open');try{localStorage.setItem('sb-open','')}catch(e){}}
+function toggleSidebar(){sidebar.classList.contains('open')?closeSidebar():openSidebar()}
 document.getElementById('menuBtn').addEventListener('click',toggleSidebar);
 document.getElementById('sidebarClose').addEventListener('click',closeSidebar);
 sidebar.querySelectorAll('nav a, .about-link').forEach(a=>a.addEventListener('click',()=>{if(!a.getAttribute('href').includes('.html')&&!a.getAttribute('href').includes('.pdf'))closeSidebar()}));
+try{if(localStorage.getItem('sb-open'))openSidebar()}catch(e){}
 
 // Ripple
 !function(){const rc=document.getElementById('rippleCanvas'),rx=rc.getContext('2d');let W,H,b1,b2,img;
