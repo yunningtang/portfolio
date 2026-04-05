@@ -232,7 +232,7 @@ function toggleSidebar(){sidebar.classList.contains('open')?closeSidebar():openS
 document.getElementById('menuBtn').addEventListener('click',toggleSidebar);
 document.getElementById('sidebarClose').addEventListener('click',closeSidebar);
 sidebar.querySelectorAll('nav a, .about-link').forEach(a=>a.addEventListener('click',()=>{if(!a.getAttribute('href').includes('.html'))closeSidebar()}));
-try{if(localStorage.getItem('sb-open'))openSidebar()}catch(e){}
+try{if(localStorage.getItem('sb-open')){const ns=document.createElement('style');ns.textContent='.sidebar,.content,.topbar{transition:none!important}';document.head.appendChild(ns);openSidebar();requestAnimationFrame(()=>ns.remove())}}catch(e){}
 
 // ===== TOPBAR NAV ACTIVE STATE =====
 const topNavs=document.querySelectorAll('.topbar-nav a');
