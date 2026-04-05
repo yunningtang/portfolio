@@ -107,10 +107,12 @@ body.sb-open .content{margin-left:272px;max-width:calc(100% - 272px);padding-top
 
 @media(max-width:1100px){.pg{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.topbar-nav{display:none}body.sb-open .content{margin-left:0;max-width:100%}.pg{grid-template-columns:1fr}.content{padding:72px 16px 0}}
+html[data-sb] .sidebar{transform:translateX(0)}html[data-sb] .topbar{opacity:0;pointer-events:none;transform:translateY(-100%)}html[data-sb] .content{margin-left:272px;max-width:calc(100% - 272px);padding-top:32px}
+@media(max-width:700px){html[data-sb] .content{margin-left:0;max-width:100%}}
 </style>
+<script>try{if(localStorage.getItem('sb-open'))document.documentElement.dataset.sb='1'}catch(e){}</script>
 </head>
 <body>
-<script>try{if(localStorage.getItem('sb-open'))document.body.classList.add('sb-open')}catch(e){}</script>
 <canvas id="rippleCanvas"></canvas>
 <div class="ocean"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
 
@@ -208,7 +210,7 @@ function toggleSidebar(){sidebar.classList.contains('open')?closeSidebar():openS
 document.getElementById('menuBtn').addEventListener('click',toggleSidebar);
 document.getElementById('sidebarClose').addEventListener('click',closeSidebar);
 sidebar.querySelectorAll('nav a, .about-link').forEach(a=>a.addEventListener('click',()=>{if(!a.getAttribute('href').includes('.html'))closeSidebar()}));
-try{if(localStorage.getItem('sb-open'))sidebar.classList.add('open')}catch(e){}
+try{if(localStorage.getItem('sb-open')){sidebar.classList.add('open');document.body.classList.add('sb-open');delete document.documentElement.dataset.sb}}catch(e){}
 
 // ===== SUBTLE WATER RIPPLE =====
 !function(){const rc=document.getElementById('rippleCanvas'),rx=rc.getContext('2d');let W,H,b1,b2,img;
