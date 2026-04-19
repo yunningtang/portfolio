@@ -28,8 +28,10 @@ html[data-theme="light"] .ocean{opacity:.3}
 
 /* ===== TOP NAVBAR ===== */
 .topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 28px;backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);background:transparent}
-.topbar-name{font-size:.8125rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:-.01em;white-space:nowrap;transition:color .3s}
-.topbar-name:hover{color:var(--teal)}
+.topbar-left{display:flex;align-items:center;gap:16px}
+.topbar-logo{width:32px;height:32px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:transform .35s cubic-bezier(.23,1,.32,1)}
+.topbar-logo:hover{transform:scale(1.12)}
+.topbar-logo canvas{display:block}
 .topbar-nav{display:flex;align-items:center;gap:2px}
 .topbar-nav a{font-size:.75rem;font-weight:400;color:var(--text-3);text-decoration:none;padding:6px 14px;border-radius:20px;transition:all .35s cubic-bezier(.23,1,.32,1);white-space:nowrap}
 .topbar-nav a:hover{color:var(--text);background:rgba(24,168,162,.06)}
@@ -119,16 +121,16 @@ article ul li span.key{color:var(--text);font-weight:500}
 
 <!-- Top Navbar -->
 <header class="topbar">
-  <div style="display:flex;align-items:center;gap:8px">
+  <div class="topbar-left">
     <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-    <a href="../index.html" class="topbar-name">Riley Tang</a>
+    <a href="../index.html" class="topbar-logo" aria-label="Home"><canvas></canvas></a>
+    <nav class="topbar-nav">
+      <a href="../design.html">Design</a>
+      <a href="../coding.html" class="active">Coding</a>
+      <a href="../index.html#experiments">Experiments</a>
+      <a href="../assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+    </nav>
   </div>
-  <nav class="topbar-nav">
-    <a href="../design.html">Design</a>
-    <a href="../coding.html" class="active">Coding</a>
-    <a href="../index.html#experiments">Experiments</a>
-    <a href="../assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
-  </nav>
   <div class="topbar-right">
     <div class="socials">
       <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
@@ -221,6 +223,14 @@ try{const s=localStorage.getItem('theme');if(s)html.dataset.theme=s}catch(e){}
 
 // Mobile menu
 document.getElementById('menuBtn').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.toggle('open')});
+
+// Topbar logo (mini icosahedron)
+!function(){const c=document.querySelector('.topbar-logo canvas');if(!c)return;const x=c.getContext('2d'),sz=32,dpr=Math.min(devicePixelRatio,2);c.width=sz*dpr;c.height=sz*dpr;c.style.width=sz+'px';c.style.height=sz+'px';x.scale(dpr,dpr);
+const ph=(1+Math.sqrt(5))/2,V=[[0,1,ph],[0,-1,ph],[0,1,-ph],[0,-1,-ph],[1,ph,0],[-1,ph,0],[1,-ph,0],[-1,-ph,0],[ph,0,1],[-ph,0,1],[ph,0,-1],[-ph,0,-1]],E=[[0,1],[0,4],[0,5],[0,8],[0,9],[1,6],[1,7],[1,8],[1,9],[2,3],[2,4],[2,5],[2,10],[2,11],[3,6],[3,7],[3,10],[3,11],[4,5],[4,8],[4,10],[5,9],[5,11],[6,7],[6,8],[6,10],[7,9],[7,11],[8,10],[9,11]];
+let t=0;function lp(){requestAnimationFrame(lp);t+=.006;x.clearRect(0,0,sz,sz);const cx=sz/2,cy=sz/2,s=sz*.32,cY=Math.cos(t),sY=Math.sin(t),cX=Math.cos(t*.4),sX=Math.sin(t*.4);
+const P=V.map(([a,b,c])=>{const x1=a*cY+c*sY,z1=-a*sY+c*cY,y2=b*cX-z1*sX,z2=b*sX+z1*cX,p=1/(1+z2*.12);return[cx+x1*s*p,cy+y2*s*p,z2]});
+const dk=html.dataset.theme==='dark',es=E.map(([a,b])=>({a,b,z:(P[a][2]+P[b][2])/2}));es.sort((a,b)=>a.z-b.z);
+es.forEach(({a,b,z})=>{const d=(z+2.3)/4.6,op=dk?(.2+d*.6):(.22+d*.48);x.strokeStyle=`rgba(24,168,162,${op})`;x.lineWidth=1;x.beginPath();x.moveTo(P[a][0],P[a][1]);x.lineTo(P[b][0],P[b][1]);x.stroke()})}lp()}();
 
 // Ripple
 !function(){const rc=document.getElementById('rippleCanvas'),rx=rc.getContext('2d');let W,H,b1,b2,img;
