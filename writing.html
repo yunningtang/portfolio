@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coding Projects · Yunning (Riley) Tang</title>
+<title>Writing · Yunning (Riley) Tang</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +27,6 @@ html[data-theme="light"] .ocean{opacity:.3}
 @keyframes d2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,30px) scale(1.05)}66%{transform:translate(-80px,-40px) scale(1.08)}}
 @keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-60px) scale(1.05)}}
 
-/* ===== TOP NAVBAR ===== */
 .topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 28px;backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);background:transparent}
 .topbar-left{display:flex;align-items:center;gap:16px}
 .topbar-logo{width:32px;height:32px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:transform .35s cubic-bezier(.23,1,.32,1)}
@@ -50,7 +49,6 @@ html[data-theme="dark"] .theme-glass .im{opacity:1;transform:rotate(0) scale(1)}
 html[data-theme="light"] .theme-glass .is{opacity:1;transform:rotate(0) scale(1)}
 html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) scale(.4)}
 
-/* Mobile */
 .hamburger{display:none;width:36px;height:36px;border:none;background:none;color:var(--text-2);flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;transition:all .3s}
 .hamburger:hover{color:var(--text)}
 .hamburger span{display:block;width:18px;height:1.5px;background:currentColor;border-radius:1px;transition:all .3s}
@@ -62,41 +60,46 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .mobile-menu .mob-socials a{display:flex;width:28px;height:28px;padding:0;align-items:center;justify-content:center;border-radius:6px}
 .mobile-menu .mob-socials a svg{width:14px;height:14px}
 
-/* ===== CONTENT ===== */
-.content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0}
+.content{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:80px 32px 0}
 
-/* Page header */
 .page-header{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--glass-b);margin-bottom:32px;padding-top:16px}
 .page-header .left{display:flex;align-items:baseline;gap:10px}
 .page-header .sn{font-size:.9375rem;font-weight:600;color:var(--teal)}
 .page-header h1{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.01em}
 
-/* Project grid */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.pc{border-radius:14px;overflow:hidden;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);transition:all .45s cubic-bezier(.23,1,.32,1);opacity:0;transform:translateY(20px);text-decoration:none;color:inherit;display:block}
-.pc.vis{opacity:1;transform:translateY(0)}
-.pc:hover{border-color:var(--glass-bh);transform:translateY(-5px)!important;box-shadow:0 18px 52px rgba(0,0,0,.24),inset 0 1px 0 rgba(56,216,200,.04)}
-.pc .th{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.pc .th canvas{position:absolute;inset:0;width:100%;height:100%}
-.pc .th .icon{position:relative;z-index:1;width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.1);backdrop-filter:blur(12px);color:var(--cyan);box-shadow:0 5px 18px rgba(0,0,0,.2);transition:all .4s}
-.pc:hover .th .icon{transform:scale(1.08)}
-.pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
-.pc .bd{padding:16px 18px 20px}
-.pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.pc .bd .card-tags span{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:2px 8px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.1)}
-.pc .bd h3{font-size:.9375rem;font-weight:600;margin-bottom:5px;line-height:1.35;letter-spacing:-.01em}
-.pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
+/* Intro */
+.intro{font-size:.9375rem;font-weight:300;color:var(--text-2);line-height:1.85;margin-bottom:48px;max-width:640px}
+.intro strong{color:var(--text);font-weight:500}
+.intro .topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.intro .topics span{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:3px 10px;border-radius:5px;background:var(--tag-bg);border:1px solid var(--glass-b)}
 
-/* Fade-in */
+/* Writing list */
+.wl{display:flex;flex-direction:column;margin-bottom:48px}
+.wi{display:flex;align-items:flex-start;gap:24px;padding:22px 14px;border-bottom:1px solid var(--glass-b);transition:all .35s cubic-bezier(.23,1,.32,1);text-decoration:none;color:inherit;margin:0 -14px;border-radius:0}
+.wi:hover{background:rgba(24,168,162,.04);border-radius:10px;border-bottom-color:transparent}
+.wi .date{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-4);min-width:96px;flex-shrink:0;padding-top:6px}
+.wi .body{flex:1;min-width:0}
+.wi .tag{display:inline-block;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:2px 8px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.1);margin-bottom:10px}
+.wi h3{font-size:1rem;font-weight:600;line-height:1.4;margin-bottom:6px;letter-spacing:-.01em;transition:color .3s;color:var(--text)}
+.wi:hover h3{color:var(--teal)}
+.wi p{font-size:.8125rem;font-weight:300;color:var(--text-3);line-height:1.7}
+
+/* Empty state */
+.empty{padding:56px 24px 36px;text-align:center;border:1px dashed var(--glass-b);border-radius:14px;background:rgba(255,255,255,.02)}
+html[data-theme="light"] .empty{background:rgba(255,255,255,.2)}
+.empty .ink{display:inline-block;margin-bottom:14px;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:600;opacity:.8}
+.empty p{font-size:.875rem;font-weight:300;color:var(--text-2);line-height:1.8;max-width:440px;margin:0 auto}
+.empty p + p{margin-top:10px;font-size:.8rem;color:var(--text-3)}
+
 .fi{opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s}.fi.vis{opacity:1;transform:translateY(0)}
 
-@media(max-width:1100px){.pg{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){
   .topbar-nav,.topbar-right .socials{display:none}
   .hamburger{display:flex}
   .mobile-menu{display:block}
-  .pg{grid-template-columns:1fr}
   .content{padding:72px 16px 0}
+  .wi{flex-direction:column;align-items:flex-start;gap:8px;padding:18px 14px}
+  .wi .date{min-width:auto;padding-top:0}
 }
 </style>
 </head>
@@ -104,15 +107,14 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 <canvas id="rippleCanvas"></canvas>
 <div class="ocean"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
 
-<!-- Top Navbar -->
 <header class="topbar">
   <div class="topbar-left">
     <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     <a href="index.html" class="topbar-logo" aria-label="Home"><canvas></canvas></a>
     <nav class="topbar-nav">
       <a href="design.html">Design</a>
-      <a href="coding.html" class="active">Coding</a>
-      <a href="writing.html">Writing</a>
+      <a href="coding.html">Coding</a>
+      <a href="writing.html" class="active">Writing</a>
       <a href="index.html#experiments">Experiments</a>
       <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
     </nav>
@@ -128,11 +130,10 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
   </div>
 </header>
 
-<!-- Mobile dropdown menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="design.html">Design Projects</a>
-  <a href="coding.html" class="active">Coding Projects</a>
-  <a href="writing.html">Writing</a>
+  <a href="coding.html">Coding Projects</a>
+  <a href="writing.html" class="active">Writing</a>
   <a href="index.html#experiments">Experiments / Arts</a>
   <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume / CV ↗</a>
   <div class="mob-socials">
@@ -143,38 +144,38 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
   </div>
 </div>
 
-<!-- Main Content -->
 <main class="content">
   <div class="page-header fi">
-    <div class="left"><span class="sn">02.</span><h1>Coding & AI</h1></div>
+    <div class="left"><span class="sn">03.</span><h1>Writing</h1></div>
   </div>
 
-  <div class="pg">
-    <a href="projects/fridge-genie.html" class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]'>
-      <div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>Python</span><span>OpenCV</span></div>
-        <h3>FridgeGenie</h3>
-        <p>Computer vision powered food inventory assistant.</p>
-      </div>
-    </a>
+  <p class="intro fi">
+    Notes on <strong>HCI research</strong>, <strong>design craft</strong>, and the everyday questions that fall between disciplines. Drafted in Obsidian, shipped here when they settle into something worth reading.
+    <span class="topics">
+      <span>HCI Reflection</span>
+      <span>Project Retrospective</span>
+      <span>Technical Note</span>
+      <span>Essay</span>
+    </span>
+  </p>
 
-    <a href="#" class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'>
-      <div class="th"><canvas></canvas><div class="icon">⚡</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>HTML/CSS</span><span>JavaScript</span></div>
-        <h3>Portfolio Architecture</h3>
-        <p>The editorial design system you are looking at.</p>
+  <div class="wl">
+    <!-- Add article entries here. Example pattern:
+    <a href="writing/slug-name.html" class="wi">
+      <div class="date">2026 · Apr</div>
+      <div class="body">
+        <span class="tag">HCI Reflection</span>
+        <h3>Article Title Goes Here</h3>
+        <p>A one-line excerpt or subtitle.</p>
       </div>
     </a>
+    -->
+  </div>
 
-    <a href="#" class="pc" data-delay="160" data-colors='["#081520","#0d1f2e","#0a2530"]'>
-      <div class="th"><canvas></canvas><div class="icon" style="font-size:.95rem;color:var(--text-3)">+</div></div>
-      <div class="bd">
-        <h3>New Coding Project</h3>
-        <p>Coming soon.</p>
-      </div>
-    </a>
+  <div class="empty fi">
+    <div class="ink">— The ink is still wet —</div>
+    <p>First pieces are brewing. When a draft settles into something I'd stand behind, it lands here.</p>
+    <p>Meanwhile, you can find my thinking in the <a href="design.html" style="color:var(--teal)">project write-ups</a>.</p>
   </div>
 
   <div style="height:60px"></div>
@@ -221,14 +222,8 @@ const d=img.data;for(let i=0;i<W*H;i++){const v=b2[i],sh=Math.max(-30,Math.min(3
 rx.putImageData(img,0,0);rx.save();rx.globalCompositeOperation='copy';rx.drawImage(rc,0,0,W,H,0,0,rc.width,rc.height);rx.restore();
 const t=b1;b1=b2;b2=t}step()}();
 
-// Card BG
-document.querySelectorAll('.pc').forEach(card=>{const cv=card.querySelector('.th canvas');if(!cv)return;const c=cv.getContext('2d'),cols=JSON.parse(card.dataset.colors||'["#0a1a2e","#0d3040","#0a4035"]');
-let w,h;function rs(){const r=cv.parentElement.getBoundingClientRect();cv.width=r.width;cv.height=r.height;w=r.width;h=r.height}rs();addEventListener('resize',rs);
-let t=Math.random()*1000;function dr(){t+=.005;c.clearRect(0,0,w,h);for(let i=0;i<3;i++){const ox=Math.sin(t+i*2.1)*w*.25,oy=Math.cos(t*1.3+i*1.7)*h*.2;const g=c.createRadialGradient(w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,0,w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,Math.max(w,h)*.7);g.addColorStop(0,cols[i%cols.length]);g.addColorStop(1,'transparent');c.globalAlpha=.55;c.fillStyle=g;c.fillRect(0,0,w,h)}const hx=w*.5+Math.sin(t*1.5)*w*.3,hy=h*.5+Math.cos(t*1.1)*h*.3;const hg=c.createRadialGradient(hx,hy,0,hx,hy,w*.35);hg.addColorStop(0,'rgba(24,168,162,.12)');hg.addColorStop(1,'transparent');c.globalAlpha=1;c.fillStyle=hg;c.fillRect(0,0,w,h);requestAnimationFrame(dr)}dr()});
-
-// Scroll animations
 const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),+(e.target.dataset.delay||0));obs.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.fi,.pc').forEach(el=>obs.observe(el));
+document.querySelectorAll('.fi,.wi').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>

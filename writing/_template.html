@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coding Projects · Yunning (Riley) Tang</title>
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>Article Title · Yunning (Riley) Tang</title>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html[data-theme="dark"]{--bg:#050b10;--text:#d8e6ed;--text-2:#8faab8;--text-3:#506a78;--text-4:#2e4450;--glass:rgba(10,28,40,0.5);--glass-b:rgba(56,216,200,0.07);--glass-bh:rgba(56,216,200,0.16);--card-bg:rgba(10,28,40,0.45);--tag-bg:rgba(5,11,16,0.4)}
 html[data-theme="light"]{--bg:#f0f4f7;--text:#1a2a35;--text-2:#3a4f5c;--text-3:#5a7080;--text-4:#7a8e9a;--glass:rgba(255,255,255,0.55);--glass-b:rgba(20,80,80,0.1);--glass-bh:rgba(20,80,80,0.2);--card-bg:rgba(255,255,255,0.5);--tag-bg:rgba(255,255,255,0.6)}
-:root{--teal:#18a8a2;--green:#18e0a0;--cyan:#38d8c8;--blue:#2878e8;--font:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+:root{--teal:#18a8a2;--green:#18e0a0;--cyan:#38d8c8;--blue:#2878e8;--font:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--serif:'Lora',Georgia,serif}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .5s,color .5s;scrollbar-width:thin;scrollbar-color:rgba(128,128,128,.2) transparent}
 body::-webkit-scrollbar{width:6px}body::-webkit-scrollbar-track{background:transparent}body::-webkit-scrollbar-thumb{background:rgba(128,128,128,.2);border-radius:3px}
@@ -27,7 +27,6 @@ html[data-theme="light"] .ocean{opacity:.3}
 @keyframes d2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,30px) scale(1.05)}66%{transform:translate(-80px,-40px) scale(1.08)}}
 @keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-60px) scale(1.05)}}
 
-/* ===== TOP NAVBAR ===== */
 .topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 28px;backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);background:transparent}
 .topbar-left{display:flex;align-items:center;gap:16px}
 .topbar-logo{width:32px;height:32px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:transform .35s cubic-bezier(.23,1,.32,1)}
@@ -50,7 +49,6 @@ html[data-theme="dark"] .theme-glass .im{opacity:1;transform:rotate(0) scale(1)}
 html[data-theme="light"] .theme-glass .is{opacity:1;transform:rotate(0) scale(1)}
 html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) scale(.4)}
 
-/* Mobile */
 .hamburger{display:none;width:36px;height:36px;border:none;background:none;color:var(--text-2);flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;transition:all .3s}
 .hamburger:hover{color:var(--text)}
 .hamburger span{display:block;width:18px;height:1.5px;background:currentColor;border-radius:1px;transition:all .3s}
@@ -62,41 +60,58 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .mobile-menu .mob-socials a{display:flex;width:28px;height:28px;padding:0;align-items:center;justify-content:center;border-radius:6px}
 .mobile-menu .mob-socials a svg{width:14px;height:14px}
 
-/* ===== CONTENT ===== */
-.content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0}
+/* ===== ARTICLE ===== */
+.content{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:100px 28px 80px}
 
-/* Page header */
-.page-header{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--glass-b);margin-bottom:32px;padding-top:16px}
-.page-header .left{display:flex;align-items:baseline;gap:10px}
-.page-header .sn{font-size:.9375rem;font-weight:600;color:var(--teal)}
-.page-header h1{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.01em}
+.breadcrumb{font-size:.72rem;color:var(--text-3);margin-bottom:28px;display:flex;align-items:center;gap:6px;letter-spacing:.04em}
+.breadcrumb a{color:var(--text-3);transition:color .3s}.breadcrumb a:hover{color:var(--teal)}
+.breadcrumb .sep{opacity:.4}
 
-/* Project grid */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.pc{border-radius:14px;overflow:hidden;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);transition:all .45s cubic-bezier(.23,1,.32,1);opacity:0;transform:translateY(20px);text-decoration:none;color:inherit;display:block}
-.pc.vis{opacity:1;transform:translateY(0)}
-.pc:hover{border-color:var(--glass-bh);transform:translateY(-5px)!important;box-shadow:0 18px 52px rgba(0,0,0,.24),inset 0 1px 0 rgba(56,216,200,.04)}
-.pc .th{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.pc .th canvas{position:absolute;inset:0;width:100%;height:100%}
-.pc .th .icon{position:relative;z-index:1;width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.1);backdrop-filter:blur(12px);color:var(--cyan);box-shadow:0 5px 18px rgba(0,0,0,.2);transition:all .4s}
-.pc:hover .th .icon{transform:scale(1.08)}
-.pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
-.pc .bd{padding:16px 18px 20px}
-.pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.pc .bd .card-tags span{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:2px 8px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.1)}
-.pc .bd h3{font-size:.9375rem;font-weight:600;margin-bottom:5px;line-height:1.35;letter-spacing:-.01em}
-.pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
+.art-header{margin-bottom:40px}
+.art-header .meta{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-4);font-weight:500}
+.art-header .meta .tag{color:var(--teal);padding:3px 10px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.12)}
+.art-header .meta .dot{opacity:.4}
+.art-header h1{font-family:var(--serif);font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:600;line-height:1.2;letter-spacing:-.015em;margin-bottom:14px;color:var(--text)}
+.art-header .subtitle{font-family:var(--serif);font-style:italic;font-size:1.05rem;font-weight:400;color:var(--text-2);line-height:1.65}
 
-/* Fade-in */
+/* Body */
+article{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--text-2);line-height:1.8}
+article p{margin-bottom:20px}
+article p:first-of-type::first-letter{font-size:1.2em;font-weight:500;color:var(--text)}
+article strong{color:var(--text);font-weight:600}
+article em{font-style:italic}
+article a{color:var(--teal);border-bottom:1px solid rgba(24,168,162,.3);transition:border-color .3s}
+article a:hover{border-bottom-color:var(--teal)}
+article h2{font-family:var(--font);font-size:1.25rem;font-weight:600;color:var(--text);letter-spacing:-.01em;margin:48px 0 16px;line-height:1.35}
+article h3{font-family:var(--font);font-size:1rem;font-weight:600;color:var(--text);margin:32px 0 12px;line-height:1.4}
+article ul,article ol{padding-left:22px;margin:0 0 20px}
+article li{margin-bottom:8px}
+article ul{list-style:disc}
+article ol{list-style:decimal}
+article blockquote{margin:28px 0;padding:4px 0 4px 24px;border-left:3px solid var(--teal);font-family:var(--serif);font-style:italic;color:var(--text);font-size:1.05rem;line-height:1.6}
+article blockquote p{margin-bottom:6px}
+article blockquote cite{display:block;font-style:normal;font-family:var(--font);font-size:.75rem;font-weight:500;color:var(--text-3);margin-top:8px;letter-spacing:.03em}
+article code{font-family:'SF Mono','Monaco','Menlo',monospace;font-size:.85em;background:var(--tag-bg);padding:2px 6px;border-radius:4px;color:var(--text);border:1px solid var(--glass-b)}
+article pre{background:var(--card-bg);border:1px solid var(--glass-b);border-radius:10px;padding:18px 20px;overflow-x:auto;margin:24px 0;font-family:'SF Mono','Monaco','Menlo',monospace;font-size:.85rem;line-height:1.6;color:var(--text)}
+article pre code{background:none;padding:0;border:none;font-size:inherit}
+article hr{border:none;border-top:1px solid var(--glass-b);margin:40px auto;width:60%}
+article figure{margin:28px 0}
+article figure img{width:100%;border-radius:10px;border:1px solid var(--glass-b)}
+article figure figcaption{font-family:var(--font);font-size:.75rem;color:var(--text-3);text-align:center;margin-top:10px;font-style:italic}
+
+/* Footer */
+.art-footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--glass-b);display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+.art-footer a{color:var(--text-3);transition:color .3s}
+.art-footer a:hover{color:var(--teal)}
+
 .fi{opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s}.fi.vis{opacity:1;transform:translateY(0)}
 
-@media(max-width:1100px){.pg{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){
   .topbar-nav,.topbar-right .socials{display:none}
   .hamburger{display:flex}
   .mobile-menu{display:block}
-  .pg{grid-template-columns:1fr}
-  .content{padding:72px 16px 0}
+  .content{padding:80px 18px 60px}
+  article{font-size:1rem}
 }
 </style>
 </head>
@@ -104,17 +119,16 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 <canvas id="rippleCanvas"></canvas>
 <div class="ocean"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
 
-<!-- Top Navbar -->
 <header class="topbar">
   <div class="topbar-left">
     <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-    <a href="index.html" class="topbar-logo" aria-label="Home"><canvas></canvas></a>
+    <a href="../index.html" class="topbar-logo" aria-label="Home"><canvas></canvas></a>
     <nav class="topbar-nav">
-      <a href="design.html">Design</a>
-      <a href="coding.html" class="active">Coding</a>
-      <a href="writing.html">Writing</a>
-      <a href="index.html#experiments">Experiments</a>
-      <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+      <a href="../design.html">Design</a>
+      <a href="../coding.html">Coding</a>
+      <a href="../writing.html" class="active">Writing</a>
+      <a href="../index.html#experiments">Experiments</a>
+      <a href="../assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
     </nav>
   </div>
   <div class="topbar-right">
@@ -128,13 +142,12 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
   </div>
 </header>
 
-<!-- Mobile dropdown menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="design.html">Design Projects</a>
-  <a href="coding.html" class="active">Coding Projects</a>
-  <a href="writing.html">Writing</a>
-  <a href="index.html#experiments">Experiments / Arts</a>
-  <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume / CV ↗</a>
+  <a href="../design.html">Design Projects</a>
+  <a href="../coding.html">Coding Projects</a>
+  <a href="../writing.html" class="active">Writing</a>
+  <a href="../index.html#experiments">Experiments / Arts</a>
+  <a href="../assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume / CV ↗</a>
   <div class="mob-socials">
     <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
     <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
@@ -143,41 +156,64 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
   </div>
 </div>
 
-<!-- Main Content -->
 <main class="content">
-  <div class="page-header fi">
-    <div class="left"><span class="sn">02.</span><h1>Coding & AI</h1></div>
+  <div class="breadcrumb fi"><a href="../writing.html">Writing</a> <span class="sep">/</span> <span>Article slug</span></div>
+
+  <div class="art-header fi">
+    <div class="meta">
+      <span class="tag">HCI Reflection</span>
+      <span class="dot">·</span>
+      <span>2026 — Apr</span>
+      <span class="dot">·</span>
+      <span>6 min read</span>
+    </div>
+    <h1>Your Article Title Goes Here</h1>
+    <p class="subtitle">An optional subtitle or dek — one sentence that sets up the piece and invites the reader in.</p>
   </div>
 
-  <div class="pg">
-    <a href="projects/fridge-genie.html" class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]'>
-      <div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>Python</span><span>OpenCV</span></div>
-        <h3>FridgeGenie</h3>
-        <p>Computer vision powered food inventory assistant.</p>
-      </div>
-    </a>
+  <article class="fi">
+    <p>Opening paragraph. The first sentence matters most — put the hook here. Subsequent sentences earn the next click. The drop cap on this paragraph is automatic.</p>
 
-    <a href="#" class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'>
-      <div class="th"><canvas></canvas><div class="icon">⚡</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>HTML/CSS</span><span>JavaScript</span></div>
-        <h3>Portfolio Architecture</h3>
-        <p>The editorial design system you are looking at.</p>
-      </div>
-    </a>
+    <p>Second paragraph continues the thought. Use <strong>bold</strong> sparingly for emphasis, <em>italics</em> for nuance, and <a href="#">links</a> generously to connect ideas.</p>
 
-    <a href="#" class="pc" data-delay="160" data-colors='["#081520","#0d1f2e","#0a2530"]'>
-      <div class="th"><canvas></canvas><div class="icon" style="font-size:.95rem;color:var(--text-3)">+</div></div>
-      <div class="bd">
-        <h3>New Coding Project</h3>
-        <p>Coming soon.</p>
-      </div>
-    </a>
+    <h2>A Section Heading</h2>
+
+    <p>Headings break a long piece into readable chapters. Don't be afraid to make them declarative — a good H2 is half a summary.</p>
+
+    <blockquote>
+      <p>A pull quote or a line worth dwelling on. Use blockquotes for borrowed voices or for moments that deserve extra weight.</p>
+      <cite>— Source, if quoting someone</cite>
+    </blockquote>
+
+    <p>After the quote, explain why it mattered. A quote alone does no work.</p>
+
+    <h3>A Subsection</h3>
+
+    <ul>
+      <li>List items for enumerated thoughts.</li>
+      <li>Keep them parallel in structure.</li>
+      <li>Three is usually the right number.</li>
+    </ul>
+
+    <p>Code looks like this: <code>const idea = 'clarity';</code>. For longer snippets:</p>
+
+    <pre><code>function writeWell() {
+  while (draft.rough) {
+    trim(unnecessary);
+    sharpen(verbs);
+  }
+  return clarity;
+}</code></pre>
+
+    <hr>
+
+    <p>Closing paragraph. Land on a thought the reader can carry away. Don't summarize — end.</p>
+  </article>
+
+  <div class="art-footer fi">
+    <a href="../writing.html">← All writing</a>
+    <a href="#top">Back to top ↑</a>
   </div>
-
-  <div style="height:60px"></div>
 </main>
 
 <script>
@@ -221,14 +257,8 @@ const d=img.data;for(let i=0;i<W*H;i++){const v=b2[i],sh=Math.max(-30,Math.min(3
 rx.putImageData(img,0,0);rx.save();rx.globalCompositeOperation='copy';rx.drawImage(rc,0,0,W,H,0,0,rc.width,rc.height);rx.restore();
 const t=b1;b1=b2;b2=t}step()}();
 
-// Card BG
-document.querySelectorAll('.pc').forEach(card=>{const cv=card.querySelector('.th canvas');if(!cv)return;const c=cv.getContext('2d'),cols=JSON.parse(card.dataset.colors||'["#0a1a2e","#0d3040","#0a4035"]');
-let w,h;function rs(){const r=cv.parentElement.getBoundingClientRect();cv.width=r.width;cv.height=r.height;w=r.width;h=r.height}rs();addEventListener('resize',rs);
-let t=Math.random()*1000;function dr(){t+=.005;c.clearRect(0,0,w,h);for(let i=0;i<3;i++){const ox=Math.sin(t+i*2.1)*w*.25,oy=Math.cos(t*1.3+i*1.7)*h*.2;const g=c.createRadialGradient(w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,0,w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,Math.max(w,h)*.7);g.addColorStop(0,cols[i%cols.length]);g.addColorStop(1,'transparent');c.globalAlpha=.55;c.fillStyle=g;c.fillRect(0,0,w,h)}const hx=w*.5+Math.sin(t*1.5)*w*.3,hy=h*.5+Math.cos(t*1.1)*h*.3;const hg=c.createRadialGradient(hx,hy,0,hx,hy,w*.35);hg.addColorStop(0,'rgba(24,168,162,.12)');hg.addColorStop(1,'transparent');c.globalAlpha=1;c.fillStyle=hg;c.fillRect(0,0,w,h);requestAnimationFrame(dr)}dr()});
-
-// Scroll animations
 const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),+(e.target.dataset.delay||0));obs.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.fi,.pc').forEach(el=>obs.observe(el));
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
