@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Design Projects · Yunning (Riley) Tang</title>
+<title>About · Yunning (Riley) Tang</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +27,6 @@ html[data-theme="light"] .ocean{opacity:.3}
 @keyframes d2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,30px) scale(1.05)}66%{transform:translate(-80px,-40px) scale(1.08)}}
 @keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-60px) scale(1.05)}}
 
-/* ===== TOP NAVBAR ===== */
 .topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 28px;backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);background:transparent}
 .topbar-left{display:flex;align-items:center;gap:16px}
 .topbar-logo{width:32px;height:32px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:transform .35s cubic-bezier(.23,1,.32,1)}
@@ -50,7 +49,6 @@ html[data-theme="dark"] .theme-glass .im{opacity:1;transform:rotate(0) scale(1)}
 html[data-theme="light"] .theme-glass .is{opacity:1;transform:rotate(0) scale(1)}
 html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) scale(.4)}
 
-/* Mobile */
 .hamburger{display:none;width:36px;height:36px;border:none;background:none;color:var(--text-2);flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;transition:all .3s}
 .hamburger:hover{color:var(--text)}
 .hamburger span{display:block;width:18px;height:1.5px;background:currentColor;border-radius:1px;transition:all .3s}
@@ -62,41 +60,36 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .mobile-menu .mob-socials a{display:flex;width:28px;height:28px;padding:0;align-items:center;justify-content:center;border-radius:6px}
 .mobile-menu .mob-socials a svg{width:14px;height:14px}
 
-/* ===== CONTENT ===== */
 .content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0}
 
-/* Page header */
-.page-header{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--glass-b);margin-bottom:32px;padding-top:16px}
-.page-header .left{display:flex;align-items:baseline;gap:10px}
-.page-header .sn{font-size:.9375rem;font-weight:600;color:var(--teal)}
+.page-header{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--glass-b);margin-bottom:40px;padding-top:16px}
 .page-header h1{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.01em}
 
-/* Project grid */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.pc{border-radius:14px;overflow:hidden;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);transition:all .45s cubic-bezier(.23,1,.32,1);opacity:0;transform:translateY(20px);text-decoration:none;color:inherit;display:block}
-.pc.vis{opacity:1;transform:translateY(0)}
-.pc:hover{border-color:var(--glass-bh);transform:translateY(-5px)!important;box-shadow:0 18px 52px rgba(0,0,0,.24),inset 0 1px 0 rgba(56,216,200,.04)}
-.pc .th{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.pc .th canvas{position:absolute;inset:0;width:100%;height:100%}
-.pc .th .icon{position:relative;z-index:1;width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.1);backdrop-filter:blur(12px);color:var(--cyan);box-shadow:0 5px 18px rgba(0,0,0,.2);transition:all .4s}
-.pc:hover .th .icon{transform:scale(1.08)}
-.pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
-.pc .bd{padding:16px 18px 20px}
-.pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.pc .bd .card-tags span{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:2px 8px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.1)}
-.pc .bd h3{font-size:.9375rem;font-weight:600;margin-bottom:5px;line-height:1.35;letter-spacing:-.01em}
-.pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
+.about-layout{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:start}
+.portrait{width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:4px;border:1px solid var(--glass-b);background:var(--card-bg)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* Fade-in */
+.bio{font-size:.9375rem;line-height:1.85;color:var(--text-2);font-weight:300}
+.bio .hello{font-size:1.05rem;color:var(--text);font-weight:600;margin-bottom:28px;line-height:1.55;letter-spacing:-.01em}
+.bio .hello em{font-style:normal;color:var(--teal);font-weight:500}
+.bio .pt{display:flex;gap:10px;margin-bottom:22px;align-items:baseline}
+.bio .pt .arrow{flex-shrink:0;color:var(--teal);font-weight:500;margin-top:1px}
+.bio .pt .txt strong{color:var(--text);font-weight:600}
+.bio .pt .txt a{color:var(--teal);border-bottom:1px solid rgba(24,168,162,.3);transition:border-color .2s}
+.bio .pt .txt a:hover{border-bottom-color:var(--teal)}
+
+.resume-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:.875rem;font-weight:500;color:var(--text-2);border-bottom:1px solid var(--glass-b);padding-bottom:2px;transition:all .3s}
+.resume-link:hover{color:var(--teal);border-bottom-color:var(--teal)}
+
 .fi{opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s}.fi.vis{opacity:1;transform:translateY(0)}
 
-@media(max-width:1100px){.pg{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){
+@media(max-width:760px){
   .topbar-nav,.topbar-right .socials{display:none}
   .hamburger{display:flex}
   .mobile-menu{display:block}
-  .pg{grid-template-columns:1fr}
   .content{padding:72px 16px 0}
+  .about-layout{grid-template-columns:1fr;gap:28px}
+  .portrait{max-width:240px}
 }
 </style>
 </head>
@@ -104,17 +97,16 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 <canvas id="rippleCanvas"></canvas>
 <div class="ocean"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
 
-<!-- Top Navbar -->
 <header class="topbar">
   <div class="topbar-left">
     <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     <a href="index.html" class="topbar-logo" aria-label="Home"><canvas></canvas></a>
     <nav class="topbar-nav">
-      <a href="design.html" class="active">Design</a>
+      <a href="design.html">Design</a>
       <a href="coding.html">Coding</a>
       <a href="writing.html">Writing</a>
       <a href="index.html#experiments">Experiments</a>
-      <a href="about.html">About</a>
+      <a href="about.html" class="active">About</a>
       <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
     </nav>
   </div>
@@ -123,63 +115,60 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
       <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
       <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
       <a href="#" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
-      <a href="#" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></a>
+      <a href="mailto:tangyunning27@gmail.com" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></a>
     </div>
     <button class="theme-glass" id="themeBtn"><span class="im">☾</span><span class="is">☀</span></button>
   </div>
 </header>
 
-<!-- Mobile dropdown menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="design.html" class="active">Design Projects</a>
+  <a href="design.html">Design Projects</a>
   <a href="coding.html">Coding Projects</a>
   <a href="writing.html">Writing</a>
   <a href="index.html#experiments">Experiments / Arts</a>
-  <a href="about.html">About</a>
+  <a href="about.html" class="active">About</a>
   <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume / CV ↗</a>
   <div class="mob-socials">
     <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
     <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
     <a href="#" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
-    <a href="#" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></a>
+    <a href="mailto:tangyunning27@gmail.com" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></a>
   </div>
 </div>
 
-<!-- Main Content -->
 <main class="content">
   <div class="page-header fi">
-    <div class="left"><span class="sn">01.</span><h1>Design Projects</h1></div>
+    <h1>About</h1>
   </div>
 
-  <div class="pg">
-    <a href="projects/canvas-redesign.html" class="pc" data-delay="0" data-colors='["#041a2e","#0a3d5c","#0d4f5a"]'>
-      <div class="th"><canvas></canvas><div class="icon">C</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>UX Research</span><span>UI Design</span></div>
-        <h3>Canvas Redesign</h3>
-        <p>Improving student learning experience through data-driven research.</p>
-      </div>
-    </a>
+  <div class="about-layout fi">
+    <div class="portrait">
+      <img src="https://avatars.githubusercontent.com/u/101422129?v=4" alt="Yunning 'Riley' Tang">
+    </div>
 
-    <a href="#" class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'>
-      <div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>Product Design</span><span>Responsive</span></div>
-        <h3>Dental Ease</h3>
-        <p>A responsive booking platform for dental clinics.</p>
-      </div>
-    </a>
+    <div class="bio">
+      <p class="hello">Hello, I am Yunning <em>'Riley'</em> Tang — a product designer and developer working at the intersection of human-centered AI and interface design.</p>
 
-    <a href="#" class="pc" data-delay="160" data-colors='["#081520","#0d1f2e","#0a2530"]'>
-      <div class="th"><canvas></canvas><div class="icon" style="font-size:.95rem;font-style:normal;color:var(--text-3)">+</div></div>
-      <div class="bd">
-        <h3>New Design Project</h3>
-        <p>Coming soon.</p>
+      <div class="pt">
+        <span class="arrow">→</span>
+        <div class="txt"><strong>As a researcher,</strong> I study Human-Computer Interaction at the University of Toronto. My work focuses on multimodal interaction and reflective inquiry — how interfaces can honor the complexity of how people actually think and learn.</div>
       </div>
-    </a>
+
+      <div class="pt">
+        <span class="arrow">→</span>
+        <div class="txt"><strong>As a designer &amp; builder,</strong> I bridge complex AI models and intuitive interfaces. Past work spans UX research for learning platforms, computer-vision prototypes, and the editorial design system you are reading right now.</div>
+      </div>
+
+      <div class="pt">
+        <span class="arrow">→</span>
+        <div class="txt"><strong>As a writer,</strong> I keep notes on HCI research, design craft, and the questions that fall between disciplines. Drafts live in Obsidian; the ones that settle land in <a href="writing.html">Writing</a>.</div>
+      </div>
+
+      <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-link">Resume / CV (PDF) ↓</a>
+    </div>
   </div>
 
-  <div style="height:60px"></div>
+  <div style="height:80px"></div>
 </main>
 
 <script>
@@ -223,14 +212,8 @@ const d=img.data;for(let i=0;i<W*H;i++){const v=b2[i],sh=Math.max(-30,Math.min(3
 rx.putImageData(img,0,0);rx.save();rx.globalCompositeOperation='copy';rx.drawImage(rc,0,0,W,H,0,0,rc.width,rc.height);rx.restore();
 const t=b1;b1=b2;b2=t}step()}();
 
-// Card BG
-document.querySelectorAll('.pc').forEach(card=>{const cv=card.querySelector('.th canvas');if(!cv)return;const c=cv.getContext('2d'),cols=JSON.parse(card.dataset.colors||'["#0a1a2e","#0d3040","#0a4035"]');
-let w,h;function rs(){const r=cv.parentElement.getBoundingClientRect();cv.width=r.width;cv.height=r.height;w=r.width;h=r.height}rs();addEventListener('resize',rs);
-let t=Math.random()*1000;function dr(){t+=.005;c.clearRect(0,0,w,h);for(let i=0;i<3;i++){const ox=Math.sin(t+i*2.1)*w*.25,oy=Math.cos(t*1.3+i*1.7)*h*.2;const g=c.createRadialGradient(w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,0,w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,Math.max(w,h)*.7);g.addColorStop(0,cols[i%cols.length]);g.addColorStop(1,'transparent');c.globalAlpha=.55;c.fillStyle=g;c.fillRect(0,0,w,h)}const hx=w*.5+Math.sin(t*1.5)*w*.3,hy=h*.5+Math.cos(t*1.1)*h*.3;const hg=c.createRadialGradient(hx,hy,0,hx,hy,w*.35);hg.addColorStop(0,'rgba(24,168,162,.12)');hg.addColorStop(1,'transparent');c.globalAlpha=1;c.fillStyle=hg;c.fillRect(0,0,w,h);requestAnimationFrame(dr)}dr()});
-
-// Scroll animations
 const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),+(e.target.dataset.delay||0));obs.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.fi,.pc').forEach(el=>obs.observe(el));
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
