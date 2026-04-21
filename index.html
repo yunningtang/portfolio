@@ -93,7 +93,8 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .cap-col .ci{font-size:.85rem;margin-bottom:6px;color:var(--text-3)}
 .cap-col h4{font-size:.6875rem;font-weight:600;letter-spacing:.05em;margin-bottom:12px;text-transform:uppercase}
 .cap-col .tags{display:flex;flex-wrap:wrap;gap:5px}
-.cap-col .t{font-size:.6875rem;padding:3px 10px;border-radius:6px;border:1px solid var(--glass-b);color:var(--text-2);background:var(--tag-bg);transition:all .25s;line-height:1.5}
+.cap-col .t{font-size:.6875rem;padding:3px 10px;border-radius:6px;border:1px solid var(--glass-b);color:var(--text-2);background:var(--tag-bg);transition:all .25s;line-height:1.5;display:inline-flex;align-items:center;gap:5px}
+.cap-col .t i{width:10px;height:10px;background-color:currentColor;opacity:.75;-webkit-mask:var(--icon) no-repeat center/contain;mask:var(--icon) no-repeat center/contain;display:inline-block;flex-shrink:0}
 .cap-col:nth-child(1) .t:hover{color:var(--blue);border-color:rgba(40,120,232,.25)}
 .cap-col:nth-child(2) .t:hover{color:var(--teal);border-color:rgba(24,168,162,.25)}
 .cap-col:nth-child(3) .t:hover{color:var(--green);border-color:rgba(24,224,160,.25)}
@@ -211,10 +212,33 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
     <div class="ec"><div class="ef" style="background:var(--glass)"></div><div class="el" style="color:var(--text-3)">More...</div></div>
   </div></section>
   <section class="sec fi"><div class="cap-title">Tech Stack</div><div class="cap-grid">
-    <div class="cap-col"><div class="ci">&lt;/&gt;</div><h4>Language / IDE</h4><div class="tags"><span class="t">Python</span><span class="t">C++</span><span class="t">JavaScript</span><span class="t">TypeScript</span><span class="t">VS Code</span></div></div>
-    <div class="cap-col"><div class="ci">◫</div><h4>Frontend</h4><div class="tags"><span class="t">React</span><span class="t">Next.js</span><span class="t">HTML/CSS</span><span class="t">Tailwind</span><span class="t">Three.js</span></div></div>
-    <div class="cap-col"><div class="ci">⊞</div><h4>AI / ML Frameworks</h4><div class="tags"><span class="t">PyTorch</span><span class="t">TensorFlow</span><span class="t">scikit-learn</span><span class="t">OpenCV</span></div></div>
-    <div class="cap-col"><div class="ci">◎</div><h4>Design &amp; Tools</h4><div class="tags"><span class="t">Figma</span><span class="t">Canva</span><span class="t">Git</span><span class="t">GitHub</span><span class="t">Docker</span></div></div>
+    <div class="cap-col"><div class="ci">&lt;/&gt;</div><h4>Language / IDE</h4><div class="tags">
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg)"></i>Python</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cplusplus.svg)"></i>C++</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg)"></i>JavaScript</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/typescript.svg)"></i>TypeScript</span>
+      <span class="t">VS Code</span>
+    </div></div>
+    <div class="cap-col"><div class="ci">◫</div><h4>Frontend</h4><div class="tags">
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg)"></i>React</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nextdotjs.svg)"></i>Next.js</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg)"></i>HTML/CSS</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tailwindcss.svg)"></i>Tailwind</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/threedotjs.svg)"></i>Three.js</span>
+    </div></div>
+    <div class="cap-col"><div class="ci">⊞</div><h4>AI / ML Frameworks</h4><div class="tags">
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pytorch.svg)"></i>PyTorch</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tensorflow.svg)"></i>TensorFlow</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/scikitlearn.svg)"></i>scikit-learn</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/opencv.svg)"></i>OpenCV</span>
+    </div></div>
+    <div class="cap-col"><div class="ci">◎</div><h4>Design &amp; Tools</h4><div class="tags">
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/figma.svg)"></i>Figma</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg)"></i>Canva</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/git.svg)"></i>Git</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg)"></i>GitHub</span>
+      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg)"></i>Docker</span>
+    </div></div>
   </div></section>
   <div style="height:60px"></div>
 </main>
