@@ -72,13 +72,13 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .breadcrumb .sep{opacity:.4}
 
 /* Article styles */
-.case-header{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;margin-bottom:56px}
-.case-header h1{font-size:clamp(1.7rem,3.4vw,2.3rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:22px}
+.case-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:56px}
+.case-header h1{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:22px}
 .case-header h1 .cn{font-weight:500;color:var(--text-2);margin-left:6px}
-.case-header .subtitle{font-size:.9375rem;font-weight:300;color:var(--text-2);line-height:1.75}
-.case-header .subtitle p{margin-bottom:14px}.case-header .subtitle p:last-child{margin-bottom:0}
-.meta-list{display:flex;flex-direction:column}
-.meta-list .row{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--glass-b);align-items:start}
+.case-header .subtitle{font-size:.9375rem;font-weight:300;color:var(--text-2);line-height:1.75;max-width:440px}
+.case-header .subtitle p{margin-bottom:12px}.case-header .subtitle p:last-child{margin-bottom:0}
+.meta-list{display:flex;flex-direction:column;padding-top:14px}
+.meta-list .row{display:grid;grid-template-columns:82px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--glass-b);align-items:baseline}
 .meta-list .row:first-child{padding-top:0}
 .meta-list .row:last-child{border-bottom:none;padding-bottom:0}
 .meta-list .label{font-size:.8125rem;font-weight:600;color:var(--text);line-height:1.5}
@@ -190,14 +190,13 @@ article ul li span.key{color:var(--text);font-weight:500}
       <h1>Sutra Library<span class="cn">· 经库</span></h1>
       <div class="subtitle">
         <p>A minimal reading app for Chinese Buddhist sutras — written for readers who want to understand the text, without streaks, counters, or ambient chant tracks getting in the way.</p>
-        <p>Six sutras at launch, every character hand-verified, offline-ready as a PWA with cross-device sync.</p>
       </div>
     </div>
     <div class="meta-list">
       <div class="row"><div class="label">Timeline</div><div class="value">2025 · Ongoing</div></div>
       <div class="row"><div class="label">Role</div><div class="value">Solo · Design + Development</div></div>
       <div class="row"><div class="label">Links</div><div class="value"><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">Code ↗</a></div></div>
-      <div class="row"><div class="label">Stack</div><div class="value">React 19, TypeScript, Supabase, PWA</div></div>
+      <div class="row"><div class="label">Stack</div><div class="value">React 19 · TypeScript · Supabase · PWA</div></div>
     </div>
   </div>
 
