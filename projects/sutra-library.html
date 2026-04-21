@@ -72,28 +72,28 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .breadcrumb .sep{opacity:.4}
 
 /* Article styles */
-.case-header{margin-bottom:48px}
-.case-header h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.case-header{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;margin-bottom:56px}
+.case-header h1{font-size:clamp(1.7rem,3.4vw,2.3rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:22px}
 .case-header h1 .cn{font-weight:500;color:var(--text-2);margin-left:6px}
-.case-header .subtitle{font-size:1.05rem;font-weight:300;color:var(--text-2);line-height:1.7;margin-bottom:32px}
-.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:24px 0;border-top:1px solid var(--glass-b);border-bottom:1px solid var(--glass-b)}
-.meta-grid h3{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
-.meta-grid p{font-size:.8125rem;color:var(--text);line-height:1.6}
-.meta-grid p a{color:var(--teal);transition:opacity .3s}.meta-grid p a:hover{opacity:.7}
+.case-header .subtitle{font-size:.9375rem;font-weight:300;color:var(--text-2);line-height:1.75}
+.case-header .subtitle p{margin-bottom:14px}.case-header .subtitle p:last-child{margin-bottom:0}
+.meta-list{display:flex;flex-direction:column}
+.meta-list .row{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--glass-b);align-items:start}
+.meta-list .row:first-child{padding-top:0}
+.meta-list .row:last-child{border-bottom:none;padding-bottom:0}
+.meta-list .label{font-size:.8125rem;font-weight:600;color:var(--text);line-height:1.5}
+.meta-list .value{font-size:.8125rem;color:var(--text-2);line-height:1.65}
+.meta-list .value a{color:var(--teal);transition:opacity .3s;display:inline-block;margin-right:14px}
+.meta-list .value a:hover{opacity:.7}
 .hero-img{width:100%;aspect-ratio:16/9;background:var(--card-bg);backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:48px;overflow:hidden}
 .hero-img span{font-size:.8rem;color:var(--text-3)}
-.live-embed{width:100%;display:flex;align-items:center;justify-content:center;padding:40px 16px;margin-bottom:14px;background:var(--card-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:14px;position:relative;overflow:hidden}
+.live-embed{width:100%;display:flex;align-items:center;justify-content:center;padding:8px 0 16px;margin-bottom:14px;position:relative}
 .live-embed .device{width:min(320px,100%);aspect-ratio:9/19.5;background:#0a0c10;border-radius:44px;padding:34px 9px 9px;box-shadow:0 22px 52px rgba(0,0,0,.32),0 0 0 1.5px rgba(80,90,100,.35),inset 0 1px 0 rgba(255,255,255,.08);position:relative;flex-shrink:0}
 .live-embed .device::before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:96px;height:24px;background:#000;border-radius:14px;z-index:3;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(60,70,80,.5)}
 .live-embed iframe{width:100%;height:100%;border:0;display:block;background:#fff;border-radius:30px}
 .live-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;font-size:.72rem;color:var(--text-3)}
 .live-meta a{color:var(--teal);transition:opacity .3s}.live-meta a:hover{opacity:.7}
 
-/* Language toggle */
-.lang-toggle{display:inline-flex;gap:2px;padding:3px;background:var(--glass);border:1px solid var(--glass-b);border-radius:20px;margin-bottom:28px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.lang-toggle button{font-size:.68rem;font-weight:500;letter-spacing:.04em;padding:5px 14px;border:none;background:transparent;color:var(--text-3);border-radius:16px;cursor:pointer;transition:all .3s;font-family:inherit}
-.lang-toggle button.active{background:var(--card-bg);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.lang-toggle button:hover:not(.active){color:var(--text-2)}
 article{font-size:.9375rem;font-weight:300;color:var(--text-2);line-height:1.85}
 article section{margin-bottom:48px}
 article h2{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--text);margin-bottom:16px}
@@ -125,9 +125,11 @@ article ul li span.key{color:var(--text);font-weight:500}
   .topbar-nav,.topbar-right .socials{display:none}
   .hamburger{display:flex}
   .mobile-menu{display:block}
-  .meta-grid{grid-template-columns:repeat(2,1fr)}
+  .case-header{grid-template-columns:1fr;gap:28px}
+  .meta-list .row{grid-template-columns:80px 1fr;gap:14px;padding:12px 0}
   .content{padding:80px 16px 60px}
   .stat-grid{grid-template-columns:1fr}
+  .live-embed .device{width:min(280px,100%)}
 }
 </style>
 </head>
@@ -183,29 +185,26 @@ article ul li span.key{color:var(--text);font-weight:500}
     <span>Sutra Library</span>
   </div>
 
-  <div class="lang-toggle fi" role="tablist" aria-label="Language">
-    <button type="button" class="active" data-lang="en" role="tab" aria-selected="true">EN</button>
-    <button type="button" data-lang="zh" role="tab" aria-selected="false">中文</button>
-  </div>
-
-  <!-- ================= LANGUAGE: EN ================= -->
-  <div class="lang-en" data-lang-block="en">
-
-    <div class="case-header fi">
+  <div class="case-header fi">
+    <div class="head-left">
       <h1>Sutra Library<span class="cn">· 经库</span></h1>
-      <p class="subtitle">A minimal reading app for Chinese Buddhist sutras — written for readers who want to understand the text, without streaks, counters, or ambient chant tracks getting in the way.</p>
-      <div class="meta-grid">
-        <div><h3>Role</h3><p>Solo<br>Design + Dev</p></div>
-        <div><h3>Timeline</h3><p>2025<br>Ongoing</p></div>
-        <div><h3>Links</h3><p><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><br><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">Code ↗</a></p></div>
-        <div><h3>Stack</h3><p>React 19, TypeScript<br>Supabase, PWA</p></div>
+      <div class="subtitle">
+        <p>A minimal reading app for Chinese Buddhist sutras — written for readers who want to understand the text, without streaks, counters, or ambient chant tracks getting in the way.</p>
+        <p>Six sutras at launch, every character hand-verified, offline-ready as a PWA with cross-device sync.</p>
       </div>
     </div>
-
-    <div class="live-embed fi">
-      <div class="device"><iframe src="https://sutra-library.vercel.app/" loading="lazy" title="Sutra Library live demo" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="meta-list">
+      <div class="row"><div class="label">Timeline</div><div class="value">2025 · Ongoing</div></div>
+      <div class="row"><div class="label">Role</div><div class="value">Solo · Design + Development</div></div>
+      <div class="row"><div class="label">Links</div><div class="value"><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">Code ↗</a></div></div>
+      <div class="row"><div class="label">Stack</div><div class="value">React 19, TypeScript, Supabase, PWA</div></div>
     </div>
-    <div class="live-meta fi"><span>The real product, rendered at phone size — scrolling, long-press, theme toggle all work inline.</span><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a></div>
+  </div>
+
+  <div class="live-embed fi">
+    <div class="device"><iframe src="https://sutra-library.vercel.app/" loading="lazy" title="Sutra Library live demo" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+  <div class="live-meta fi"><span>The real product, rendered at phone size — scrolling, long-press, theme toggle all work inline.</span><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a></div>
 
     <article>
       <section class="fi">
@@ -253,76 +252,6 @@ article ul li span.key{color:var(--text);font-weight:500}
         <p>Next: partnering with a Buddhist academy or research group to expand the library while holding the "every character hand-verified" bar; and a study mode that surfaces the character gloss in a side pane without fragmenting the reading column.</p>
       </section>
     </article>
-
-  </div>
-
-  <!-- ================= LANGUAGE: ZH ================= -->
-  <div class="lang-zh" data-lang-block="zh" hidden>
-
-    <div class="case-header fi">
-      <h1>Sutra Library<span class="cn">· 经库</span></h1>
-      <p class="subtitle">一款极简中文佛经阅读应用——为那些只想读懂经文、不想被计数和打卡干扰的读者而做。</p>
-      <div class="meta-grid">
-        <div><h3>角色</h3><p>独立<br>设计 + 开发</p></div>
-        <div><h3>时间线</h3><p>2025<br>持续迭代中</p></div>
-        <div><h3>链接</h3><p><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><br><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">代码 ↗</a></p></div>
-        <div><h3>技术栈</h3><p>React 19、TypeScript<br>Supabase、PWA</p></div>
-      </div>
-    </div>
-
-    <div class="live-embed fi">
-      <div class="device"><iframe src="https://sutra-library.vercel.app/" loading="lazy" title="经库 Live Demo" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-    </div>
-    <div class="live-meta fi"><span>上方是真实产品，按手机尺寸渲染——滚动、长按、切主题都可以直接操作。</span><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">在新标签打开 ↗</a></div>
-
-    <article>
-      <section class="fi">
-        <h2><span class="sn">01.</span>问题</h2>
-        <p>一个想读《心经》的普通读者，今天只有两种选择。</p>
-        <p>打开扫描版，会在第二行卡住——"般若"到底念 bān ruò 还是 bō rě？没有答案。</p>
-        <p>换一个"修行 app"，屏幕上却堆着连续打卡、诵读计数、背景音乐、功德榜单——文本反而成了配角，阅读被游戏化。</p>
-        <p><strong>核心问题：能不能有一个工具，既尊重经文本身，又只服务于"读懂"这件事？</strong></p>
-      </section>
-
-      <section class="fi">
-        <h2><span class="sn">02.</span>设计决策</h2>
-        <p>三条决策塑造了产品。每一条都是"为什么"，不是"做了什么"。</p>
-        <ul>
-          <li><span class="key">逐字拼音，而不是逐行拼音。</span>经文的节奏活在单字里——把拼音压到一行，节奏就没了。所有佛教专读音都经过人工校对（般若读 bō rě，不是 bān ruò）。</li>
-          <li><span class="key">长按查词，而不是点击。</span>在滚动阅读中，点击太容易误触——每一次误触都打断沉浸。长按保留了流畅阅读的沉浸感，又奖励真正想查词的人。</li>
-          <li><span class="key">计数功能默认折叠，而不是首屏展示。</span>诵读计数是真实的修行习惯，但摆在首屏会把文本变成分数。计数还在，只是折叠起来——应用永远不提醒、不诱导。</li>
-        </ul>
-      </section>
-
-      <section class="fi">
-        <h2><span class="sn">03.</span>范围与实现</h2>
-        <p>首发六部经文，从 260 字的《心经》到 17,394 字的《地藏经》，覆盖初学者到长期读者的不同需求。</p>
-        <p>技术上，应用以 PWA 形式发布以支持离线阅读——这是产品决策，不是技术决策：读经常发生在通勤、睡前、寺庙这些网络不稳定的场景。后端用 Supabase + Google OAuth，跨设备同步阅读进度、书签、设置；Zustand 处理本地交互状态。</p>
-        <div class="stat-grid">
-          <div class="stat"><div class="num">6</div><div class="label">首发经文，全部人工校对</div></div>
-          <div class="stat"><div class="num">17,394</div><div class="label">最长经文字数</div></div>
-        </div>
-      </section>
-
-      <section class="fi">
-        <h2><span class="sn">04.</span>刻意没做的事</h2>
-        <p>做减法比做加法更需要定力。这三个功能看上去显而易见，但都被有意放弃：</p>
-        <ul>
-          <li><span class="key">评论与社区。</span>经文阅读是私人行为——群体反馈会引入表演性，让人担心"自己读得对不对"。</li>
-          <li><span class="key">推送通知。</span>"今天还没诵经哦"这类提醒，把自发的阅读变成义务，违背产品初衷。</li>
-          <li><span class="key">付费解锁。</span>核心功能永久免费，不做订阅、不做会员——经典不应该被付费墙阻隔。</li>
-        </ul>
-      </section>
-
-      <section class="fi">
-        <h2><span class="sn">05.</span>反思与下一步</h2>
-        <p>独立 ship 会强制 scope 纪律——每一个功能都必须回答一个问题：<em>这对读懂经文有帮助吗？</em>答不上来就砍掉。</p>
-        <p>内容校对占了真实工作量的一半，但只占代码的 0%——人工校对拼音、标点古文、核对异体字。工程实现反而是更容易的那一半。<strong>对于内容型产品，内容质量就是产品质量</strong>——代码只是把内容送到读者面前的管道。</p>
-        <p>下一步：与佛学院或研究机构合作引入更多经文，保持"全部人工校对"的质量标准；开发学习模式，在不打断阅读栏的前提下，用侧栏展示逐字释义，辅助初学者。</p>
-      </section>
-    </article>
-
-  </div>
 
   <div class="case-footer fi">
     <div>
@@ -379,23 +308,6 @@ const t=b1;b1=b2;b2=t}step()}();
 // Fade in
 const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
-
-// Language toggle
-(function(){
-  const buttons=document.querySelectorAll('.lang-toggle button[data-lang]');
-  const blocks={en:document.querySelector('[data-lang-block="en"]'),zh:document.querySelector('[data-lang-block="zh"]')};
-  if(!blocks.en||!blocks.zh)return;
-  function setLang(lang){
-    if(!blocks[lang])return;
-    buttons.forEach(b=>{const on=b.dataset.lang===lang;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false')});
-    Object.entries(blocks).forEach(([k,el])=>{el.hidden=k!==lang});
-    document.documentElement.lang=lang==='zh'?'zh':'en';
-    blocks[lang].querySelectorAll('.fi').forEach(el=>{el.classList.remove('vis');obs.observe(el)});
-    try{localStorage.setItem('sutra-lang',lang)}catch(e){}
-  }
-  buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-  try{const saved=localStorage.getItem('sutra-lang');if(saved==='zh'||saved==='en')setLang(saved)}catch(e){}
-})();
 </script>
 </body>
 </html>
