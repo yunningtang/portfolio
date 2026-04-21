@@ -82,6 +82,18 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .meta-grid p a{color:var(--teal);transition:opacity .3s}.meta-grid p a:hover{opacity:.7}
 .hero-img{width:100%;aspect-ratio:16/9;background:var(--card-bg);backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:48px;overflow:hidden}
 .hero-img span{font-size:.8rem;color:var(--text-3)}
+.live-embed{width:100%;aspect-ratio:16/10;border:1px solid var(--glass-b);border-radius:12px;overflow:hidden;background:var(--card-bg);margin-bottom:14px;position:relative}
+.live-embed iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.live-embed .live-label{position:absolute;top:12px;right:12px;z-index:2;font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:4px 10px;border-radius:4px;background:rgba(10,12,16,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);pointer-events:none}
+.live-embed .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#18e0a0;margin-right:6px;vertical-align:1px;box-shadow:0 0 6px rgba(24,224,160,.7)}
+.live-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;font-size:.72rem;color:var(--text-3)}
+.live-meta a{color:var(--teal);transition:opacity .3s}.live-meta a:hover{opacity:.7}
+
+/* Language toggle */
+.lang-toggle{display:inline-flex;gap:2px;padding:3px;background:var(--glass);border:1px solid var(--glass-b);border-radius:20px;margin-bottom:28px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.lang-toggle button{font-size:.68rem;font-weight:500;letter-spacing:.04em;padding:5px 14px;border:none;background:transparent;color:var(--text-3);border-radius:16px;cursor:pointer;transition:all .3s;font-family:inherit}
+.lang-toggle button.active{background:var(--card-bg);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.lang-toggle button:hover:not(.active){color:var(--text-2)}
 article{font-size:.9375rem;font-weight:300;color:var(--text-2);line-height:1.85}
 article section{margin-bottom:48px}
 article h2{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--text);margin-bottom:16px}
@@ -171,51 +183,148 @@ article ul li span.key{color:var(--text);font-weight:500}
     <span>Sutra Library</span>
   </div>
 
-  <div class="case-header fi">
-    <h1>Sutra Library<span class="cn">· 经库</span></h1>
-    <p class="subtitle">A minimal reading app for Chinese Buddhist sutras — built for readers stuck between raw scanned text and merit-tracking clutter.</p>
-    <div class="meta-grid">
-      <div><h3>Role</h3><p>Solo<br>Design + Dev</p></div>
-      <div><h3>Timeline</h3><p>2025<br>Ongoing</p></div>
-      <div><h3>Links</h3><p><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><br><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">Code ↗</a></p></div>
-      <div><h3>Stack</h3><p>React 19, TypeScript<br>Supabase, PWA</p></div>
-    </div>
+  <div class="lang-toggle fi" role="tablist" aria-label="Language">
+    <button type="button" class="active" data-lang="en" role="tab" aria-selected="true">EN</button>
+    <button type="button" data-lang="zh" role="tab" aria-selected="false">中文</button>
   </div>
 
-  <div class="hero-img fi"><span>[ Reader view — per-character pinyin over sutra text ]</span></div>
+  <!-- ================= LANGUAGE: EN ================= -->
+  <div class="lang-en" data-lang-block="en">
 
-  <article>
-    <section class="fi">
-      <h2><span class="sn">01.</span>The Problem</h2>
-      <p>Sutra apps split into two camps. One is raw scanned text — readers hit an archaic character and have no way through. The other is merit-tracking software cluttered with streaks, chant counters, and ambient music that turns reading into a game.</p>
-      <p><strong>How might a sutra app respect the text and serve only comprehension?</strong></p>
-    </section>
-
-    <section class="fi">
-      <h2><span class="sn">02.</span>Design Decisions</h2>
-      <p>Three decisions shape the product. Each one is a "why", not a feature.</p>
-      <ul>
-        <li><span class="key">Per-character pinyin, not per-line.</span> Sutra rhythm lives in the single character — collapsing pinyin to the line obscures the reading. All Buddhist-specific readings are hand-verified (般若 as <em>bō rě</em>, not <em>bān ruò</em>).</li>
-        <li><span class="key">Long-press for definitions, not tap.</span> A tap is too easy to fire by accident on a scrolling page — every misfire breaks the reading flow. Long-press preserves immersion for readers who don't need the definition, and rewards readers who do.</li>
-        <li><span class="key">Counting features collapsed by default.</span> Chant counters are real religious practice, but surfacing them turns the text into a score. They are present, but folded away — the app never nudges.</li>
-      </ul>
-    </section>
-
-    <section class="fi">
-      <h2><span class="sn">03.</span>Scope &amp; Technical Approach</h2>
-      <p>Six sutras at launch, ranging from the 260-character Heart Sutra (《心经》) to the 17,394-character Kṣitigarbha Sutra (《地藏经》). The reader ships as a PWA so it works offline on phones; a Supabase backend with Google OAuth syncs reading position, bookmarks, and settings across devices. State lives in Zustand for local interactions and Supabase for persistence.</p>
-      <div class="stat-grid">
-        <div class="stat"><div class="num">6</div><div class="label">Sutras hand-curated at launch</div></div>
-        <div class="stat"><div class="num">17,394</div><div class="label">Characters in longest sutra</div></div>
+    <div class="case-header fi">
+      <h1>Sutra Library<span class="cn">· 经库</span></h1>
+      <p class="subtitle">A minimal reading app for Chinese Buddhist sutras — written for readers who want to understand the text, without streaks, counters, or ambient chant tracks getting in the way.</p>
+      <div class="meta-grid">
+        <div><h3>Role</h3><p>Solo<br>Design + Dev</p></div>
+        <div><h3>Timeline</h3><p>2025<br>Ongoing</p></div>
+        <div><h3>Links</h3><p><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><br><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">Code ↗</a></p></div>
+        <div><h3>Stack</h3><p>React 19, TypeScript<br>Supabase, PWA</p></div>
       </div>
-    </section>
+    </div>
 
-    <section class="fi">
-      <h2><span class="sn">04.</span>Reflections</h2>
-      <p>Solo shipping forces scope discipline — every feature has to earn its keep against "does this help a reader understand the text?". Content curation turned out to be 50% of the real work and 0% of the lines of code: verifying pinyin against traditional Buddhist readings, punctuating Classical Chinese, proofreading variant characters. The engineering was the easy half.</p>
-      <p>Next: user-submitted sutras with community verification, and a study mode that surfaces the per-character gloss for unfamiliar characters without breaking the reading pane.</p>
-    </section>
-  </article>
+    <div class="live-embed fi">
+      <span class="live-label"><span class="live-dot"></span>Live embed</span>
+      <iframe src="https://sutra-library.vercel.app/" loading="lazy" title="Sutra Library live demo" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="live-meta fi"><span>Interact with the real product above — scrolling, long-press, theme toggle all work inline.</span><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a></div>
+
+    <article>
+      <section class="fi">
+        <h2><span class="sn">01.</span>The Problem</h2>
+        <p>A reader wants to open the Heart Sutra on their phone. Today there are two options, both wrong.</p>
+        <p>Option one is a scanned PDF: archaic characters, no pinyin, no glosses. The reader stops on the second line — is 般若 pronounced <em>bān ruò</em> or <em>bō rě</em>? — and loses the thread.</p>
+        <p>Option two is a "practice app": streak counters, chant tallies, ambient music, a merit leaderboard. The text becomes a scorecard; reading becomes a game.</p>
+        <p><strong>How might a sutra app respect the text and serve only comprehension?</strong></p>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">02.</span>Design Decisions</h2>
+        <p>Three decisions define the product. Each is a "why", not a feature.</p>
+        <ul>
+          <li><span class="key">Per-character pinyin, not per-line.</span> Sutra rhythm lives in the single character — flattening pinyin to the line obscures the cadence. All Buddhist-specific readings are hand-verified (般若 as <em>bō rě</em>, not <em>bān ruò</em>).</li>
+          <li><span class="key">Long-press for definitions, not tap.</span> On a scrolling page, taps misfire constantly — every accident breaks flow. Long-press preserves immersion for readers who don't need the gloss, and rewards the ones who do.</li>
+          <li><span class="key">Counting features collapsed by default, not surfaced.</span> Chant counters are real practice, but putting them on the first screen turns text into score. The feature is present — just folded away. The app never nudges.</li>
+        </ul>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">03.</span>Scope &amp; Implementation</h2>
+        <p>Six sutras at launch, from the 260-character Heart Sutra (《心经》) to the 17,394-character Kṣitigarbha Sutra (《地藏经》) — spanning first-time readers to long-form practitioners.</p>
+        <p>The app ships as a PWA so it works offline — a product decision, not a tech one: reading tends to happen on commutes, at bedside, or inside temples, where network is unreliable. A Supabase backend with Google OAuth syncs reading position, bookmarks, and settings across devices; Zustand holds local interaction state.</p>
+        <div class="stat-grid">
+          <div class="stat"><div class="num">6</div><div class="label">Sutras, each hand-proofread</div></div>
+          <div class="stat"><div class="num">17,394</div><div class="label">Characters in the longest</div></div>
+        </div>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">04.</span>What I Deliberately Didn't Build</h2>
+        <p>Subtraction takes more discipline than addition. Three features looked obvious and were cut on purpose:</p>
+        <ul>
+          <li><span class="key">Comments and community.</span> Reading a sutra is a private act — group reactions introduce performance, make people wonder whether they're "reading it right".</li>
+          <li><span class="key">Push notifications.</span> "You haven't chanted today" reminders turn a voluntary practice into an obligation, and that betrays the whole premise.</li>
+          <li><span class="key">Paid unlocks.</span> Core features stay free forever — no subscription, no membership tier. Canonical texts should not sit behind a paywall.</li>
+        </ul>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">05.</span>Reflections &amp; Next Steps</h2>
+        <p>Shipping solo forces scope discipline — every feature has to answer <em>does this help a reader understand the text?</em> and if it doesn't, it gets cut.</p>
+        <p>Content curation turned out to be 50% of the real work and 0% of the lines of code: cross-checking pinyin against traditional Buddhist readings, punctuating Classical Chinese, proofreading variant characters. The engineering was the easy half. <strong>For a content product, content quality <em>is</em> product quality</strong> — the code is just a pipe that delivers text to the reader.</p>
+        <p>Next: partnering with a Buddhist academy or research group to expand the library while holding the "every character hand-verified" bar; and a study mode that surfaces the character gloss in a side pane without fragmenting the reading column.</p>
+      </section>
+    </article>
+
+  </div>
+
+  <!-- ================= LANGUAGE: ZH ================= -->
+  <div class="lang-zh" data-lang-block="zh" hidden>
+
+    <div class="case-header fi">
+      <h1>Sutra Library<span class="cn">· 经库</span></h1>
+      <p class="subtitle">一款极简中文佛经阅读应用——为那些只想读懂经文、不想被计数和打卡干扰的读者而做。</p>
+      <div class="meta-grid">
+        <div><h3>角色</h3><p>独立<br>设计 + 开发</p></div>
+        <div><h3>时间线</h3><p>2025<br>持续迭代中</p></div>
+        <div><h3>链接</h3><p><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><br><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">代码 ↗</a></p></div>
+        <div><h3>技术栈</h3><p>React 19、TypeScript<br>Supabase、PWA</p></div>
+      </div>
+    </div>
+
+    <div class="live-embed fi">
+      <span class="live-label"><span class="live-dot"></span>Live embed</span>
+      <iframe src="https://sutra-library.vercel.app/" loading="lazy" title="经库 Live Demo" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="live-meta fi"><span>上方为真实产品——可以直接滚动、长按、切主题。</span><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">在新标签打开 ↗</a></div>
+
+    <article>
+      <section class="fi">
+        <h2><span class="sn">01.</span>问题</h2>
+        <p>一个想读《心经》的普通读者，今天只有两种选择。</p>
+        <p>打开扫描版，会在第二行卡住——"般若"到底念 bān ruò 还是 bō rě？没有答案。</p>
+        <p>换一个"修行 app"，屏幕上却堆着连续打卡、诵读计数、背景音乐、功德榜单——文本反而成了配角，阅读被游戏化。</p>
+        <p><strong>核心问题：能不能有一个工具，既尊重经文本身，又只服务于"读懂"这件事？</strong></p>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">02.</span>设计决策</h2>
+        <p>三条决策塑造了产品。每一条都是"为什么"，不是"做了什么"。</p>
+        <ul>
+          <li><span class="key">逐字拼音，而不是逐行拼音。</span>经文的节奏活在单字里——把拼音压到一行，节奏就没了。所有佛教专读音都经过人工校对（般若读 bō rě，不是 bān ruò）。</li>
+          <li><span class="key">长按查词，而不是点击。</span>在滚动阅读中，点击太容易误触——每一次误触都打断沉浸。长按保留了流畅阅读的沉浸感，又奖励真正想查词的人。</li>
+          <li><span class="key">计数功能默认折叠，而不是首屏展示。</span>诵读计数是真实的修行习惯，但摆在首屏会把文本变成分数。计数还在，只是折叠起来——应用永远不提醒、不诱导。</li>
+        </ul>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">03.</span>范围与实现</h2>
+        <p>首发六部经文，从 260 字的《心经》到 17,394 字的《地藏经》，覆盖初学者到长期读者的不同需求。</p>
+        <p>技术上，应用以 PWA 形式发布以支持离线阅读——这是产品决策，不是技术决策：读经常发生在通勤、睡前、寺庙这些网络不稳定的场景。后端用 Supabase + Google OAuth，跨设备同步阅读进度、书签、设置；Zustand 处理本地交互状态。</p>
+        <div class="stat-grid">
+          <div class="stat"><div class="num">6</div><div class="label">首发经文，全部人工校对</div></div>
+          <div class="stat"><div class="num">17,394</div><div class="label">最长经文字数</div></div>
+        </div>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">04.</span>刻意没做的事</h2>
+        <p>做减法比做加法更需要定力。这三个功能看上去显而易见，但都被有意放弃：</p>
+        <ul>
+          <li><span class="key">评论与社区。</span>经文阅读是私人行为——群体反馈会引入表演性，让人担心"自己读得对不对"。</li>
+          <li><span class="key">推送通知。</span>"今天还没诵经哦"这类提醒，把自发的阅读变成义务，违背产品初衷。</li>
+          <li><span class="key">付费解锁。</span>核心功能永久免费，不做订阅、不做会员——经典不应该被付费墙阻隔。</li>
+        </ul>
+      </section>
+
+      <section class="fi">
+        <h2><span class="sn">05.</span>反思与下一步</h2>
+        <p>独立 ship 会强制 scope 纪律——每一个功能都必须回答一个问题：<em>这对读懂经文有帮助吗？</em>答不上来就砍掉。</p>
+        <p>内容校对占了真实工作量的一半，但只占代码的 0%——人工校对拼音、标点古文、核对异体字。工程实现反而是更容易的那一半。<strong>对于内容型产品，内容质量就是产品质量</strong>——代码只是把内容送到读者面前的管道。</p>
+        <p>下一步：与佛学院或研究机构合作引入更多经文，保持"全部人工校对"的质量标准；开发学习模式，在不打断阅读栏的前提下，用侧栏展示逐字释义，辅助初学者。</p>
+      </section>
+    </article>
+
+  </div>
 
   <div class="case-footer fi">
     <div>
@@ -272,6 +381,23 @@ const t=b1;b1=b2;b2=t}step()}();
 // Fade in
 const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// Language toggle
+(function(){
+  const buttons=document.querySelectorAll('.lang-toggle button[data-lang]');
+  const blocks={en:document.querySelector('[data-lang-block="en"]'),zh:document.querySelector('[data-lang-block="zh"]')};
+  if(!blocks.en||!blocks.zh)return;
+  function setLang(lang){
+    if(!blocks[lang])return;
+    buttons.forEach(b=>{const on=b.dataset.lang===lang;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false')});
+    Object.entries(blocks).forEach(([k,el])=>{el.hidden=k!==lang});
+    document.documentElement.lang=lang==='zh'?'zh':'en';
+    blocks[lang].querySelectorAll('.fi').forEach(el=>{el.classList.remove('vis');obs.observe(el)});
+    try{localStorage.setItem('sutra-lang',lang)}catch(e){}
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  try{const saved=localStorage.getItem('sutra-lang');if(saved==='zh'||saved==='en')setLang(saved)}catch(e){}
+})();
 </script>
 </body>
 </html>
