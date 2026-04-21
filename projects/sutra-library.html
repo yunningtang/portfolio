@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Design Projects · Yunning (Riley) Tang</title>
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>Sutra Library · Yunning (Riley) Tang</title>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -64,40 +64,58 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .mobile-menu .mob-socials a svg{width:14px;height:14px}
 
 /* ===== CONTENT ===== */
-.content{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:80px 32px 0}
+.content{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:100px 28px 80px}
 
-/* Page header */
-.page-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;padding-top:16px}
-.page-header .left{display:flex;align-items:baseline;gap:10px}
-.page-header .sn{font-size:.9375rem;font-weight:600;color:var(--teal)}
-.page-header h1{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.01em}
+/* Breadcrumb */
+.breadcrumb{font-size:.75rem;color:var(--text-3);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb a{color:var(--text-3);transition:color .3s}.breadcrumb a:hover{color:var(--teal)}
+.breadcrumb .sep{opacity:.4}
 
-/* Project grid */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.pc{border-radius:14px;overflow:hidden;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);background:var(--card-bg);border:1px solid var(--glass-b);transition:all .45s cubic-bezier(.23,1,.32,1);opacity:0;transform:translateY(20px);text-decoration:none;color:inherit;display:block}
-.pc.vis{opacity:1;transform:translateY(0)}
-.pc:hover{border-color:var(--glass-bh);transform:translateY(-5px)!important;box-shadow:0 18px 52px rgba(0,0,0,.24),inset 0 1px 0 rgba(56,216,200,.04)}
-.pc .th{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.pc .th canvas{position:absolute;inset:0;width:100%;height:100%}
-.pc .th .icon{position:relative;z-index:1;width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.1);backdrop-filter:blur(12px);color:var(--cyan);box-shadow:0 5px 18px rgba(0,0,0,.2);transition:all .4s}
-.pc:hover .th .icon{transform:scale(1.08)}
-.pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
-.pc .bd{padding:16px 18px 20px}
-.pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.pc .bd .card-tags span{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:2px 8px;border-radius:5px;background:rgba(24,168,162,.06);border:1px solid rgba(24,168,162,.1)}
-.pc .bd h3{font-size:.9375rem;font-weight:600;margin-bottom:5px;line-height:1.35;letter-spacing:-.01em}
-.pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
+/* Article styles */
+.case-header{margin-bottom:48px}
+.case-header h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.case-header h1 .cn{font-weight:500;color:var(--text-2);margin-left:6px}
+.case-header .subtitle{font-size:1.05rem;font-weight:300;color:var(--text-2);line-height:1.7;margin-bottom:32px}
+.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:24px 0;border-top:1px solid var(--glass-b);border-bottom:1px solid var(--glass-b)}
+.meta-grid h3{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+.meta-grid p{font-size:.8125rem;color:var(--text);line-height:1.6}
+.meta-grid p a{color:var(--teal);transition:opacity .3s}.meta-grid p a:hover{opacity:.7}
+.hero-img{width:100%;aspect-ratio:16/9;background:var(--card-bg);backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:48px;overflow:hidden}
+.hero-img span{font-size:.8rem;color:var(--text-3)}
+article{font-size:.9375rem;font-weight:300;color:var(--text-2);line-height:1.85}
+article section{margin-bottom:48px}
+article h2{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--text);margin-bottom:16px}
+article h2 .sn{font-weight:400;color:var(--teal);margin-right:8px}
+article p{margin-bottom:12px}
+article strong{color:var(--text);font-weight:500}
+article ul{list-style:disc;padding-left:20px;margin-top:8px}
+article ul li{margin-bottom:8px;font-size:.875rem}
+article ul li span.key{color:var(--text);font-weight:500}
+.fig{width:100%;aspect-ratio:4/3;background:var(--card-bg);backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:24px 0;overflow:hidden}
+.fig span{font-size:.8rem;color:var(--text-3)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.stat{backdrop-filter:blur(18px);background:var(--card-bg);border:1px solid var(--glass-b);border-radius:12px;padding:24px;text-align:center;transition:all .4s cubic-bezier(.23,1,.32,1)}
+.stat:hover{border-color:var(--glass-bh);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.stat .num{font-size:2.2rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.stat .label{font-size:.75rem;color:var(--text-3)}
 
-/* Fade-in */
+/* Footer nav */
+.case-footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--glass-b);display:flex;justify-content:space-between;align-items:center}
+.case-footer a{font-size:.8rem;color:var(--text-3);transition:color .3s}
+.case-footer a:hover{color:var(--teal)}
+.case-footer .prev-label{display:block;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-4);margin-bottom:4px}
+.case-footer .prev-title{font-size:1.1rem;font-weight:600;color:var(--text)}
+
+/* Fade in */
 .fi{opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s}.fi.vis{opacity:1;transform:translateY(0)}
 
-@media(max-width:1100px){.pg{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){
   .topbar-nav,.topbar-right .socials{display:none}
   .hamburger{display:flex}
   .mobile-menu{display:block}
-  .pg{grid-template-columns:1fr}
-  .content{padding:72px 16px 0}
+  .meta-grid{grid-template-columns:repeat(2,1fr)}
+  .content{padding:80px 16px 60px}
+  .stat-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -109,14 +127,14 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 <header class="topbar">
   <div class="topbar-left">
     <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-    <a href="index.html" class="topbar-logo" aria-label="Home"><canvas></canvas></a>
+    <a href="../index.html" class="topbar-logo" aria-label="Home"><canvas></canvas></a>
     <nav class="topbar-nav">
-      <a href="design.html" class="active">Design</a>
-      <a href="coding.html">Coding</a>
-      <a href="writing.html">Writing</a>
-      <a href="index.html#experiments">Experiments</a>
-      <a href="about.html">About</a>
-      <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+      <a href="../design.html" class="active">Design</a>
+      <a href="../coding.html">Coding</a>
+      <a href="../writing.html">Writing</a>
+      <a href="../index.html#experiments">Experiments</a>
+      <a href="../about.html">About</a>
+      <a href="../assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
     </nav>
   </div>
   <div class="topbar-right">
@@ -132,12 +150,12 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 
 <!-- Mobile dropdown menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="design.html" class="active">Design Projects</a>
-  <a href="coding.html">Coding Projects</a>
-  <a href="writing.html">Writing</a>
-  <a href="index.html#experiments">Experiments / Arts</a>
-  <a href="about.html">About</a>
-  <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume / CV ↗</a>
+  <a href="../design.html" class="active">Design Projects</a>
+  <a href="../coding.html">Coding Projects</a>
+  <a href="../writing.html">Writing</a>
+  <a href="../index.html#experiments">Experiments / Arts</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume / CV ↗</a>
   <div class="mob-socials">
     <a href="https://github.com/yunningtang" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
     <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
@@ -146,48 +164,74 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
   </div>
 </div>
 
-<!-- Main Content -->
 <main class="content">
-  <div class="page-header fi">
-    <div class="left"><span class="sn">01.</span><h1>Design Projects</h1></div>
+  <div class="breadcrumb fi">
+    <a href="../design.html">Design Projects</a>
+    <span class="sep">/</span>
+    <span>Sutra Library</span>
   </div>
 
-  <div class="pg">
-    <a href="projects/canvas-redesign.html" class="pc" data-delay="0" data-colors='["#041a2e","#0a3d5c","#0d4f5a"]'>
-      <div class="th"><canvas></canvas><div class="icon">C</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>UX Research</span><span>UI Design</span></div>
-        <h3>Canvas Redesign</h3>
-        <p>Improving student learning experience through data-driven research.</p>
-      </div>
-    </a>
-
-    <a href="#" class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'>
-      <div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>Product Design</span><span>Responsive</span></div>
-        <h3>Dental Ease</h3>
-        <p>A responsive booking platform for dental clinics.</p>
-      </div>
-    </a>
-
-    <a href="projects/sutra-library.html" class="pc" data-delay="160" data-colors='["#0c0d14","#1a1c22","#1c2229"]'>
-      <div class="th"><canvas></canvas><div class="icon" style="font-family:serif;font-size:1.3rem">经</div></div>
-      <div class="bd">
-        <div class="card-tags"><span>Product Design</span><span>Full-Stack</span></div>
-        <h3>Sutra Library</h3>
-        <p>A minimal reader for Chinese Buddhist sutras — stripped of merit counters, focused on comprehension.</p>
-      </div>
-    </a>
+  <div class="case-header fi">
+    <h1>Sutra Library<span class="cn">· 经库</span></h1>
+    <p class="subtitle">A minimal reading app for Chinese Buddhist sutras — built for readers stuck between raw scanned text and merit-tracking clutter.</p>
+    <div class="meta-grid">
+      <div><h3>Role</h3><p>Solo<br>Design + Dev</p></div>
+      <div><h3>Timeline</h3><p>2025<br>Ongoing</p></div>
+      <div><h3>Links</h3><p><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Live ↗</a><br><a href="https://github.com/yunningtang/Sutra-Library" target="_blank" rel="noopener noreferrer">Code ↗</a></p></div>
+      <div><h3>Stack</h3><p>React 19, TypeScript<br>Supabase, PWA</p></div>
+    </div>
   </div>
 
-  <div style="height:60px"></div>
+  <div class="hero-img fi"><span>[ Reader view — per-character pinyin over sutra text ]</span></div>
+
+  <article>
+    <section class="fi">
+      <h2><span class="sn">01.</span>The Problem</h2>
+      <p>Sutra apps split into two camps. One is raw scanned text — readers hit an archaic character and have no way through. The other is merit-tracking software cluttered with streaks, chant counters, and ambient music that turns reading into a game.</p>
+      <p><strong>How might a sutra app respect the text and serve only comprehension?</strong></p>
+    </section>
+
+    <section class="fi">
+      <h2><span class="sn">02.</span>Design Decisions</h2>
+      <p>Three decisions shape the product. Each one is a "why", not a feature.</p>
+      <ul>
+        <li><span class="key">Per-character pinyin, not per-line.</span> Sutra rhythm lives in the single character — collapsing pinyin to the line obscures the reading. All Buddhist-specific readings are hand-verified (般若 as <em>bō rě</em>, not <em>bān ruò</em>).</li>
+        <li><span class="key">Long-press for definitions, not tap.</span> A tap is too easy to fire by accident on a scrolling page — every misfire breaks the reading flow. Long-press preserves immersion for readers who don't need the definition, and rewards readers who do.</li>
+        <li><span class="key">Counting features collapsed by default.</span> Chant counters are real religious practice, but surfacing them turns the text into a score. They are present, but folded away — the app never nudges.</li>
+      </ul>
+    </section>
+
+    <section class="fi">
+      <h2><span class="sn">03.</span>Scope &amp; Technical Approach</h2>
+      <p>Six sutras at launch, ranging from the 260-character Heart Sutra (《心经》) to the 17,394-character Kṣitigarbha Sutra (《地藏经》). The reader ships as a PWA so it works offline on phones; a Supabase backend with Google OAuth syncs reading position, bookmarks, and settings across devices. State lives in Zustand for local interactions and Supabase for persistence.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="num">6</div><div class="label">Sutras hand-curated at launch</div></div>
+        <div class="stat"><div class="num">17,394</div><div class="label">Characters in longest sutra</div></div>
+      </div>
+    </section>
+
+    <section class="fi">
+      <h2><span class="sn">04.</span>Reflections</h2>
+      <p>Solo shipping forces scope discipline — every feature has to earn its keep against "does this help a reader understand the text?". Content curation turned out to be 50% of the real work and 0% of the lines of code: verifying pinyin against traditional Buddhist readings, punctuating Classical Chinese, proofreading variant characters. The engineering was the easy half.</p>
+      <p>Next: user-submitted sutras with community verification, and a study mode that surfaces the per-character gloss for unfamiliar characters without breaking the reading pane.</p>
+    </section>
+  </article>
+
+  <div class="case-footer fi">
+    <div>
+      <span class="prev-label">Previous Project</span>
+      <a href="canvas-redesign.html" class="prev-title">← Canvas Redesign</a>
+    </div>
+    <a href="../design.html">All Design Projects →</a>
+  </div>
 </main>
 
 <script>
 const html=document.documentElement;
 document.getElementById('themeBtn').addEventListener('click',()=>{const n=html.dataset.theme==='dark'?'light':'dark';html.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}});
 try{const s=localStorage.getItem('theme');if(s)html.dataset.theme=s}catch(e){}
+
+// Mobile menu
 document.getElementById('menuBtn').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.toggle('open')});
 
 // Topbar logo (nested sacred geometry, mirrors hero)
@@ -225,14 +269,9 @@ const d=img.data;for(let i=0;i<W*H;i++){const v=b2[i],sh=Math.max(-30,Math.min(3
 rx.putImageData(img,0,0);rx.save();rx.globalCompositeOperation='copy';rx.drawImage(rc,0,0,W,H,0,0,rc.width,rc.height);rx.restore();
 const t=b1;b1=b2;b2=t}step()}();
 
-// Card BG
-document.querySelectorAll('.pc').forEach(card=>{const cv=card.querySelector('.th canvas');if(!cv)return;const c=cv.getContext('2d'),cols=JSON.parse(card.dataset.colors||'["#0a1a2e","#0d3040","#0a4035"]');
-let w,h;function rs(){const r=cv.parentElement.getBoundingClientRect();cv.width=r.width;cv.height=r.height;w=r.width;h=r.height}rs();addEventListener('resize',rs);
-let t=Math.random()*1000;function dr(){t+=.005;c.clearRect(0,0,w,h);for(let i=0;i<3;i++){const ox=Math.sin(t+i*2.1)*w*.25,oy=Math.cos(t*1.3+i*1.7)*h*.2;const g=c.createRadialGradient(w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,0,w*.3+ox+i*w*.15,h*.4+oy+i*h*.1,Math.max(w,h)*.7);g.addColorStop(0,cols[i%cols.length]);g.addColorStop(1,'transparent');c.globalAlpha=.55;c.fillStyle=g;c.fillRect(0,0,w,h)}const hx=w*.5+Math.sin(t*1.5)*w*.3,hy=h*.5+Math.cos(t*1.1)*h*.3;const hg=c.createRadialGradient(hx,hy,0,hx,hy,w*.35);hg.addColorStop(0,'rgba(24,168,162,.12)');hg.addColorStop(1,'transparent');c.globalAlpha=1;c.fillStyle=hg;c.fillRect(0,0,w,h);requestAnimationFrame(dr)}dr()});
-
-// Scroll animations
-const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),+(e.target.dataset.delay||0));obs.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.fi,.pc').forEach(el=>obs.observe(el));
+// Fade in
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
