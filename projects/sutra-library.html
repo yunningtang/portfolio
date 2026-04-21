@@ -82,12 +82,10 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .meta-grid p a{color:var(--teal);transition:opacity .3s}.meta-grid p a:hover{opacity:.7}
 .hero-img{width:100%;aspect-ratio:16/9;background:var(--card-bg);backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:48px;overflow:hidden}
 .hero-img span{font-size:.8rem;color:var(--text-3)}
-.live-embed{width:100%;display:flex;align-items:center;justify-content:center;padding:36px 16px;margin-bottom:14px;background:var(--card-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:14px;position:relative;overflow:hidden}
-.live-embed .device{width:min(300px,100%);aspect-ratio:9/16.5;background:#0a0c10;border-radius:34px;padding:10px;box-shadow:0 18px 48px rgba(0,0,0,.3),0 0 0 1.5px rgba(80,90,100,.35),inset 0 1px 0 rgba(255,255,255,.08);position:relative;flex-shrink:0}
-.live-embed .device::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:72px;height:4px;background:rgba(255,255,255,.1);border-radius:3px;z-index:3;pointer-events:none}
-.live-embed iframe{width:100%;height:100%;border:0;display:block;background:#fff;border-radius:24px}
-.live-embed .live-label{position:absolute;top:14px;right:14px;z-index:2;font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);padding:4px 10px;border-radius:5px;background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--glass-b);pointer-events:none}
-.live-embed .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#18e0a0;margin-right:6px;vertical-align:1px;box-shadow:0 0 6px rgba(24,224,160,.7)}
+.live-embed{width:100%;display:flex;align-items:center;justify-content:center;padding:40px 16px;margin-bottom:14px;background:var(--card-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--glass-b);border-radius:14px;position:relative;overflow:hidden}
+.live-embed .device{width:min(320px,100%);aspect-ratio:9/19.5;background:#0a0c10;border-radius:44px;padding:34px 9px 9px;box-shadow:0 22px 52px rgba(0,0,0,.32),0 0 0 1.5px rgba(80,90,100,.35),inset 0 1px 0 rgba(255,255,255,.08);position:relative;flex-shrink:0}
+.live-embed .device::before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:96px;height:24px;background:#000;border-radius:14px;z-index:3;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(60,70,80,.5)}
+.live-embed iframe{width:100%;height:100%;border:0;display:block;background:#fff;border-radius:30px}
 .live-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;font-size:.72rem;color:var(--text-3)}
 .live-meta a{color:var(--teal);transition:opacity .3s}.live-meta a:hover{opacity:.7}
 
@@ -205,7 +203,6 @@ article ul li span.key{color:var(--text);font-weight:500}
     </div>
 
     <div class="live-embed fi">
-      <span class="live-label"><span class="live-dot"></span>Live · mobile</span>
       <div class="device"><iframe src="https://sutra-library.vercel.app/" loading="lazy" title="Sutra Library live demo" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </div>
     <div class="live-meta fi"><span>The real product, rendered at phone size — scrolling, long-press, theme toggle all work inline.</span><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a></div>
@@ -274,7 +271,6 @@ article ul li span.key{color:var(--text);font-weight:500}
     </div>
 
     <div class="live-embed fi">
-      <span class="live-label"><span class="live-dot"></span>Live · 手机视图</span>
       <div class="device"><iframe src="https://sutra-library.vercel.app/" loading="lazy" title="经库 Live Demo" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </div>
     <div class="live-meta fi"><span>上方是真实产品，按手机尺寸渲染——滚动、长按、切主题都可以直接操作。</span><a href="https://sutra-library.vercel.app/" target="_blank" rel="noopener noreferrer">在新标签打开 ↗</a></div>
