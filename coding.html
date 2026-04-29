@@ -84,7 +84,9 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
 .pc .bd{padding:16px 18px 20px}
 .pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.pc .bd .card-tags span{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:3px 9px;border-radius:5px;background:rgba(24,168,162,.14);border:1px solid rgba(24,168,162,.28)}
+.pc .bd .card-tags span{display:inline-flex;align-items:center;gap:5px;font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:3px 9px;border-radius:5px;background:rgba(24,168,162,.14);border:1px solid rgba(24,168,162,.28)}
+.pc .bd .card-tags span img.ic{width:11px;height:11px;flex-shrink:0;display:inline-block}
+.pc .bd .card-tags span i.ic{width:11px;height:11px;background-color:currentColor;-webkit-mask:var(--icon) no-repeat center/contain;mask:var(--icon) no-repeat center/contain;display:inline-block;flex-shrink:0}
 .pc .bd h3{font-size:.9375rem;font-weight:600;margin-bottom:5px;line-height:1.35;letter-spacing:-.01em}
 .pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
 
@@ -156,7 +158,7 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
     <a href="projects/fridge-genie.html" class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]'>
       <div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div>
       <div class="bd">
-        <div class="card-tags"><span>Python</span><span>OpenCV</span></div>
+        <div class="card-tags"><span><img class="ic" src="https://cdn.simpleicons.org/python" alt="">Python</span><span><img class="ic" src="https://cdn.simpleicons.org/opencv" alt="">OpenCV</span></div>
         <h3>FridgeGenie</h3>
         <p>Computer vision powered food inventory assistant.</p>
       </div>
@@ -165,7 +167,7 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
     <a href="#" class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'>
       <div class="th"><canvas></canvas><div class="icon">⚡</div></div>
       <div class="bd">
-        <div class="card-tags"><span>HTML/CSS</span><span>JavaScript</span></div>
+        <div class="card-tags"><span><img class="ic" src="https://cdn.simpleicons.org/html5" alt="">HTML/CSS</span><span><img class="ic" src="https://cdn.simpleicons.org/javascript" alt="">JavaScript</span></div>
         <h3>Portfolio Architecture</h3>
         <p>The editorial design system you are looking at.</p>
       </div>

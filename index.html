@@ -93,8 +93,8 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .cap-col .ci{font-size:.85rem;margin-bottom:6px;color:var(--text-3)}
 .cap-col h4{font-size:.6875rem;font-weight:600;letter-spacing:.05em;margin-bottom:12px;text-transform:uppercase}
 .cap-col .tags{display:flex;flex-wrap:wrap;gap:5px}
-.cap-col .t{font-size:.6875rem;padding:3px 10px;border-radius:6px;border:1px solid var(--glass-b);color:var(--text-2);background:var(--tag-bg);transition:all .25s;line-height:1.5;display:inline-flex;align-items:center;gap:5px}
-.cap-col .t i{width:10px;height:10px;background-color:currentColor;opacity:.75;-webkit-mask:var(--icon) no-repeat center/contain;mask:var(--icon) no-repeat center/contain;display:inline-block;flex-shrink:0}
+.cap-col .t{font-size:.6875rem;padding:3px 10px;border-radius:6px;border:1px solid var(--glass-b);color:var(--text-2);background:var(--tag-bg);transition:all .25s;line-height:1.5;display:inline-flex;align-items:center;gap:6px}
+.cap-col .t img.ic{width:11px;height:11px;flex-shrink:0;display:inline-block}
 .cap-col:nth-child(1) .t:hover{color:var(--blue);border-color:rgba(40,120,232,.25)}
 .cap-col:nth-child(2) .t:hover{color:var(--teal);border-color:rgba(24,168,162,.25)}
 .cap-col:nth-child(3) .t:hover{color:var(--green);border-color:rgba(24,224,160,.25)}
@@ -114,7 +114,9 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
 .pc .bd{padding:16px 18px 20px}
 .pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.pc .bd .card-tags span{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:3px 9px;border-radius:5px;background:rgba(24,168,162,.14);border:1px solid rgba(24,168,162,.28)}
+.pc .bd .card-tags span{display:inline-flex;align-items:center;gap:5px;font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:3px 9px;border-radius:5px;background:rgba(24,168,162,.14);border:1px solid rgba(24,168,162,.28)}
+.pc .bd .card-tags span img.ic{width:11px;height:11px;flex-shrink:0;display:inline-block}
+.pc .bd .card-tags span i.ic{width:11px;height:11px;background-color:currentColor;-webkit-mask:var(--icon) no-repeat center/contain;mask:var(--icon) no-repeat center/contain;display:inline-block;flex-shrink:0}
 .pc .bd h3{font-size:.9375rem;font-weight:600;margin-bottom:5px;line-height:1.35;letter-spacing:-.01em}
 .pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
 
@@ -200,13 +202,13 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
     <div id="hero3d"></div>
   </section>
   <section class="sec fi" id="design"><div class="sh"><div class="left"><span class="sn">01.</span><h2>Design Projects</h2></div><div class="right"><a href="design.html" class="va">View all ↗</a></div></div><div class="pg">
-    <a href="projects/canvas-redesign.html" class="pc" data-delay="0" data-colors='["#041a2e","#0a3d5c","#0d4f5a"]' style="text-decoration:none;color:inherit;display:block"><div class="th"><canvas></canvas><div class="icon">C</div></div><div class="bd"><div class="card-tags"><span>UX Research</span><span>UI Design</span></div><h3>Canvas Redesign</h3><p>Improving student learning experience through data-driven research.</p></div></a>
-    <div class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'><div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div><div class="bd"><div class="card-tags"><span>Product Design</span><span>Responsive</span></div><h3>Dental Ease</h3><p>A responsive booking platform for dental clinics.</p></div></div>
-    <a href="projects/sutra-library.html" class="pc" data-delay="160" style="text-decoration:none;color:inherit;display:block"><div class="th"><img class="cover" src="images/sutra-library-cover.png" alt="Sutra Library — library of six sutras shown as vertical cards"></div><div class="bd"><div class="card-tags"><span>Product Design</span><span>Full-Stack</span></div><h3>Sutra Library</h3><p>A minimal reader for Chinese Buddhist sutras — stripped of merit counters, focused on comprehension.</p></div></a>
+    <a href="projects/canvas-redesign.html" class="pc" data-delay="0" data-colors='["#041a2e","#0a3d5c","#0d4f5a"]' style="text-decoration:none;color:inherit;display:block"><div class="th"><canvas></canvas><div class="icon">C</div></div><div class="bd"><div class="card-tags"><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/search.svg)"></i>UX Research</span><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/layout.svg)"></i>UI Design</span></div><h3>Canvas Redesign</h3><p>Improving student learning experience through data-driven research.</p></div></a>
+    <div class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'><div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div><div class="bd"><div class="card-tags"><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/palette.svg)"></i>Product Design</span><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/monitor-smartphone.svg)"></i>Responsive</span></div><h3>Dental Ease</h3><p>A responsive booking platform for dental clinics.</p></div></div>
+    <a href="projects/sutra-library.html" class="pc" data-delay="160" style="text-decoration:none;color:inherit;display:block"><div class="th"><img class="cover" src="images/sutra-library-cover.png" alt="Sutra Library — library of six sutras shown as vertical cards"></div><div class="bd"><div class="card-tags"><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/palette.svg)"></i>Product Design</span><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/layers.svg)"></i>Full-Stack</span></div><h3>Sutra Library</h3><p>A minimal reader for Chinese Buddhist sutras — stripped of merit counters, focused on comprehension.</p></div></a>
   </div></section>
   <section class="sec fi" id="coding"><div class="sh"><div class="left"><span class="sn">02.</span><h2>Coding Projects</h2></div><div class="right"><a href="coding.html" class="va">View all ↗</a></div></div><div class="pg">
-    <a href="projects/fridge-genie.html" class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]' style="text-decoration:none;color:inherit;display:block"><div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div><div class="bd"><div class="card-tags"><span>Python</span><span>OpenCV</span></div><h3>FridgeGenie</h3><p>Computer vision powered food inventory assistant.</p></div></a>
-    <div class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'><div class="th"><canvas></canvas><div class="icon">⚡</div></div><div class="bd"><div class="card-tags"><span>HTML/CSS</span><span>JavaScript</span></div><h3>Portfolio Architecture</h3><p>The editorial design system you are looking at.</p></div></div>
+    <a href="projects/fridge-genie.html" class="pc" data-delay="0" data-colors='["#031525","#0a2a40","#0d3a4a"]' style="text-decoration:none;color:inherit;display:block"><div class="th"><canvas></canvas><div class="icon">&lt;/&gt;</div></div><div class="bd"><div class="card-tags"><span><img class="ic" src="https://cdn.simpleicons.org/python" alt="">Python</span><span><img class="ic" src="https://cdn.simpleicons.org/opencv" alt="">OpenCV</span></div><h3>FridgeGenie</h3><p>Computer vision powered food inventory assistant.</p></div></a>
+    <div class="pc" data-delay="80" data-colors='["#061e28","#0c3038","#0a4035"]'><div class="th"><canvas></canvas><div class="icon">⚡</div></div><div class="bd"><div class="card-tags"><span><img class="ic" src="https://cdn.simpleicons.org/html5" alt="">HTML/CSS</span><span><img class="ic" src="https://cdn.simpleicons.org/javascript" alt="">JavaScript</span></div><h3>Portfolio Architecture</h3><p>The editorial design system you are looking at.</p></div></div>
   </div></section>
   <section class="sec fi" id="experiments"><div class="sh"><div class="left"><span class="sn">04.</span><h2>Experiments / Arts</h2></div><div class="right"><a href="#" class="va">View all ↗</a></div></div><div class="eg">
     <div class="ec"><div class="ef" style="background:linear-gradient(160deg,#0a3d5c,#18a8a2 40%,#0d4f5a 70%,#06252e)"></div><div class="el">01</div></div>
@@ -215,31 +217,31 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
   </div></section>
   <section class="sec fi"><div class="cap-title">Tech Stack</div><div class="cap-grid">
     <div class="cap-col"><div class="ci">&lt;/&gt;</div><h4>Language / IDE</h4><div class="tags">
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg)"></i>Python</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cplusplus.svg)"></i>C++</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg)"></i>JavaScript</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/typescript.svg)"></i>TypeScript</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/python" alt="">Python</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/cplusplus" alt="">C++</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/javascript" alt="">JavaScript</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/typescript" alt="">TypeScript</span>
       <span class="t">VS Code</span>
     </div></div>
     <div class="cap-col"><div class="ci">◫</div><h4>Frontend</h4><div class="tags">
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg)"></i>React</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nextdotjs.svg)"></i>Next.js</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg)"></i>HTML/CSS</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tailwindcss.svg)"></i>Tailwind</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/threedotjs.svg)"></i>Three.js</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/react" alt="">React</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/nextdotjs" alt="">Next.js</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/html5" alt="">HTML/CSS</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/tailwindcss" alt="">Tailwind</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/threedotjs" alt="">Three.js</span>
     </div></div>
     <div class="cap-col"><div class="ci">⊞</div><h4>AI / ML Frameworks</h4><div class="tags">
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pytorch.svg)"></i>PyTorch</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tensorflow.svg)"></i>TensorFlow</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/scikitlearn.svg)"></i>scikit-learn</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/opencv.svg)"></i>OpenCV</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/pytorch" alt="">PyTorch</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/tensorflow" alt="">TensorFlow</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/scikitlearn" alt="">scikit-learn</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/opencv" alt="">OpenCV</span>
     </div></div>
     <div class="cap-col"><div class="ci">◎</div><h4>Design &amp; Tools</h4><div class="tags">
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/figma.svg)"></i>Figma</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg)"></i>Canva</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/git.svg)"></i>Git</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg)"></i>GitHub</span>
-      <span class="t"><i style="--icon:url(https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg)"></i>Docker</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/figma" alt="">Figma</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/canva" alt="">Canva</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/git" alt="">Git</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/github" alt="">GitHub</span>
+      <span class="t"><img class="ic" src="https://cdn.simpleicons.org/docker" alt="">Docker</span>
     </div></div>
   </div></section>
   <div style="height:60px"></div>

@@ -86,7 +86,9 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
 .pc .th .txt{position:relative;z-index:1;font-size:.8rem;color:var(--text-2);padding:6px 16px;border-radius:8px;background:rgba(5,11,16,.55);border:1px solid rgba(56,216,200,.08);backdrop-filter:blur(10px)}
 .pc .bd{padding:16px 18px 20px}
 .pc .bd .card-tags{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.pc .bd .card-tags span{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:3px 9px;border-radius:5px;background:rgba(24,168,162,.14);border:1px solid rgba(24,168,162,.28)}
+.pc .bd .card-tags span{display:inline-flex;align-items:center;gap:5px;font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);padding:3px 9px;border-radius:5px;background:rgba(24,168,162,.14);border:1px solid rgba(24,168,162,.28)}
+.pc .bd .card-tags span img.ic{width:11px;height:11px;flex-shrink:0;display:inline-block}
+.pc .bd .card-tags span i.ic{width:11px;height:11px;background-color:currentColor;-webkit-mask:var(--icon) no-repeat center/contain;mask:var(--icon) no-repeat center/contain;display:inline-block;flex-shrink:0}
 .pc .bd h3{font-size:.9375rem;font-weight:600;margin-bottom:5px;line-height:1.35;letter-spacing:-.01em}
 .pc .bd p{font-size:.75rem;font-weight:300;color:var(--text-2);line-height:1.7}
 
@@ -158,7 +160,7 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
     <a href="projects/canvas-redesign.html" class="pc" data-delay="0" data-colors='["#041a2e","#0a3d5c","#0d4f5a"]'>
       <div class="th"><canvas></canvas><div class="icon">C</div></div>
       <div class="bd">
-        <div class="card-tags"><span>UX Research</span><span>UI Design</span></div>
+        <div class="card-tags"><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/search.svg)"></i>UX Research</span><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/layout.svg)"></i>UI Design</span></div>
         <h3>Canvas Redesign</h3>
         <p>Improving student learning experience through data-driven research.</p>
       </div>
@@ -167,7 +169,7 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
     <a href="#" class="pc" data-delay="80" data-colors='["#06252e","#0c3b42","#0f4a3a"]'>
       <div class="th"><canvas></canvas><div class="txt">Dental.ease()</div></div>
       <div class="bd">
-        <div class="card-tags"><span>Product Design</span><span>Responsive</span></div>
+        <div class="card-tags"><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/palette.svg)"></i>Product Design</span><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/monitor-smartphone.svg)"></i>Responsive</span></div>
         <h3>Dental Ease</h3>
         <p>A responsive booking platform for dental clinics.</p>
       </div>
@@ -176,7 +178,7 @@ html[data-theme="light"] .theme-glass .im{opacity:0;transform:rotate(-90deg) sca
     <a href="projects/sutra-library.html" class="pc" data-delay="160">
       <div class="th"><img class="cover" src="images/sutra-library-cover.png" alt="Sutra Library — library of six sutras shown as vertical cards"></div>
       <div class="bd">
-        <div class="card-tags"><span>Product Design</span><span>Full-Stack</span></div>
+        <div class="card-tags"><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/palette.svg)"></i>Product Design</span><span><i class="ic" style="--icon:url(https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/layers.svg)"></i>Full-Stack</span></div>
         <h3>Sutra Library</h3>
         <p>A minimal reader for Chinese Buddhist sutras — stripped of merit counters, focused on comprehension.</p>
       </div>
